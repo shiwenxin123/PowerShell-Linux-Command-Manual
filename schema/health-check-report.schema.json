@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shiwenxin123.github.io/PowerShell-Linux-/schema/health-check-report.schema.json",
+  "title": "Health Check Report",
+  "type": "object",
+  "required": [
+    "metadata",
+    "modules",
+    "summary",
+    "errors"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "os",
+        "hostname",
+        "timestamp",
+        "module",
+        "format",
+        "script"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "os": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hostname": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "module": {
+          "type": "string",
+          "enum": [
+            "all",
+            "system",
+            "disk",
+            "network",
+            "service",
+            "process"
+          ]
+        },
+        "format": {
+          "type": "string",
+          "const": "json"
+        },
+        "script": {
+          "type": "string",
+          "enum": [
+            "linux-health-check.sh",
+            "windows-health-check.ps1"
+          ]
+        }
+      }
+    },
+    "modules": {
+      "type": "object",
+      "required": [
+        "system",
+        "disk",
+        "network",
+        "service",
+        "process"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "system": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "disk": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "network": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "service": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "process": {
+          "$ref": "#/$defs/moduleResult"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "status",
+        "warnings_count",
+        "errors_count"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "ok",
+            "warning",
+            "error"
+          ]
+        },
+        "warnings_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "errors_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/message"
+      }
+    }
+  },
+  "$defs": {
+    "moduleResult": {
+      "type": "object",
+      "required": [
+        "status",
+        "commands",
+        "warnings",
+        "errors"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "ok",
+            "warning",
+            "error",
+            "skipped"
+          ]
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/commandResult"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/message"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/message"
+          }
+        }
+      }
+    },
+    "commandResult": {
+      "type": "object",
+      "required": [
+        "name",
+        "command",
+        "exit_code",
+        "output"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exit_code": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output": {
+          "type": "string"
+        }
+      }
+    },
+    "message": {
+      "type": "object",
+      "required": [
+        "name",
+        "message"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
