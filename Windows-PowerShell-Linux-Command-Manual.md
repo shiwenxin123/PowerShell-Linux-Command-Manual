@@ -3,6 +3,12 @@
 > 版本: 2.0  
 > 最后更新: 2026-03-13  
 > 说明: 包含详细命令注释、高级用法与最佳实践，新增银河麒麟、统信 UOS 专用命令与专业运维内容
+>
+> 项目导航: [README](README.md) | [命令速查表](docs/COMMAND-CHEATSHEET.md) | [PowerShell/Bash 对照](docs/POWERSHELL-BASH-COMPARISON.md) | [Linux 排障清单](docs/troubleshooting/LINUX-INCIDENT-CHECKLIST.md) | [贡献指南](CONTRIBUTING.md)
+>
+> 安全提醒: 删除、格式化、权限修改、服务重启等命令可能影响系统或数据。执行 `rm -rf`、`Remove-Item -Recurse -Force`、`chmod -R`、`chown -R`、`mkfs`、`dd` 等命令前，请先确认目标路径、备份和执行环境。
+>
+> 风险等级说明: 高危命令请参考 [命令风险等级说明](docs/security/RISK-LEVELS.md)，后续贡献命令时建议统一标注风险等级、执行前检查和回滚建议。
 
 ---
 
@@ -569,6 +575,7 @@ rm file.txt
 rm -f file.txt
 
 # 删除目录及其所有内容
+# 高危操作: 执行前先用 ls dir 确认目标目录
 rm -rf dir
 
 # 创建文件链接(硬链接)
@@ -1687,7 +1694,7 @@ console.log('完成!');
 ### 三、跨平台工具推荐
 
 | 工具 | 描述 | Windows | Linux | macOS |
-|------|------|---------|-------|-------|
+| --- | --- | --- | --- | --- |
 | Git | 版本控制 | ✅ | ✅ | ✅ |
 | VS Code | 代码编辑器 | ✅ | ✅ | ✅ |
 | Docker | 容器化 | ✅ | ✅ | ✅ |
@@ -3082,6 +3089,7 @@ kubectl uncordon <node-name>
 ### A. 常用快捷键
 
 #### Bash/Shell 快捷键
+
 - `Ctrl + A`: 移到行首
 - `Ctrl + E`: 移到行尾
 - `Ctrl + U`: 删除到行首
@@ -3094,6 +3102,7 @@ kubectl uncordon <node-name>
 - `Tab`: 自动补全
 
 #### PowerShell 快捷键
+
 - `Ctrl + A`: 全选
 - `Ctrl + C`: 复制/终止
 - `Ctrl + V`: 粘贴
@@ -3104,11 +3113,11 @@ kubectl uncordon <node-name>
 
 ### B. 参考资源
 
-- PowerShell 文档: https://learn.microsoft.com/powershell/
-- Linux 文档: https://www.kernel.org/doc/html/latest/
-- Bash 手册: https://www.gnu.org/software/bash/manual/
-- Linux 命令大全: https://man7.org/linux/man-pages/
+- PowerShell 文档: <https://learn.microsoft.com/powershell/>
+- Linux 文档: <https://www.kernel.org/doc/html/latest/>
+- Bash 手册: <https://www.gnu.org/software/bash/manual/>
+- Linux 命令大全: <https://man7.org/linux/man-pages/>
 
 ---
 
-**手册结束**
+## 手册结束

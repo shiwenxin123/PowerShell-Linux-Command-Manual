@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "os": "Linux",
+    "hostname": "example-linux-host",
+    "timestamp": "2026-05-07T08:00:00Z",
+    "module": "all",
+    "format": "json",
+    "script": "linux-health-check.sh"
+  },
+  "modules": {
+    "system": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "uname",
+          "command": "uname -a",
+          "exit_code": 0,
+          "output": "Linux example-linux-host 6.1.0 x86_64 GNU/Linux"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "disk": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "disk",
+          "command": "df -h",
+          "exit_code": 0,
+          "output": "Filesystem Size Used Avail Use% Mounted on\n/dev/sda1 100G 40G 60G 40% /"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "network": {
+      "status": "warning",
+      "commands": [],
+      "warnings": [
+        {
+          "name": "ss",
+          "message": "Command not available: ss"
+        }
+      ],
+      "errors": []
+    },
+    "service": {
+      "status": "skipped",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "process": {
+      "status": "skipped",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "summary": {
+    "status": "warning",
+    "warnings_count": 1,
+    "errors_count": 0
+  },
+  "errors": []
+}

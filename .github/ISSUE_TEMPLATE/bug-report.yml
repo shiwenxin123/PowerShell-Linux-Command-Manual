@@ -1,0 +1,24 @@
+name: 错误反馈
+description: 反馈手册中的错误命令、错误说明或过时内容
+title: "[错误反馈] "
+labels: ["bug", "documentation"]
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: 问题位置
+      description: 请粘贴章节标题、链接或相关命令。
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 具体问题
+      description: 请描述哪里不正确，以及你的系统环境。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 建议修正
+      description: 如果你知道正确写法，可以直接贴出来。
