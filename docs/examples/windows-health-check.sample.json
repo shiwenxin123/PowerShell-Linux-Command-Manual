@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "os": "Windows",
+    "hostname": "EXAMPLE-WIN-HOST",
+    "timestamp": "2026-05-07T08:00:00Z",
+    "module": "all",
+    "format": "json",
+    "script": "windows-health-check.ps1"
+  },
+  "modules": {
+    "system": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "computer_info",
+          "command": "Get-ComputerInfo | Select-Object CsName, WindowsProductName, WindowsVersion, OsArchitecture",
+          "exit_code": 0,
+          "output": "CsName WindowsProductName WindowsVersion OsArchitecture\n------ ------------------ -------------- --------------\nEXAMPLE-WIN-HOST Windows Server 2022 2009 64-bit"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "disk": {
+      "status": "ok",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "network": {
+      "status": "ok",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "service": {
+      "status": "skipped",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "process": {
+      "status": "skipped",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "summary": {
+    "status": "ok",
+    "warnings_count": 0,
+    "errors_count": 0
+  },
+  "errors": []
+}

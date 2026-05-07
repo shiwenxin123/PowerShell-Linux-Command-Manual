@@ -1,0 +1,30 @@
+name: 命令补充
+description: 建议补充一个命令或场景
+title: "[命令补充] "
+labels: ["documentation", "command-request"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 适用平台
+      options:
+        - Windows PowerShell
+        - Linux
+        - 银河麒麟
+        - 统信 UOS
+        - 跨平台
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: 命令或场景
+      description: 请写出命令、使用场景和期望补充的位置。
+      placeholder: 例如: 查看 8080 端口占用并结束进程
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 补充说明
+      description: 如果命令有风险、版本限制或依赖工具，请一并说明。

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 阅读贡献指南
+    url: https://github.com/shiwenxin123/PowerShell-Linux-/blob/main/CONTRIBUTING.md
+    about: 提交 Issue 或 PR 前建议先阅读贡献指南。

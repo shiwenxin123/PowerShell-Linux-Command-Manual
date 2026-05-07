@@ -1,0 +1,33 @@
+- name: documentation
+  color: "0075ca"
+  description: 文档新增或修改
+- name: command-request
+  color: "0e8a16"
+  description: 新命令或新场景建议
+- name: bug
+  color: "d73a4a"
+  description: 错误命令、错误说明或过时内容
+- name: good first issue
+  color: "7057ff"
+  description: 适合第一次贡献
+- name: help wanted
+  color: "008672"
+  description: 欢迎社区协助
+- name: security
+  color: "b60205"
+  description: 高危命令或安全风险
+- name: powershell
+  color: "012456"
+  description: PowerShell 相关内容
+- name: linux
+  color: "f0db4f"
+  description: Linux 相关内容
+- name: kylin
+  color: "c5def5"
+  description: 银河麒麟相关内容
+- name: uos
+  color: "bfdadc"
+  description: 统信 UOS 相关内容
+- name: containers
+  color: "1d76db"
+  description: Docker 或 Kubernetes 相关内容

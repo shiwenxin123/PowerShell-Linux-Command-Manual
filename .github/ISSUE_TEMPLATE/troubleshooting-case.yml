@@ -1,0 +1,29 @@
+name: 故障案例补充
+description: 建议补充一个真实运维故障案例
+title: "[故障案例] "
+labels: ["documentation", "troubleshooting"]
+body:
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 故障现象
+      description: 请描述用户看到的现象、报错或告警。
+      placeholder: 例如: Grafana 面板显示 No data，Prometheus target 为 down
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 请说明系统、组件、版本或部署方式。
+      placeholder: 例如: Kubernetes 1.28、Prometheus Operator、Nginx 1.24
+  - type: textarea
+    id: checks
+    attributes:
+      label: 已尝试排查
+      description: 请列出已经执行过的命令、日志或排查结论。
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望补充内容
+      description: 请说明希望文档补充哪些命令、处理建议或风险提醒。
