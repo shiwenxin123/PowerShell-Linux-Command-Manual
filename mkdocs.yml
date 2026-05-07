@@ -1,4 +1,4 @@
-site_name: Windows PowerShell 与 Linux 常用命令手册
+site_name: PowerShell-Linux 命令手册
 site_description: Windows PowerShell、Linux、银河麒麟、统信 UOS 常用命令中文速查手册
 site_url: https://shiwenxin123.github.io/PowerShell-Linux-/
 repo_url: https://github.com/shiwenxin123/PowerShell-Linux-
@@ -14,19 +14,23 @@ theme:
     - search.highlight
     - search.suggest
 
+extra_css:
+  - assets/stylesheets/extra.css
+
 nav:
   - 首页: index.md
-  - FAQ: FAQ.md
-  - 命令索引: COMMAND-INDEX.md
-  - 命令覆盖矩阵: COMMAND-COVERAGE-MATRIX.md
-  - 主手册迁移进度: MANUAL-MIGRATION.md
-  - 下一阶段计划: NEXT-STAGE-PLAN.md
-  - 命令速查表: COMMAND-CHEATSHEET.md
-  - 专题化手册:
+  - 快速查命令:
+      - 命令速查表: COMMAND-CHEATSHEET.md
+      - 命令索引: COMMAND-INDEX.md
+      - 命令覆盖矩阵: COMMAND-COVERAGE-MATRIX.md
+      - FAQ: FAQ.md
+      - PowerShell/Bash 对照: POWERSHELL-BASH-COMPARISON.md
+  - 专题手册:
       - 入口: manual/README.md
       - PowerShell 基础: manual/powershell/BASIC.md
       - PowerShell 系统管理: manual/powershell/SYSTEM-ADMIN.md
       - PowerShell 高级技巧: manual/powershell/ADVANCED-SCRIPTING.md
+      - PowerShell 实用场景: powershell/POWERSHELL-PRACTICAL.md
       - Linux 基础: manual/linux/BASIC.md
       - Linux 包管理: manual/linux/PACKAGE-MANAGEMENT.md
       - Linux 用户组与权限: manual/linux/USERS-PERMISSIONS.md
@@ -36,33 +40,16 @@ nav:
       - Linux 系统监控与日志: manual/linux/MONITORING-LOGS.md
       - Linux 磁盘与 LVM: manual/linux/DISK-LVM.md
       - Linux 性能调优: manual/linux/PERFORMANCE-TUNING.md
+      - Bash 文本处理: linux/BASH-TEXT-PROCESSING.md
       - 系统安全加固: manual/security/HARDENING.md
       - 防火墙与 SELinux: manual/security/FIREWALL-SELINUX.md
       - 日志轮转与审计: manual/security/LOGGING-AUDIT.md
       - sudoers 与 AppArmor: manual/security/SUDOERS-APPARMOR.md
+      - 命令风险等级: security/RISK-LEVELS.md
       - Windows 管理命令: manual/windows/ADMIN-COMMANDS.md
-      - Kubernetes 进阶排查: manual/kubernetes/ADVANCED-TROUBLESHOOTING.md
-      - Docker 与 Kubernetes 生产级命令: manual/kubernetes/DOCKER-K8S-PRODUCTION.md
-      - 数据库与中间件: manual/middleware/DATABASE-MIDDLEWARE.md
-      - PostgreSQL/MongoDB/Elasticsearch: manual/middleware/POSTGRES-MONGO-ELASTIC.md
-      - 云服务器与负载均衡: manual/cloud/CLOUD-LB-TROUBLESHOOTING.md
-      - 集中日志与监控告警: manual/observability/LOGGING-MONITORING.md
-      - PromQL/LogQL/告警规则: manual/observability/PROMQL-LOGQL-ALERTS.md
-      - 开发与排障工具: manual/devtools/README.md
-      - Git、SSH、curl 与 jq: manual/devtools/GIT-SSH-CURL-JQ.md
-      - 巡检脚本工具化: manual/automation/HEALTH-CHECK-SCRIPTS.md
-      - Python 与 Node.js 跨平台脚本: manual/cross-platform/PYTHON-NODE-SCRIPTS.md
-      - Keepalived 高可用: manual/ha/KEEPALIVED.md
-      - 跨平台工具: manual/cross-platform/TOOLS.md
-  - PowerShell/Bash 对照: POWERSHELL-BASH-COMPARISON.md
-  - PowerShell:
-      - 实用场景: powershell/POWERSHELL-PRACTICAL.md
-  - Linux:
-      - Bash 文本处理: linux/BASH-TEXT-PROCESSING.md
-  - Linux 排障:
+  - 排障案例:
       - 应急排查清单: troubleshooting/LINUX-INCIDENT-CHECKLIST.md
       - 常见报错排查: troubleshooting/COMMON-ERRORS.md
-  - 故障案例:
       - 案例库首页: cases/README.md
       - 磁盘空间满: cases/DISK-FULL.md
       - CPU 飙高: cases/CPU-HIGH.md
@@ -83,17 +70,31 @@ nav:
       - Kubernetes DNS 异常: cases/K8S-DNS-FAILED.md
       - Prometheus Target Down: cases/PROMETHEUS-TARGET-DOWN.md
       - Grafana 无数据: cases/GRAFANA-NO-DATA.md
-  - 容器:
-      - Docker 与 Kubernetes: containers/DOCKER-KUBERNETES-CHEATSHEET.md
+  - 容器与云:
+      - Kubernetes 进阶排查: manual/kubernetes/ADVANCED-TROUBLESHOOTING.md
+      - Docker 与 Kubernetes 生产级命令: manual/kubernetes/DOCKER-K8S-PRODUCTION.md
+      - Docker 与 Kubernetes 速查: containers/DOCKER-KUBERNETES-CHEATSHEET.md
+      - 数据库与中间件: manual/middleware/DATABASE-MIDDLEWARE.md
+      - PostgreSQL/MongoDB/Elasticsearch: manual/middleware/POSTGRES-MONGO-ELASTIC.md
+      - 云服务器与负载均衡: manual/cloud/CLOUD-LB-TROUBLESHOOTING.md
+      - 集中日志与监控告警: manual/observability/LOGGING-MONITORING.md
+      - PromQL/LogQL/告警规则: manual/observability/PROMQL-LOGQL-ALERTS.md
   - 国产 Linux:
       - 麒麟与 UOS: domestic-linux/KYLIN-UOS-COMMANDS.md
       - 离线安装与软件源: domestic-linux/OFFLINE-PACKAGE-GUIDE.md
       - 架构与兼容性检查: domestic-linux/ARCHITECTURE-CHECKLIST.md
       - 版本差异与排查要点: domestic-linux/VERSION-DIFFERENCES.md
-  - 安全:
-      - 命令风险等级: security/RISK-LEVELS.md
-  - GitHub 热度优化: GITHUB-GROWTH-CHECKLIST.md
+  - 自动化:
+      - 开发与排障工具: manual/devtools/README.md
+      - Git、SSH、curl 与 jq: manual/devtools/GIT-SSH-CURL-JQ.md
+      - 巡检脚本工具化: manual/automation/HEALTH-CHECK-SCRIPTS.md
+      - Python 与 Node.js 跨平台脚本: manual/cross-platform/PYTHON-NODE-SCRIPTS.md
+      - Keepalived 高可用: manual/ha/KEEPALIVED.md
+      - 跨平台工具: manual/cross-platform/TOOLS.md
   - 项目维护:
+      - 主手册迁移进度: MANUAL-MIGRATION.md
+      - 下一阶段计划: NEXT-STAGE-PLAN.md
+      - GitHub 热度优化: GITHUB-GROWTH-CHECKLIST.md
       - Roadmap: ROADMAP.md
       - 项目审查报告: PROJECT-AUDIT.md
       - Good First Issues: GOOD-FIRST-ISSUES.md

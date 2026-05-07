@@ -1,0 +1,26 @@
+/* Keep the desktop tab bar readable when the documentation grows. */
+.md-tabs__list {
+  gap: 0.2rem;
+}
+
+.md-tabs__link {
+  font-size: 0.72rem;
+  margin-top: 0.6rem;
+  padding-inline: 0.35rem;
+}
+
+.md-header__title {
+  max-width: 20rem;
+}
+
+.md-header__topic {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-search {
+    max-width: 18rem;
+  }
+}
