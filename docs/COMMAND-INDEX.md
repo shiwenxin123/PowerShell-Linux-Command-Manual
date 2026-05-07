@@ -184,5 +184,5 @@
 | `up` | PromQL | 查看 target 是否在线 |
 | `rate(metric[5m])` | PromQL | 计算速率 |
 | `histogram_quantile` | PromQL | 计算分位延迟 |
-| `{app="name"} |= "error"` | LogQL | 查询错误日志 |
+| `{app="name"} \|= "error"` | LogQL | 查询错误日志 |
 | `count_over_time` | LogQL | 统计日志数量 |

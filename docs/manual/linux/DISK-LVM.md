@@ -103,7 +103,7 @@ sudo xfs_growfs /data
 | --- | --- |
 | 磁盘满 | `df -h`、`du -sh`、`find` |
 | inode 满 | `df -i` |
-| 删除文件空间不释放 | `lsof | grep deleted` |
+| 删除文件空间不释放 | `lsof \| grep deleted` |
 | 开机挂载失败 | `/etc/fstab`、`mount -a` |
 | 设备名变化 | 使用 UUID 挂载 |
 

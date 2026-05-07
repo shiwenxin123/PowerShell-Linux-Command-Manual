@@ -84,10 +84,6 @@ json_escape() {
   printf '%s' "$value"
 }
 
-json_string() {
-  printf '"%s"' "$(json_escape "${1-}")"
-}
-
 section() {
   if [ "$FORMAT" = "markdown" ]; then
     echo

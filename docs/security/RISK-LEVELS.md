@@ -160,7 +160,7 @@ journalctl -u <service> -n 50 --no-pager
 
 ## 推荐模板
 
-```markdown
+````markdown
 ### 命令场景
 
 风险等级: 低 / 中 / 高
@@ -171,10 +171,12 @@ command --option value
 ```
 
 注意事项:
+
 - 适用系统:
 - 版本限制:
 - 执行前检查:
-```
+
+````
 
 ## 写作文档时的安全原则
 
