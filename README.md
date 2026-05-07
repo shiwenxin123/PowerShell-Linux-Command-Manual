@@ -8,7 +8,20 @@
 
 一份面向桌面用户、运维工程师、国产 Linux 使用者和跨平台脚本学习者的命令速查手册。项目覆盖 Windows PowerShell、Linux、银河麒麟、统信 UOS、安全加固和常见自动化场景，适合日常查阅、教学和内部培训。
 
-> 当前主手册: [Windows-PowerShell-Linux-Command-Manual.md](Windows-PowerShell-Linux-Command-Manual.md)
+> 在线文档: [https://shiwenxin123.github.io/PowerShell-Linux-/](https://shiwenxin123.github.io/PowerShell-Linux-/)
+> 当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-/releases/tag/v2.16.0)
+> 历史主手册: [Windows-PowerShell-Linux-Command-Manual.md](Windows-PowerShell-Linux-Command-Manual.md)
+
+## 10 秒了解项目
+
+| 你想做什么 | 直接入口 |
+| --- | --- |
+| 快速查一条命令 | [命令速查表](docs/COMMAND-CHEATSHEET.md) / [命令索引](docs/COMMAND-INDEX.md) |
+| 按故障现象排查 | [真实故障案例库](docs/cases/README.md) |
+| 学 PowerShell 与 Linux 对照 | [PowerShell 与 Bash 命令对照](docs/POWERSHELL-BASH-COMPARISON.md) |
+| 运维值班快速检查 | [Linux 故障应急排查清单](docs/troubleshooting/LINUX-INCIDENT-CHECKLIST.md) |
+| 生成巡检报告 | [巡检脚本工具化](docs/manual/automation/HEALTH-CHECK-SCRIPTS.md) |
+| 参与贡献 | [Good First Issues](docs/GOOD-FIRST-ISSUES.md) / [贡献指南](CONTRIBUTING.md) |
 
 ## 项目亮点
 
@@ -16,6 +29,27 @@
 - **国产系统适配**: 包含银河麒麟、统信 UOS 相关命令和运维场景。
 - **运维实用导向**: 覆盖文件、进程、服务、网络、日志、安全、脚本自动化等高频工作。
 - **中文友好**: 命令说明以中文为主，降低新手和团队培训成本。
+- **可自动化消费**: 巡检脚本支持 text、markdown、json 输出，可接入 CI 或二次脚本。
+
+## 快速开始
+
+克隆项目后可以直接查阅 Markdown，也可以运行巡检脚本生成报告。
+
+```bash
+git clone https://github.com/shiwenxin123/PowerShell-Linux-.git
+cd PowerShell-Linux-
+bash scripts/linux-health-check.sh --format markdown --output reports/linux-health-check.md
+```
+
+Windows PowerShell:
+
+```powershell
+git clone https://github.com/shiwenxin123/PowerShell-Linux-.git
+Set-Location PowerShell-Linux-
+.\scripts\windows-health-check.ps1 -Format markdown -OutputFile reports\windows-health-check.md
+```
+
+如果只想在线阅读，推荐直接打开 [文档站](https://shiwenxin123.github.io/PowerShell-Linux-/)。
 
 ## 快速入口
 
@@ -59,6 +93,17 @@
 2. 从 [命令速查表](docs/COMMAND-CHEATSHEET.md) 找到常用命令。
 3. 在完整手册里查看更详细示例。
 4. 发现遗漏或错误时，通过 Issue 或 Pull Request 补充。
+
+## 按场景找命令
+
+| 场景 | 推荐入口 |
+| --- | --- |
+| 查端口、连通性、DNS | [Linux 网络排查](docs/manual/linux/NETWORK.md) / [常见报错排查](docs/troubleshooting/COMMON-ERRORS.md) |
+| 找大文件、清理磁盘 | [Linux 磁盘与 LVM](docs/manual/linux/DISK-LVM.md) / [磁盘空间满案例](docs/cases/DISK-FULL.md) |
+| 看服务和进程状态 | [Linux 基础](docs/manual/linux/BASIC.md) / [Windows 管理命令](docs/manual/windows/ADMIN-COMMANDS.md) |
+| 分析日志和审计 | [日志轮转、审计与系统日志](docs/manual/security/LOGGING-AUDIT.md) |
+| 排查 Kubernetes | [Kubernetes 进阶排查](docs/manual/kubernetes/ADVANCED-TROUBLESHOOTING.md) / [K8s 案例库](docs/cases/README.md) |
+| 检查系统安全 | [系统安全加固](docs/manual/security/HARDENING.md) / [命令风险等级](docs/security/RISK-LEVELS.md) |
 
 ## 内容规划
 
@@ -119,6 +164,13 @@
 ## 贡献
 
 欢迎补充命令、修正文档、增加真实场景示例。提交前请阅读 [贡献指南](CONTRIBUTING.md)，也可以直接 [创建 Issue](https://github.com/shiwenxin123/PowerShell-Linux-/issues/new/choose)。
+
+如果你第一次参与，可以从这些任务开始:
+
+- [Good First Issues 清单](docs/GOOD-FIRST-ISSUES.md)
+- 补充一个真实故障案例
+- 给某个专题页增加版本限制或风险提示
+- 修正命令输出示例中的错别字、过时参数或缺失说明
 
 ## 更新日志
 

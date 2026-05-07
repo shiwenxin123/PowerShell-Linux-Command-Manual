@@ -2,6 +2,19 @@
 
 一份中文命令速查与运维排障文档，覆盖 Windows PowerShell、Linux、银河麒麟、统信 UOS 和跨平台脚本场景。
 
+项目地址: [GitHub 仓库](https://github.com/shiwenxin123/PowerShell-Linux-)
+当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-/releases/tag/v2.16.0)
+
+## 推荐从这里开始
+
+| 角色/场景 | 推荐路径 |
+| --- | --- |
+| 新手快速入门 | [命令速查表](COMMAND-CHEATSHEET.md) -> [PowerShell 基础](manual/powershell/BASIC.md) -> [Linux 基础](manual/linux/BASIC.md) |
+| 运维值班排障 | [Linux 应急排查](troubleshooting/LINUX-INCIDENT-CHECKLIST.md) -> [真实故障案例](cases/README.md) -> [命令风险等级](security/RISK-LEVELS.md) |
+| 国产 Linux 环境 | [Kylin/UOS 常用命令](domestic-linux/KYLIN-UOS-COMMANDS.md) -> [离线安装](domestic-linux/OFFLINE-PACKAGE-GUIDE.md) -> [版本差异](domestic-linux/VERSION-DIFFERENCES.md) |
+| 自动化巡检 | [巡检脚本工具化](manual/automation/HEALTH-CHECK-SCRIPTS.md) -> [JSON Schema](schema/health-check-report.schema.json) |
+| 参与贡献 | [Good First Issues](GOOD-FIRST-ISSUES.md) -> [维护者指南](MAINTAINER-GUIDE.md) |
+
 ## 快速入口
 
 | 需求 | 文档 |
@@ -70,6 +83,32 @@
 - 面向开发者: 提供 PowerShell 与 Bash 迁移对照。
 - 面向运维: 提供系统、进程、网络、日志、服务排查命令。
 - 面向信创环境: 提供银河麒麟与统信 UOS 常用操作入口。
+
+## 按场景查找
+
+| 场景 | 推荐文档 |
+| --- | --- |
+| 查端口和连接 | [Linux 网络排查](manual/linux/NETWORK.md) |
+| 找大文件和磁盘占用 | [Linux 磁盘、挂载与 LVM](manual/linux/DISK-LVM.md) |
+| 排查 DNS | [DNS 解析失败](cases/DNS-RESOLUTION-FAILED.md) / [Kubernetes DNS 异常](cases/K8S-DNS-FAILED.md) |
+| 分析日志 | [日志轮转、审计与系统日志](manual/security/LOGGING-AUDIT.md) |
+| 看 Prometheus/Grafana | [PromQL、LogQL 与告警规则](manual/observability/PROMQL-LOGQL-ALERTS.md) |
+| 排查容器和 Kubernetes | [Docker 与 Kubernetes 生产级命令](manual/kubernetes/DOCKER-K8S-PRODUCTION.md) |
+| 检查安全风险 | [系统安全加固](manual/security/HARDENING.md) / [命令风险等级说明](security/RISK-LEVELS.md) |
+
+## 快速运行巡检脚本
+
+Linux:
+
+```bash
+bash scripts/linux-health-check.sh --format json
+```
+
+Windows PowerShell:
+
+```powershell
+.\scripts\windows-health-check.ps1 -Format json
+```
 
 ## 安全提醒
 
