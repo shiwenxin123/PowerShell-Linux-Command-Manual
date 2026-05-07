@@ -85,8 +85,11 @@
 - 新增 `v2.16.0` Release 草案。
 - 新增 Good First Issues 清单。
 - 新增故障案例补充 Issue 模板。
+- 发布 GitHub Release。
+- 将文档站地址填入 GitHub About。
+- 新增开源运营手册，沉淀 CSDN、微信公众号、Issue 和 Release 运营动作。
 
 建议:
 
-- 发布 GitHub Release。
-- 将文档站地址填入 GitHub About。
+- 持续保持 3-5 条可领取的 `good first issue`。
+- 每次新增专题或案例后同步发布技术文章或社区动态。

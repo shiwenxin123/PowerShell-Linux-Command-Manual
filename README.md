@@ -22,6 +22,7 @@
 | 运维值班快速检查 | [Linux 故障应急排查清单](docs/troubleshooting/LINUX-INCIDENT-CHECKLIST.md) |
 | 生成巡检报告 | [巡检脚本工具化](docs/manual/automation/HEALTH-CHECK-SCRIPTS.md) |
 | 参与贡献 | [Good First Issues](docs/GOOD-FIRST-ISSUES.md) / [贡献指南](CONTRIBUTING.md) |
+| 推广运营 | [开源运营手册](docs/OPEN-SOURCE-OPERATIONS.md) |
 
 ## 项目亮点
 
@@ -66,6 +67,7 @@ Set-Location PowerShell-Linux-
 | 真实故障案例 | [真实故障案例库](docs/cases/README.md) |
 | 国产 Linux 运维 | [银河麒麟与统信 UOS 常用命令](docs/domestic-linux/KYLIN-UOS-COMMANDS.md) |
 | 命令安全 | [命令风险等级说明](docs/security/RISK-LEVELS.md) |
+| 发布运营 | [开源运营手册](docs/OPEN-SOURCE-OPERATIONS.md) |
 | 项目导航 | [文档站首页](docs/index.md) |
 
 更多专题包括 PowerShell/Bash 对照、Bash 文本处理、Docker/Kubernetes、离线安装、巡检脚本和项目维护内容，请从 [文档站首页](docs/index.md) 进入。
@@ -160,6 +162,8 @@ Set-Location PowerShell-Linux-
 - Description: `Windows PowerShell、Linux、银河麒麟、统信 UOS 常用命令中文速查手册`
 - Topics: `powershell`, `linux`, `windows`, `kylin`, `uos`, `devops`, `sysadmin`, `command-line`, `cheatsheet`, `chinese`
 - Website: 启用 GitHub Pages 后可填写 `https://shiwenxin123.github.io/PowerShell-Linux-/`
+
+发布 CSDN、微信公众号或技术社区文章时，可以参考 [开源运营手册](docs/OPEN-SOURCE-OPERATIONS.md)，并在文章中回链 GitHub、在线文档和 Release 页面。
 
 ## 贡献
 

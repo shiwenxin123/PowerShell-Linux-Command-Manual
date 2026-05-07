@@ -14,6 +14,7 @@
 | 国产 Linux 环境 | [Kylin/UOS 常用命令](domestic-linux/KYLIN-UOS-COMMANDS.md) -> [离线安装](domestic-linux/OFFLINE-PACKAGE-GUIDE.md) -> [版本差异](domestic-linux/VERSION-DIFFERENCES.md) |
 | 自动化巡检 | [巡检脚本工具化](manual/automation/HEALTH-CHECK-SCRIPTS.md) -> [JSON Schema](schema/health-check-report.schema.json) |
 | 参与贡献 | [Good First Issues](GOOD-FIRST-ISSUES.md) -> [维护者指南](MAINTAINER-GUIDE.md) |
+| 发布运营 | [开源运营手册](OPEN-SOURCE-OPERATIONS.md) -> [Release 检查清单](RELEASE-CHECKLIST.md) |
 
 ## 快速入口
 
@@ -61,6 +62,7 @@
 | 国产系统差异 | [国产 Linux 版本差异与排查要点](domestic-linux/VERSION-DIFFERENCES.md) |
 | 命令安全 | [命令风险等级说明](security/RISK-LEVELS.md) |
 | GitHub 项目优化 | [GitHub 热度优化清单](GITHUB-GROWTH-CHECKLIST.md) |
+| 开源运营 | [开源运营手册](OPEN-SOURCE-OPERATIONS.md) |
 | 项目审查 | [项目整体审查报告](PROJECT-AUDIT.md) |
 | 新手任务 | [Good First Issues 清单](GOOD-FIRST-ISSUES.md) |
 | 项目维护 | [维护者指南](MAINTAINER-GUIDE.md) |
