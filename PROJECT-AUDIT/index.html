@@ -2971,7 +2971,7 @@
   <span class="md-ellipsis">
     
   
-    主手册迁移进度
+    主手册收口状态
   
 
     
@@ -3173,7 +3173,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 主手册与专题页仍存在少量重复
+        2. 主手册已完成最终收口
       
     </span>
   </a>
@@ -3499,7 +3499,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 主手册与专题页仍存在少量重复
+        2. 主手册已完成最终收口
       
     </span>
   </a>
@@ -3616,12 +3616,12 @@
 <li>新增专题优先放入 <code>docs/index.md</code> 和 MkDocs 导航。</li>
 <li>README 只保留最高频入口。</li>
 </ul>
-<h3 id="2">2. 主手册与专题页仍存在少量重复<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>根目录完整手册的大部分高价值章节已经迁移或专题化。Kylin/UOS 厂商命令、Linux 性能调优、limits、I/O 调优和企业级日志配置已经完成第一批收口，剩余重点是附录入口化和根目录主手册压缩。</p>
+<h3 id="2">2. 主手册已完成最终收口<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>根目录主手册已经压缩为总导航、历史说明和专题入口，不再维护重复正文。Kylin/UOS 厂商命令、Linux 性能调优、limits、I/O 调优和企业级日志配置已经完成第一批收口，后续重点转为专题页持续维护和真实场景补充。</p>
 <p>建议:</p>
 <ul>
-<li>继续按 <a href="../MANUAL-MIGRATION/">主手册专题化迁移进度</a> 收口。</li>
-<li>迁移完成后，根目录主手册改为“总目录 + 历史完整版本说明”。</li>
+<li>新增命令优先进入对应专题页、路线页或案例库。</li>
+<li>按需把历史附录中的快捷键、参考资源整理到 FAQ 或路线页。</li>
 <li>避免同一命令在多个页面出现不同写法。</li>
 </ul>
 <h3 id="3-github-actions">3. GitHub Actions 已增强，仍可继续细化<a class="headerlink" href="#3-github-actions" title="Permanent link">&para;</a></h3>
@@ -3660,10 +3660,10 @@
 </ul>
 <h2 id="_4">下一步优先级<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ol>
-<li>完成主手册最终收口: 附录入口化、顶部推荐专题入口、根目录主手册压缩为总目录和历史说明。</li>
 <li>扩展巡检脚本 package、security、container、log 模块，并同步 Schema、示例报告和测试。</li>
 <li>补网关超时、云负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。</li>
-<li>优化文档站路线入口: 新手路线、运维值班路线、国产 Linux 路线、Kubernetes 排障路线。</li>
+<li>补充国产 Linux 真实版本案例、离线源目录示例和架构兼容案例。</li>
+<li>将离线 PDF 生成流程接入 CI 手动触发任务。</li>
 <li>持续维护 Release、技术文章和 good first issue 任务池。</li>
 </ol>
 <h2 id="_5">已在本次审查中修复<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
