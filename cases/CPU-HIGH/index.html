@@ -1412,6 +1412,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CASE-TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障案例写作模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../DISK-FULL/" class="md-nav__link">
         
   
@@ -1536,7 +1564,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        处理建议
+        常见原因
       
     </span>
   </a>
@@ -1547,7 +1575,29 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
+        处理建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3129,7 +3179,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        处理建议
+        常见原因
       
     </span>
   </a>
@@ -3140,7 +3190,29 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
+        处理建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3192,16 +3264,29 @@ ps<span class="w"> </span>-fp<span class="w"> </span>&lt;PID&gt;
 <p>Java 服务可继续查看线程栈:</p>
 <div class="highlight"><pre><span></span><code>jstack<span class="w"> </span>&lt;PID&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 </code></pre></div>
-<h2 id="_4">处理建议<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">常见原因<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>定时任务、报表任务、备份任务在高峰期运行。</li>
+<li>应用线程死循环、锁竞争或频繁 GC。</li>
+<li>异常进程、挖矿进程或未知脚本占用 CPU。</li>
+<li>容器 CPU limit 过低，导致应用持续抢占。</li>
+</ul>
+<h2 id="_5">处理建议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>先确认高 CPU 进程是否为业务进程、定时任务、备份任务或异常进程。</li>
 <li>对业务进程优先收集日志、线程栈、监控截图，再考虑重启。</li>
 <li>对未知进程，先确认路径、用户、启动时间，不要直接强杀。</li>
 </ul>
-<h2 id="_5">高危提醒<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">高危提醒<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>kill -9</code> 会直接终止进程，可能导致未写入数据丢失。</li>
 <li>重启服务前确认是否有流量切换、主备切换或告警通知机制。</li>
+</ul>
+<h2 id="_7">相关专题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../manual/linux/MONITORING-LOGS/">Linux 监控与日志</a></li>
+<li><a href="../../manual/linux/PERFORMANCE-TUNING/">系统性能调优</a></li>
+<li><a href="../../manual/observability/PROMQL-LOGQL-ALERTS/">PromQL、LogQL 与告警规则</a></li>
 </ul>
 
 

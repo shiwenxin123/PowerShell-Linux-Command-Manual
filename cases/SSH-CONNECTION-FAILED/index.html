@@ -1412,6 +1412,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CASE-TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障案例写作模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../DISK-FULL/" class="md-nav__link">
         
   
@@ -1581,7 +1609,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        服务端排查
+        排查命令
       
     </span>
   </a>
@@ -1615,6 +1643,17 @@
     <span class="md-ellipsis">
       
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3129,7 +3168,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        服务端排查
+        排查命令
       
     </span>
   </a>
@@ -3163,6 +3202,17 @@
     <span class="md-ellipsis">
       
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3203,7 +3253,7 @@
 nc<span class="w"> </span>-vz<span class="w"> </span>&lt;server&gt;<span class="w"> </span><span class="m">22</span>
 ssh<span class="w"> </span>-vvv<span class="w"> </span>user@server
 </code></pre></div>
-<h2 id="_3">服务端排查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">排查命令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># 查看 SSH 服务</span>
 systemctl<span class="w"> </span>status<span class="w"> </span>sshd<span class="w"> </span><span class="o">||</span><span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>ssh
 
@@ -3232,6 +3282,12 @@ journalctl<span class="w"> </span>-u<span class="w"> </span>sshd<span class="w">
 <ul>
 <li>不要在远程会话里直接停止 SSH 服务后退出。</li>
 <li>修改防火墙规则前确认不会阻断当前管理通道。</li>
+</ul>
+<h2 id="_7">相关专题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../manual/linux/NETWORK/">Linux 网络排查</a></li>
+<li><a href="../../manual/security/HARDENING/">安全加固与基线检查</a></li>
+<li><a href="../../manual/security/FIREWALL-SELINUX/">防火墙、SELinux 与网络安全</a></li>
 </ul>
 
 

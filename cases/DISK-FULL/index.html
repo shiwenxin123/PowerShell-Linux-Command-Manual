@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/DISK-FULL/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../CASE-TEMPLATE/">
       
       
         <link rel="next" href="../CPU-HIGH/">
@@ -1409,6 +1409,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../CASE-TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障案例写作模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1508,7 +1536,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        处理建议
+        常见原因
       
     </span>
   </a>
@@ -1519,7 +1547,29 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        处理建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3129,7 +3179,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        处理建议
+        常见原因
       
     </span>
   </a>
@@ -3140,7 +3190,29 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        处理建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3193,18 +3265,32 @@ find<span class="w"> </span>/<span class="w"> </span>-type<span class="w"> </spa
 <span class="c1"># 查看仍被进程占用的已删除文件</span>
 lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>deleted
 </code></pre></div>
-<h2 id="_5">处理建议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">常见原因<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>应用日志、访问日志或审计日志持续增长。</li>
+<li>数据库 binlog、慢日志、备份文件未定期清理。</li>
+<li>容器镜像、volume、构建缓存占用过大。</li>
+<li>inode 用尽，导致还有空间但无法创建新文件。</li>
+<li>文件已删除但仍被进程占用，空间未释放。</li>
+</ul>
+<h2 id="_6">处理建议<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>优先清理明确可删除的旧日志、临时文件、旧备份。</li>
 <li>对日志文件优先使用日志轮转，而不是长期手动删除。</li>
 <li>如果删除文件后空间没有释放，检查是否有进程占用已删除文件。</li>
 <li>数据库、容器、对象存储、本地上传目录不要直接删除，先确认业务含义。</li>
 </ul>
-<h2 id="_6">高危提醒<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">高危提醒<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>不要直接执行 <code>rm -rf /var/*</code>。</li>
 <li>不要清理不了解用途的数据库目录。</li>
 <li>删除生产日志前，先保留关键排障证据。</li>
+</ul>
+<h2 id="_8">相关专题<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../manual/linux/DISK-LVM/">磁盘、分区与 LVM</a></li>
+<li><a href="../../manual/linux/MONITORING-LOGS/">Linux 监控与日志</a></li>
+<li><a href="../../manual/security/LOGGING-AUDIT/">日志轮转、审计与系统日志</a></li>
 </ul>
 
 

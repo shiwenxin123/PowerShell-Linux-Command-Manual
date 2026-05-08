@@ -1412,6 +1412,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CASE-TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障案例写作模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../DISK-FULL/" class="md-nav__link">
         
   
@@ -1564,7 +1592,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        处理建议
+        常见原因
       
     </span>
   </a>
@@ -1575,7 +1603,29 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        处理建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3129,7 +3179,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        处理建议
+        常见原因
       
     </span>
   </a>
@@ -3140,7 +3190,29 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        处理建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3194,16 +3266,29 @@ systemctl<span class="w"> </span>status<span class="w"> </span>&lt;service&gt;
 <div class="highlight"><pre><span></span><code><span class="c"># 根据 PID 查看进程</span>
 <span class="nb">Get-Process</span> <span class="n">-Id</span> <span class="p">&lt;</span><span class="n">PID</span><span class="p">&gt;</span>
 </code></pre></div>
-<h2 id="_5">处理建议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">常见原因<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>服务旧进程未退出，仍占用原端口。</li>
+<li>多个实例配置了相同监听端口。</li>
+<li>本机已有中间件、代理、调试进程占用端口。</li>
+<li>容器端口映射与宿主机已有端口冲突。</li>
+</ul>
+<h2 id="_6">处理建议<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>如果端口被同一个服务旧进程占用，优先用服务管理命令停止或重启。</li>
 <li>如果端口被其他服务占用，修改当前服务端口或调整部署规划。</li>
 <li>本地开发场景可以关闭占用进程，但生产环境要先确认进程用途。</li>
 </ul>
-<h2 id="_6">高危提醒<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">高危提醒<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>不要只看到端口占用就直接强杀 PID。</li>
 <li>SSH、数据库、网关、注册中心等基础服务被误杀会造成更大故障。</li>
+</ul>
+<h2 id="_8">相关专题<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../manual/linux/NETWORK/">Linux 网络排查</a></li>
+<li><a href="../../manual/windows/ADMIN-COMMANDS/">Windows 管理命令</a></li>
+<li><a href="../../manual/middleware/DATABASE-MIDDLEWARE/">数据库与中间件运维命令</a></li>
 </ul>
 
 
