@@ -34,21 +34,71 @@
       "errors": []
     },
     "service": {
-      "status": "skipped",
+      "status": "ok",
       "commands": [],
       "warnings": [],
       "errors": []
     },
     "process": {
-      "status": "skipped",
+      "status": "ok",
       "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "package": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "installed_packages",
+          "command": "Get-Package | Select-Object -First 30 Name, Version, ProviderName",
+          "exit_code": 0,
+          "output": "Name Version ProviderName\n---- ------- ------------\nPowerShell 7.4.0 Programs"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "security": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "firewall_profiles",
+          "command": "Get-NetFirewallProfile",
+          "exit_code": 0,
+          "output": "Name Enabled DefaultInboundAction DefaultOutboundAction\n---- ------- -------------------- ---------------------\nDomain True Block Allow"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "container": {
+      "status": "warning",
+      "commands": [],
+      "warnings": [
+        {
+          "name": "docker",
+          "message": "Command not available: docker"
+        }
+      ],
+      "errors": []
+    },
+    "log": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "system_errors",
+          "command": "Get-WinEvent -FilterHashtable @{ LogName = \"System\"; Level = 2 } -MaxEvents 20",
+          "exit_code": 0,
+          "output": "TimeCreated ProviderName Id Message\n----------- ------------ -- -------"
+        }
+      ],
       "warnings": [],
       "errors": []
     }
   },
   "summary": {
-    "status": "ok",
-    "warnings_count": 0,
+    "status": "warning",
+    "warnings_count": 1,
     "errors_count": 0
   },
   "errors": []

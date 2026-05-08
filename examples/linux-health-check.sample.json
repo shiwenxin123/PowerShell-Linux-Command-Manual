@@ -35,32 +35,89 @@
       "errors": []
     },
     "network": {
-      "status": "warning",
-      "commands": [],
-      "warnings": [
+      "status": "ok",
+      "commands": [
         {
-          "name": "ss",
-          "message": "Command not available: ss"
+          "name": "listening_ports",
+          "command": "ss -tulnp",
+          "exit_code": 0,
+          "output": "Netid State Local Address:Port"
         }
       ],
+      "warnings": [],
       "errors": []
     },
     "service": {
-      "status": "skipped",
+      "status": "ok",
       "commands": [],
       "warnings": [],
       "errors": []
     },
     "process": {
-      "status": "skipped",
+      "status": "ok",
       "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "package": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "package_managers",
+          "command": "apt --version",
+          "exit_code": 0,
+          "output": "apt 2.6.1"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "security": {
+      "status": "warning",
+      "commands": [
+        {
+          "name": "sshd_config",
+          "command": "grep sshd_config",
+          "exit_code": 0,
+          "output": "PermitRootLogin no\nPasswordAuthentication no"
+        }
+      ],
+      "warnings": [
+        {
+          "name": "firewall-cmd",
+          "message": "Command not available: firewall-cmd"
+        }
+      ],
+      "errors": []
+    },
+    "container": {
+      "status": "warning",
+      "commands": [],
+      "warnings": [
+        {
+          "name": "docker",
+          "message": "Command not available: docker"
+        }
+      ],
+      "errors": []
+    },
+    "log": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "journal_errors",
+          "command": "journalctl -p 3 -n 50 --no-pager",
+          "exit_code": 0,
+          "output": "-- No entries --"
+        }
+      ],
       "warnings": [],
       "errors": []
     }
   },
   "summary": {
     "status": "warning",
-    "warnings_count": 1,
+    "warnings_count": 2,
     "errors_count": 0
   },
   "errors": []

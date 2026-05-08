@@ -1715,6 +1715,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../cases/GATEWAY-TIMEOUT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网关超时
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/LB-HEALTH-CHECK-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    负载均衡健康检查失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cases/MYSQL-START-FAILED/" class="md-nav__link">
         
   
@@ -1771,6 +1827,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../cases/DB-CONNECTION-POOL-EXHAUSTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库连接池耗尽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
@@ -1779,6 +1863,34 @@
     
   
     Redis 连接失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/MESSAGE-QUEUE-CONNECTION-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    消息队列连接失败
   
 
     
@@ -2115,6 +2227,34 @@
     
   
     Prometheus Target Down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/PROMETHEUS-ALERT-FALSE-POSITIVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus 告警规则误报
   
 
     
@@ -3323,6 +3463,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../articles/V2.16.0-TECH-ARTICLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.16.0 技术文章草稿
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
@@ -3632,14 +3800,12 @@
 <li>给脚本增加测试样例。</li>
 </ul>
 <h3 id="4">4. 故障案例还可以继续补真实业务场景<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>当前案例已经覆盖基础运维问题，并补充了 Nginx 502/504、MySQL、Redis、Java OOM、Kubernetes ImagePullBackOff、Docker Compose、TLS 证书链不完整、Kubernetes DNS、systemd 服务启动失败、Linux 权限、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满等应用层和中间件案例。</p>
+<p>当前案例已经覆盖基础运维问题，并补充了 Nginx 502/504、MySQL、Redis、Java OOM、Kubernetes ImagePullBackOff、Docker Compose、TLS 证书链不完整、Kubernetes DNS、systemd 服务启动失败、Linux 权限、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满、网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报等应用层和中间件案例。</p>
 <p>建议继续补充:</p>
 <ul>
-<li>网关超时</li>
-<li>云负载均衡健康检查失败</li>
-<li>消息队列连接失败</li>
-<li>数据库连接池耗尽</li>
-<li>Prometheus 告警规则误报</li>
+<li>Kubernetes NetworkPolicy 拦截</li>
+<li>Elasticsearch 磁盘水位</li>
+<li>Loki 日志查询为空</li>
 </ul>
 <h3 id="5-linux">5. 国产 Linux 内容还可补真实版本案例<a class="headerlink" href="#5-linux" title="Permanent link">&para;</a></h3>
 <p>目前已有麒麟/UOS 基础命令、离线安装、架构检查和版本差异专题。后续更适合补真实版本案例和离线源目录示例。</p>
@@ -3651,19 +3817,19 @@
 <li>增加离线源目录结构示例。</li>
 </ul>
 <h3 id="6">6. 巡检脚本已具备工具化基础<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
-<p>当前脚本已经支持按模块执行，并支持 text、Markdown、JSON 输出，Linux/Windows JSON 使用统一结构，已有 JSON Schema、示例报告和 GitHub Actions 基础功能测试。</p>
+<p>当前脚本已经支持按模块执行，并支持 text、Markdown、JSON 输出，Linux/Windows JSON 使用统一结构，已有 JSON Schema、示例报告和 GitHub Actions 基础功能测试。<code>package</code>、<code>security</code>、<code>container</code>、<code>log</code> 模块已接入。</p>
 <p>建议:</p>
 <ul>
-<li>后续扩展 package、security、container、log 等模块。</li>
-<li>为新增模块同步更新 JSON Schema、示例报告和文档说明。</li>
+<li>补充更多发行版和 Windows Server 版本样例。</li>
+<li>补充 containerd-only、最小化系统等环境兼容说明。</li>
 <li>继续补充针对新模块的脚本测试样例。</li>
 </ul>
 <h2 id="_4">下一步优先级<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ol>
-<li>扩展巡检脚本 package、security、container、log 模块，并同步 Schema、示例报告和测试。</li>
-<li>补网关超时、云负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。</li>
 <li>补充国产 Linux 真实版本案例、离线源目录示例和架构兼容案例。</li>
-<li>将离线 PDF 生成流程接入 CI 手动触发任务。</li>
+<li>补 Kubernetes NetworkPolicy、Elasticsearch 磁盘水位、Loki 查询为空等案例。</li>
+<li>补巡检脚本新增模块的多平台样例和兼容说明。</li>
+<li>打磨 PDF Export 工作流，并考虑和 Release 附件联动。</li>
 <li>持续维护 Release、技术文章和 good first issue 任务池。</li>
 </ol>
 <h2 id="_5">已在本次审查中修复<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>

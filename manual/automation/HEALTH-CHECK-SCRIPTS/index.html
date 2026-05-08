@@ -1715,6 +1715,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../cases/GATEWAY-TIMEOUT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网关超时
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cases/LB-HEALTH-CHECK-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    负载均衡健康检查失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../cases/MYSQL-START-FAILED/" class="md-nav__link">
         
   
@@ -1771,6 +1827,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../cases/DB-CONNECTION-POOL-EXHAUSTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库连接池耗尽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
@@ -1779,6 +1863,34 @@
     
   
     Redis 连接失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cases/MESSAGE-QUEUE-CONNECTION-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    消息队列连接失败
   
 
     
@@ -2115,6 +2227,34 @@
     
   
     Prometheus Target Down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cases/PROMETHEUS-ALERT-FALSE-POSITIVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus 告警规则误报
   
 
     
@@ -3284,6 +3424,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../articles/V2.16.0-TECH-ARTICLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.16.0 技术文章草稿
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
@@ -3577,6 +3745,22 @@
 <td><code>process</code></td>
 <td>CPU 和内存占用较高的进程</td>
 </tr>
+<tr>
+<td><code>package</code></td>
+<td>包管理器、软件源、已安装包或仓库状态</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>SSH、防火墙、SELinux/AppArmor、Defender 等基础安全状态</td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td>Docker、containerd、Kubernetes 客户端或节点基础状态</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td>系统错误日志、journal 占用、Windows 事件日志摘要</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linux">Linux 示例<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
@@ -3585,6 +3769,12 @@ bash<span class="w"> </span>scripts/linux-health-check.sh
 
 <span class="c1"># 只检查磁盘</span>
 bash<span class="w"> </span>scripts/linux-health-check.sh<span class="w"> </span>--module<span class="w"> </span>disk
+
+<span class="c1"># 只检查包管理器和软件源</span>
+bash<span class="w"> </span>scripts/linux-health-check.sh<span class="w"> </span>--module<span class="w"> </span>package
+
+<span class="c1"># 只检查系统日志</span>
+bash<span class="w"> </span>scripts/linux-health-check.sh<span class="w"> </span>--module<span class="w"> </span>log
 
 <span class="c1"># Markdown 报告</span>
 bash<span class="w"> </span>scripts/linux-health-check.sh<span class="w"> </span>--format<span class="w"> </span>markdown<span class="w"> </span>--output<span class="w"> </span>reports/linux-health-check.md
@@ -3598,6 +3788,12 @@ bash<span class="w"> </span>scripts/linux-health-check.sh<span class="w"> </span
 
 <span class="c"># 只检查网络</span>
 <span class="p">.\</span><span class="n">scripts</span><span class="p">\</span><span class="n">windows-health-check</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Module</span> <span class="n">network</span>
+
+<span class="c"># 只检查安全状态</span>
+<span class="p">.\</span><span class="n">scripts</span><span class="p">\</span><span class="n">windows-health-check</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Module</span> <span class="n">security</span>
+
+<span class="c"># 只检查容器工具</span>
+<span class="p">.\</span><span class="n">scripts</span><span class="p">\</span><span class="n">windows-health-check</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Module</span> <span class="n">container</span>
 
 <span class="c"># Markdown 报告</span>
 <span class="p">.\</span><span class="n">scripts</span><span class="p">\</span><span class="n">windows-health-check</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Format</span> <span class="n">markdown</span> <span class="n">-OutputFile</span> <span class="n">reports</span><span class="p">\</span><span class="n">windows-health-check</span><span class="p">.</span><span class="nb">md</span>
@@ -3618,6 +3814,12 @@ bash<span class="w"> </span>scripts/linux-health-check.sh<span class="w"> </span
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;modules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;warnings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">      </span><span class="nt">&quot;warnings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>

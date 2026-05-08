@@ -1800,6 +1800,62 @@
   
   
     <li class="md-nav__item">
+      <a href="GATEWAY-TIMEOUT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网关超时
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LB-HEALTH-CHECK-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    负载均衡健康检查失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="MYSQL-START-FAILED/" class="md-nav__link">
         
   
@@ -1856,6 +1912,34 @@
   
   
     <li class="md-nav__item">
+      <a href="DB-CONNECTION-POOL-EXHAUSTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库连接池耗尽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
@@ -1864,6 +1948,34 @@
     
   
     Redis 连接失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="MESSAGE-QUEUE-CONNECTION-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    消息队列连接失败
   
 
     
@@ -2200,6 +2312,34 @@
     
   
     Prometheus Target Down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PROMETHEUS-ALERT-FALSE-POSITIVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus 告警规则误报
   
 
     
@@ -3240,6 +3380,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../articles/V2.16.0-TECH-ARTICLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.16.0 技术文章草稿
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
@@ -3444,7 +3612,7 @@
 <tbody>
 <tr>
 <td>页面打不开、网关错误</td>
-<td><a href="NGINX-502-504/">Nginx 502/504</a>、<a href="DNS-RESOLUTION-FAILED/">DNS 解析失败</a>、<a href="CERTIFICATE-EXPIRED/">证书过期</a>、<a href="TLS-CHAIN-INCOMPLETE/">TLS 证书链不完整</a></td>
+<td><a href="GATEWAY-TIMEOUT/">网关超时</a>、<a href="LB-HEALTH-CHECK-FAILED/">负载均衡健康检查失败</a>、<a href="NGINX-502-504/">Nginx 502/504</a>、<a href="DNS-RESOLUTION-FAILED/">DNS 解析失败</a>、<a href="CERTIFICATE-EXPIRED/">证书过期</a>、<a href="TLS-CHAIN-INCOMPLETE/">TLS 证书链不完整</a></td>
 </tr>
 <tr>
 <td>服务端口不可用</td>
@@ -3464,11 +3632,15 @@
 </tr>
 <tr>
 <td>数据库连接异常</td>
-<td><a href="MYSQL-START-FAILED/">MySQL 启动失败</a>、<a href="MYSQL-TOO-MANY-CONNECTIONS/">MySQL 连接数打满</a>、<a href="REDIS-CONNECTION-FAILED/">Redis 连接失败</a></td>
+<td><a href="DB-CONNECTION-POOL-EXHAUSTED/">数据库连接池耗尽</a>、<a href="MYSQL-START-FAILED/">MySQL 启动失败</a>、<a href="MYSQL-TOO-MANY-CONNECTIONS/">MySQL 连接数打满</a>、<a href="REDIS-CONNECTION-FAILED/">Redis 连接失败</a></td>
+</tr>
+<tr>
+<td>中间件连接异常</td>
+<td><a href="MESSAGE-QUEUE-CONNECTION-FAILED/">消息队列连接失败</a>、<a href="REDIS-CONNECTION-FAILED/">Redis 连接失败</a>、<a href="DB-CONNECTION-POOL-EXHAUSTED/">数据库连接池耗尽</a></td>
 </tr>
 <tr>
 <td>监控无数据或告警</td>
-<td><a href="PROMETHEUS-TARGET-DOWN/">Prometheus Target Down</a>、<a href="GRAFANA-NO-DATA/">Grafana 无数据</a></td>
+<td><a href="PROMETHEUS-ALERT-FALSE-POSITIVE/">Prometheus 告警规则误报</a>、<a href="PROMETHEUS-TARGET-DOWN/">Prometheus Target Down</a>、<a href="GRAFANA-NO-DATA/">Grafana 无数据</a></td>
 </tr>
 <tr>
 <td>远程登录失败</td>
@@ -3518,6 +3690,14 @@
 <td><a href="NGINX-502-504/">Nginx 502/504 排查</a></td>
 </tr>
 <tr>
+<td>网关超时</td>
+<td><a href="GATEWAY-TIMEOUT/">网关超时排查</a></td>
+</tr>
+<tr>
+<td>负载均衡健康检查失败</td>
+<td><a href="LB-HEALTH-CHECK-FAILED/">负载均衡健康检查失败排查</a></td>
+</tr>
+<tr>
 <td>MySQL 启动失败</td>
 <td><a href="MYSQL-START-FAILED/">MySQL 启动失败排查</a></td>
 </tr>
@@ -3526,8 +3706,16 @@
 <td><a href="MYSQL-TOO-MANY-CONNECTIONS/">MySQL 连接数打满排查</a></td>
 </tr>
 <tr>
+<td>数据库连接池耗尽</td>
+<td><a href="DB-CONNECTION-POOL-EXHAUSTED/">数据库连接池耗尽排查</a></td>
+</tr>
+<tr>
 <td>Redis 连接失败</td>
 <td><a href="REDIS-CONNECTION-FAILED/">Redis 连接失败排查</a></td>
+</tr>
+<tr>
+<td>消息队列连接失败</td>
+<td><a href="MESSAGE-QUEUE-CONNECTION-FAILED/">消息队列连接失败排查</a></td>
 </tr>
 <tr>
 <td>Java 服务 OOM</td>
@@ -3580,6 +3768,10 @@
 <tr>
 <td>Grafana 无数据</td>
 <td><a href="GRAFANA-NO-DATA/">Grafana 无数据排查</a></td>
+</tr>
+<tr>
+<td>Prometheus 告警规则误报</td>
+<td><a href="PROMETHEUS-ALERT-FALSE-POSITIVE/">Prometheus 告警规则误报排查</a></td>
 </tr>
 </tbody>
 </table>

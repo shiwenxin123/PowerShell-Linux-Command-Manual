@@ -1715,6 +1715,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../cases/GATEWAY-TIMEOUT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网关超时
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/LB-HEALTH-CHECK-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    负载均衡健康检查失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cases/MYSQL-START-FAILED/" class="md-nav__link">
         
   
@@ -1771,6 +1827,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../cases/DB-CONNECTION-POOL-EXHAUSTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库连接池耗尽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
@@ -1779,6 +1863,34 @@
     
   
     Redis 连接失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/MESSAGE-QUEUE-CONNECTION-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    消息队列连接失败
   
 
     
@@ -2115,6 +2227,34 @@
     
   
     Prometheus Target Down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/PROMETHEUS-ALERT-FALSE-POSITIVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus 告警规则误报
   
 
     
@@ -3262,6 +3402,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../articles/V2.16.0-TECH-ARTICLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.16.0 技术文章草稿
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
@@ -3505,34 +3673,15 @@
 <li>示例报告。</li>
 <li>GitHub Actions 基础功能测试，覆盖 JSON 输出、输出文件和参数错误退出码。</li>
 <li>JSON Schema 文件，便于自动化平台对接和字段校验。</li>
+<li><code>package</code>、<code>security</code>、<code>container</code>、<code>log</code> 模块。</li>
+<li>新增模块已同步 JSON Schema、示例报告、文档说明和 GitHub Actions 基础测试。</li>
 </ul>
 <p>建议继续补充:</p>
-<table>
-<thead>
-<tr>
-<th>模块</th>
-<th>目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>package</code></td>
-<td>收集包管理器、软件源、关键包版本和更新状态</td>
-</tr>
-<tr>
-<td><code>security</code></td>
-<td>收集 SSH、防火墙、SELinux/AppArmor、sudo 和审计基础状态</td>
-</tr>
-<tr>
-<td><code>container</code></td>
-<td>收集 Docker、containerd、Kubernetes 节点和 Pod 基础状态</td>
-</tr>
-<tr>
-<td><code>log</code></td>
-<td>收集 journal 占用、关键系统日志和最近错误摘要</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>更多发行版和 Windows Server 版本样例。</li>
+<li>containerd-only、无 systemd、最小化镜像等环境差异说明。</li>
+<li>新模块字段稳定性和平台兼容测试。</li>
+</ul>
 <h2 id="_4">第三优先级: 补真实生产案例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>已完成:</p>
 <ul>
@@ -3541,14 +3690,13 @@
 <li>新增 Grafana 无数据排查。</li>
 <li>统一故障案例模板，补齐“常见原因”和“相关专题”结构。</li>
 <li>新增 systemd 服务启动失败、Linux Permission denied、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满排查案例。</li>
+<li>新增网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。</li>
 </ul>
 <p>建议新增:</p>
 <ul>
-<li>网关超时。</li>
-<li>云负载均衡健康检查失败。</li>
-<li>消息队列连接失败。</li>
-<li>数据库连接池耗尽。</li>
-<li>Prometheus 告警规则误报。</li>
+<li>Kubernetes NetworkPolicy 拦截。</li>
+<li>Elasticsearch 磁盘水位。</li>
+<li>Loki 日志查询为空。</li>
 </ul>
 <h2 id="_5">第四优先级: 文档站体验<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>已完成:</p>
@@ -3560,10 +3708,10 @@
 <li>新增案例和专题页之间的反向链接。</li>
 <li>新增新手路线、运维值班路线、国产 Linux 路线和 Kubernetes 排障路线独立入口。</li>
 <li>新增离线 PDF 发布流程。</li>
+<li>新增 <code>PDF Export</code> 手动触发工作流，导出重点页面 PDF artifact。</li>
 </ul>
 <p>建议优化:</p>
 <ul>
-<li>将离线 PDF 生成流程接入 CI 手动触发任务。</li>
 <li>继续检查导航在移动端和宽屏下的可读性。</li>
 <li>让路线页持续沉淀“先看什么、再做什么、遇到问题去哪查”。</li>
 </ul>
@@ -3577,6 +3725,7 @@
 <li>发布 GitHub Release。</li>
 <li>将文档站地址填入 GitHub About。</li>
 <li>新增开源运营手册，沉淀 CSDN、微信公众号、Issue 和 Release 运营动作。</li>
+<li>新增 v2.16.0 技术文章草稿，并更新 Good First Issues 候选池。</li>
 </ul>
 <p>建议:</p>
 <ul>

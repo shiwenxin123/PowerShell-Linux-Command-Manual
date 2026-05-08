@@ -1715,6 +1715,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../cases/GATEWAY-TIMEOUT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网关超时
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/LB-HEALTH-CHECK-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    负载均衡健康检查失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cases/MYSQL-START-FAILED/" class="md-nav__link">
         
   
@@ -1771,6 +1827,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../cases/DB-CONNECTION-POOL-EXHAUSTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库连接池耗尽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
@@ -1779,6 +1863,34 @@
     
   
     Redis 连接失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/MESSAGE-QUEUE-CONNECTION-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    消息队列连接失败
   
 
     
@@ -2115,6 +2227,34 @@
     
   
     Prometheus Target Down
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/PROMETHEUS-ALERT-FALSE-POSITIVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus 告警规则误报
   
 
     
@@ -3160,6 +3300,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../articles/V2.16.0-TECH-ARTICLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.16.0 技术文章草稿
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
@@ -3279,7 +3447,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        推荐方式
+        自动化方式
       
     </span>
   </a>
@@ -3288,6 +3456,17 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手动方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         建议导出页面
@@ -3309,7 +3488,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         发布前检查
@@ -3320,7 +3499,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         后续可自动化方向
@@ -3404,7 +3583,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        推荐方式
+        自动化方式
       
     </span>
   </a>
@@ -3413,6 +3592,17 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手动方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         建议导出页面
@@ -3434,7 +3624,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         发布前检查
@@ -3445,7 +3635,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         后续可自动化方向
@@ -3477,7 +3667,25 @@
 
 <h1 id="pdf">离线 PDF 发布流程<a class="headerlink" href="#pdf" title="Permanent link">&para;</a></h1>
 <p>这个流程用于在发布版本时生成可离线分发的文档包。当前项目默认发布 GitHub Pages；PDF 可作为 Release 附件或内部知识库归档。</p>
-<h2 id="_1">推荐方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">自动化方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>项目已提供手动触发的 GitHub Actions: <code>PDF Export</code>。</p>
+<p>使用步骤:</p>
+<ol>
+<li>打开 GitHub 仓库的 Actions 页面。</li>
+<li>选择 <code>PDF Export</code> 工作流。</li>
+<li>点击 <code>Run workflow</code>。</li>
+<li>可选填写版本号，例如 <code>v2.16.0</code>。</li>
+<li>工作流完成后，在 Artifacts 中下载 <code>docs-pdf-&lt;version&gt;</code>。</li>
+</ol>
+<p>当前自动导出页面:</p>
+<ul>
+<li>文档站首页。</li>
+<li>命令速查表。</li>
+<li>运维值班路线。</li>
+<li>巡检脚本工具化说明。</li>
+<li>真实故障案例库。</li>
+</ul>
+<h2 id="_2">手动方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>优先使用浏览器从 GitHub Pages 导出关键页面 PDF，适合手册类项目，避免引入额外构建依赖。</p>
 <ol>
 <li>打开文档站首页。</li>
@@ -3486,7 +3694,7 @@
 <li>文件名使用版本号和页面名，例如 <code>v2.16.0-command-cheatsheet.pdf</code>。</li>
 <li>发布 Release 时将 PDF 作为附件上传。</li>
 </ol>
-<h2 id="_2">建议导出页面<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">建议导出页面<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3523,18 +3731,18 @@ v2.16.0-command-cheatsheet.pdf
 v2.16.0-oncall-route.pdf
 v2.16.0-health-check-scripts.pdf
 </code></pre></div>
-<h2 id="_3">发布前检查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">发布前检查<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>PDF 中不要包含本机路径、真实 IP、Token、密码或内网域名。</li>
 <li>页面链接应优先指向 GitHub Pages 或仓库公开地址。</li>
 <li>导出后抽查目录、代码块换行、表格宽度和中文字体显示。</li>
 <li>Release 说明中注明 PDF 生成版本和对应文档站地址。</li>
 </ul>
-<h2 id="_4">后续可自动化方向<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">后续可自动化方向<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>增加 CI 手动触发任务生成静态文档包。</li>
-<li>使用浏览器自动化导出重点页面 PDF。</li>
 <li>将 PDF 附件和 Release 检查清单联动。</li>
+<li>增加按输入选择页面集合的导出参数。</li>
+<li>增加完整离线 HTML 包 artifact。</li>
 </ul>
 
 

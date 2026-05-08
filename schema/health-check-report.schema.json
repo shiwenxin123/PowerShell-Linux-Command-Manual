@@ -43,7 +43,11 @@
             "disk",
             "network",
             "service",
-            "process"
+            "process",
+            "package",
+            "security",
+            "container",
+            "log"
           ]
         },
         "format": {
@@ -66,7 +70,11 @@
         "disk",
         "network",
         "service",
-        "process"
+        "process",
+        "package",
+        "security",
+        "container",
+        "log"
       ],
       "additionalProperties": false,
       "properties": {
@@ -83,6 +91,18 @@
           "$ref": "#/$defs/moduleResult"
         },
         "process": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "package": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "security": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "container": {
+          "$ref": "#/$defs/moduleResult"
+        },
+        "log": {
           "$ref": "#/$defs/moduleResult"
         }
       }
