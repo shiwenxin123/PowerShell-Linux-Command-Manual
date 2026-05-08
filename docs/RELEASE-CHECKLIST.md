@@ -40,6 +40,7 @@
 - [ ] 已确认 tag 名称和 Changelog 版本一致
 - [ ] 已确认 README badges 在 GitHub 页面正常显示
 - [ ] 已确认文档站首页和 FAQ 可访问
+- [ ] 如发布离线 PDF，已按 [离线 PDF 发布流程](PDF-EXPORT.md) 检查附件
 
 ## 发布文案模板
 

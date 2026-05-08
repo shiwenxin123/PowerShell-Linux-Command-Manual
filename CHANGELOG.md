@@ -11,6 +11,7 @@
 - 统一故障案例模板，新增故障案例写作模板。
 - 新增 systemd 服务启动失败、Linux Permission denied、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满排查案例。
 - 重点专题页补充相关案例入口，形成专题页和故障案例的双向导航。
+- 新增新手路线、运维值班路线、国产 Linux 路线、Kubernetes 排障路线和离线 PDF 发布流程。
 - 主手册收口第 1 批: 补充 Kylin/UOS 厂商命令细节、企业级日志配置样例和跨平台工具分类。
 - 新增 Linux 性能调优专题，覆盖 sysctl、limits、磁盘 I/O、网络连接和变更建议。
 - Linux 巡检脚本新增 JSON 输出，使用统一 metadata/modules/summary/errors 结构。

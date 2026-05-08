@@ -20,6 +20,8 @@ extra_css:
 nav:
   - 首页: index.md
   - 快速查命令:
+      - 新手路线: routes/BEGINNER.md
+      - 运维值班路线: routes/OPS-ONCALL.md
       - 命令速查表: COMMAND-CHEATSHEET.md
       - 命令索引: COMMAND-INDEX.md
       - 命令覆盖矩阵: COMMAND-COVERAGE-MATRIX.md
@@ -77,6 +79,7 @@ nav:
       - Prometheus Target Down: cases/PROMETHEUS-TARGET-DOWN.md
       - Grafana 无数据: cases/GRAFANA-NO-DATA.md
   - 容器与云:
+      - Kubernetes 排障路线: routes/KUBERNETES-TROUBLESHOOTING.md
       - Kubernetes 进阶排查: manual/kubernetes/ADVANCED-TROUBLESHOOTING.md
       - Docker 与 Kubernetes 生产级命令: manual/kubernetes/DOCKER-K8S-PRODUCTION.md
       - Docker 与 Kubernetes 速查: containers/DOCKER-KUBERNETES-CHEATSHEET.md
@@ -86,6 +89,7 @@ nav:
       - 集中日志与监控告警: manual/observability/LOGGING-MONITORING.md
       - PromQL/LogQL/告警规则: manual/observability/PROMQL-LOGQL-ALERTS.md
   - 国产 Linux:
+      - 国产 Linux 路线: routes/DOMESTIC-LINUX.md
       - 麒麟与 UOS: domestic-linux/KYLIN-UOS-COMMANDS.md
       - 离线安装与软件源: domestic-linux/OFFLINE-PACKAGE-GUIDE.md
       - 架构与兼容性检查: domestic-linux/ARCHITECTURE-CHECKLIST.md
@@ -107,6 +111,7 @@ nav:
       - 开源运营手册: OPEN-SOURCE-OPERATIONS.md
       - 维护者指南: MAINTAINER-GUIDE.md
       - Release 检查清单: RELEASE-CHECKLIST.md
+      - 离线 PDF 发布流程: PDF-EXPORT.md
       - v2.16.0 Release 草案: RELEASE-2.16-DRAFT.md
 
 markdown_extensions:

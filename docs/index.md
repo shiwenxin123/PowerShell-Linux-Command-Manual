@@ -12,6 +12,7 @@
 | 新手快速入门 | [命令速查表](COMMAND-CHEATSHEET.md) -> [PowerShell 基础](manual/powershell/BASIC.md) -> [Linux 基础](manual/linux/BASIC.md) |
 | 运维值班排障 | [Linux 应急排查](troubleshooting/LINUX-INCIDENT-CHECKLIST.md) -> [真实故障案例](cases/README.md) -> [命令风险等级](security/RISK-LEVELS.md) |
 | 国产 Linux 环境 | [Kylin/UOS 常用命令](domestic-linux/KYLIN-UOS-COMMANDS.md) -> [离线安装](domestic-linux/OFFLINE-PACKAGE-GUIDE.md) -> [版本差异](domestic-linux/VERSION-DIFFERENCES.md) |
+| Kubernetes 排障 | [Kubernetes 排障路线](routes/KUBERNETES-TROUBLESHOOTING.md) -> [Kubernetes 进阶排查](manual/kubernetes/ADVANCED-TROUBLESHOOTING.md) -> [K8s 故障案例](cases/README.md) |
 | 自动化巡检 | [巡检脚本工具化](manual/automation/HEALTH-CHECK-SCRIPTS.md) -> [JSON Schema](schema/health-check-report.schema.json) |
 | 参与贡献 | [Good First Issues](GOOD-FIRST-ISSUES.md) -> [维护者指南](MAINTAINER-GUIDE.md) |
 | 发布运营 | [开源运营手册](OPEN-SOURCE-OPERATIONS.md) -> [Release 检查清单](RELEASE-CHECKLIST.md) |
@@ -21,6 +22,11 @@
 | 需求 | 文档 |
 | --- | --- |
 | 常见问题 | [FAQ](FAQ.md) |
+| 新手路线 | [新手路线](routes/BEGINNER.md) |
+| 运维值班路线 | [运维值班路线](routes/OPS-ONCALL.md) |
+| 国产 Linux 路线 | [国产 Linux 路线](routes/DOMESTIC-LINUX.md) |
+| Kubernetes 排障路线 | [Kubernetes 排障路线](routes/KUBERNETES-TROUBLESHOOTING.md) |
+| 离线 PDF 发布 | [离线 PDF 发布流程](PDF-EXPORT.md) |
 | 按命令查找 | [命令索引](COMMAND-INDEX.md) |
 | 覆盖面评估 | [命令覆盖矩阵](COMMAND-COVERAGE-MATRIX.md) |
 | 迁移进度 | [主手册专题化迁移进度](MANUAL-MIGRATION.md) |
@@ -78,6 +84,13 @@
 | 国产 Linux | [麒麟与 UOS](domestic-linux/KYLIN-UOS-COMMANDS.md) -> [离线安装](domestic-linux/OFFLINE-PACKAGE-GUIDE.md) -> [版本差异](domestic-linux/VERSION-DIFFERENCES.md) |
 | 容器/Kubernetes | [Docker/Kubernetes 生产命令](manual/kubernetes/DOCKER-K8S-PRODUCTION.md) -> [Kubernetes 进阶排查](manual/kubernetes/ADVANCED-TROUBLESHOOTING.md) -> [K8s 故障案例](cases/README.md) |
 | 脚本自动化 | [Shell 脚本](manual/linux/SHELL-SCRIPTING.md) -> [跨平台脚本](manual/cross-platform/PYTHON-NODE-SCRIPTS.md) -> [巡检脚本工具化](manual/automation/HEALTH-CHECK-SCRIPTS.md) |
+
+完整路线页:
+
+- [新手路线](routes/BEGINNER.md)
+- [运维值班路线](routes/OPS-ONCALL.md)
+- [国产 Linux 路线](routes/DOMESTIC-LINUX.md)
+- [Kubernetes 排障路线](routes/KUBERNETES-TROUBLESHOOTING.md)
 
 ## 项目定位
 

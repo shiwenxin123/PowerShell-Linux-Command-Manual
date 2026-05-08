@@ -38,6 +38,15 @@
 | Keepalived 高可用 | [Keepalived 高可用](ha/KEEPALIVED.md) |
 | 跨平台工具 | [跨平台脚本与工具](cross-platform/TOOLS.md) |
 
+## 场景路线
+
+| 路线 | 文档 |
+| --- | --- |
+| 新手路线 | [新手路线](../routes/BEGINNER.md) |
+| 运维值班路线 | [运维值班路线](../routes/OPS-ONCALL.md) |
+| 国产 Linux 路线 | [国产 Linux 路线](../routes/DOMESTIC-LINUX.md) |
+| Kubernetes 排障路线 | [Kubernetes 排障路线](../routes/KUBERNETES-TROUBLESHOOTING.md) |
+
 ## 拆分原则
 
 - README 和索引页只放入口，不堆长命令。
