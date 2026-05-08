@@ -24,7 +24,7 @@ README 的快速入口已精简为主入口，完整导航交给文档站首页�
 
 ### 2. 主手册与专题页仍存在少量重复
 
-根目录完整手册的大部分高价值章节已经迁移或专题化，但 Kylin/UOS 原始厂商命令、内核参数、limits、I/O 调优、企业级日志配置样例仍建议继续迁移。
+根目录完整手册的大部分高价值章节已经迁移或专题化。Kylin/UOS 厂商命令、Linux 性能调优、limits、I/O 调优和企业级日志配置已经完成第一批收口，剩余重点是附录入口化和根目录主手册压缩。
 
 建议:
 
@@ -43,14 +43,15 @@ README 的快速入口已精简为主入口，完整导航交给文档站首页�
 
 ### 4. 故障案例还可以继续补真实业务场景
 
-当前案例已经覆盖基础运维问题，并补充了 Nginx 502/504、MySQL、Redis、Java OOM、Kubernetes ImagePullBackOff、Docker Compose、TLS 证书链不完整等应用层和中间件案例。
+当前案例已经覆盖基础运维问题，并补充了 Nginx 502/504、MySQL、Redis、Java OOM、Kubernetes ImagePullBackOff、Docker Compose、TLS 证书链不完整、Kubernetes DNS、systemd 服务启动失败、Linux 权限、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满等应用层和中间件案例。
 
 建议继续补充:
 
 - 网关超时
+- 云负载均衡健康检查失败
 - 消息队列连接失败
 - 数据库连接池耗尽
-- Kubernetes DNS 异常
+- Prometheus 告警规则误报
 
 ### 5. 国产 Linux 内容还可补真实版本案例
 
@@ -63,23 +64,23 @@ README 的快速入口已精简为主入口，完整导航交给文档站首页�
 - 增加 ARM、龙芯、鲲鹏环境的软件包兼容案例。
 - 增加离线源目录结构示例。
 
-### 6. 巡检脚本还只是基础版
+### 6. 巡检脚本已具备工具化基础
 
-当前脚本已经支持按模块执行，并支持 text、Markdown、JSON 输出，且 Linux/Windows JSON 使用统一结构。
+当前脚本已经支持按模块执行，并支持 text、Markdown、JSON 输出，Linux/Windows JSON 使用统一结构，已有 JSON Schema、示例报告和 GitHub Actions 基础功能测试。
 
 建议:
 
-- 增加基础测试用例。
-- 增加 JSON schema 文件。
-- 后续扩展 package、security、container 等模块。
+- 后续扩展 package、security、container、log 等模块。
+- 为新增模块同步更新 JSON Schema、示例报告和文档说明。
+- 继续补充针对新模块的脚本测试样例。
 
 ## 下一步优先级
 
-1. 完成主手册剩余章节收口: Kylin/UOS 细节、内核参数、limits、I/O 调优、企业级日志配置。
-2. 为巡检脚本补测试用例和 JSON schema。
-3. 补网关超时、消息队列连接失败、数据库连接池耗尽、Kubernetes DNS 异常案例。
-4. 优化文档站路线入口: 新手路线、运维路线、国产 Linux 路线、Kubernetes 路线。
-5. 增加 Release、badges、good first issue，进入开源运营阶段。
+1. 完成主手册最终收口: 附录入口化、顶部推荐专题入口、根目录主手册压缩为总目录和历史说明。
+2. 扩展巡检脚本 package、security、container、log 模块，并同步 Schema、示例报告和测试。
+3. 补网关超时、云负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。
+4. 优化文档站路线入口: 新手路线、运维值班路线、国产 Linux 路线、Kubernetes 排障路线。
+5. 持续维护 Release、技术文章和 good first issue 任务池。
 
 ## 已在本次审查中修复
 

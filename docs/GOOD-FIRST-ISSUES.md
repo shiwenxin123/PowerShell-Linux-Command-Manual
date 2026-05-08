@@ -10,7 +10,7 @@
 | 补充云负载均衡健康检查失败案例 | `documentation`, `cloud`, `good first issue` | `docs/cases/` |
 | 补充 Kylin/UOS 不同版本命令差异 | `documentation`, `kylin`, `uos`, `good first issue` | `docs/domestic-linux/` |
 | 将主手册附录整理为专题入口 | `documentation`, `manual-migration`, `good first issue` | `docs/MANUAL-MIGRATION.md`、`docs/manual/README.md` |
-| 给重点专题页增加相关案例链接 | `documentation`, `good first issue` | `docs/manual/` |
+| 增加文档站新手路线入口页 | `documentation`, `good first issue` | `docs/index.md`、`docs/manual/README.md` |
 
 ## 脚本类
 
@@ -18,8 +18,9 @@
 | --- | --- | --- |
 | 为巡检脚本增加 package 模块 | `script`, `linux`, `windows`, `help wanted` | `scripts/`、`docs/manual/automation/` |
 | 为巡检脚本增加 security 模块 | `script`, `security`, `help wanted` | `scripts/`、`docs/manual/automation/` |
+| 为巡检脚本增加 container 模块 | `script`, `container`, `help wanted` | `scripts/`、`docs/manual/automation/` |
 | 为巡检脚本增加 log 模块 | `script`, `linux`, `windows`, `help wanted` | `scripts/`、`docs/manual/automation/` |
-| 增加巡检脚本 JSON Schema 示例说明 | `documentation`, `script`, `good first issue` | `docs/manual/automation/HEALTH-CHECK-SCRIPTS.md` |
+| 为巡检脚本新增模块补示例报告 | `documentation`, `script`, `good first issue` | `docs/examples/`、`docs/manual/automation/` |
 
 ## 生产案例类
 
@@ -39,7 +40,7 @@
 ## 建议修改
 
 - 新增或更新文档位置:
-- 建议结构: 现象 -> 快速判断 -> 排查命令 -> 处理建议 -> 高危提醒
+- 建议结构: 现象 -> 快速判断 -> 排查命令 -> 常见原因 -> 处理建议 -> 高危提醒 -> 相关专题
 
 ## 验收标准
 
