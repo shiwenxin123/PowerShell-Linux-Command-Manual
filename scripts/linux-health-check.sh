@@ -263,7 +263,7 @@ collect_package_json() {
   local commands=""
   local warnings=""
 
-  run_json_command package_managers sh -c 'for c in apt apt-get dnf yum zypper pacman rpm dpkg; do if command -v "$c" >/dev/null 2>&1; then printf "== %s ==\n" "$c"; "$c" --version 2>&1 | head -n 3; fi; done'
+  run_json_command package_managers sh -c "for c in apt apt-get dnf yum zypper pacman rpm dpkg; do if command -v \"\$c\" >/dev/null 2>&1; then printf '== %s ==\n' \"\$c\"; \"\$c\" --version 2>&1 | head -n 3; fi; done"
   commands="$COMMAND_JSON"
 
   if command -v apt-cache >/dev/null 2>&1; then
@@ -505,7 +505,7 @@ text_or_markdown_report() {
   if should_run package; then
     section "Package"
     if [ "$FORMAT" = "markdown" ]; then echo '```text'; fi
-    run_block sh -c 'for c in apt apt-get dnf yum zypper pacman rpm dpkg; do if command -v "$c" >/dev/null 2>&1; then printf "== %s ==\n" "$c"; "$c" --version 2>&1 | head -n 3; fi; done'
+    run_block sh -c "for c in apt apt-get dnf yum zypper pacman rpm dpkg; do if command -v \"\$c\" >/dev/null 2>&1; then printf '== %s ==\n' \"\$c\"; \"\$c\" --version 2>&1 | head -n 3; fi; done"
     if command -v apt-cache >/dev/null 2>&1; then
       run_block apt-cache policy
     elif command -v dnf >/dev/null 2>&1; then
