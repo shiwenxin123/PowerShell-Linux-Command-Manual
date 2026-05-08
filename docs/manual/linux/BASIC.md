@@ -81,3 +81,9 @@ du -sh /var/log
 ## 安全提醒
 
 `rm -rf`、`chmod -R`、`chown -R` 等命令影响范围大，执行前请查看 [命令风险等级说明](../../security/RISK-LEVELS.md)。
+
+## 相关案例
+
+- [systemd 服务启动失败排查](../../cases/SYSTEMD-SERVICE-FAILED.md)
+- [Linux Permission denied 排查](../../cases/LINUX-PERMISSION-DENIED.md)
+- [端口被占用排查](../../cases/PORT-IN-USE.md)

@@ -117,3 +117,12 @@ kubectl rollout undo deploy/<deployment> -n <namespace>
 | `Pending` | 节点资源、调度约束、PVC |
 | `Service` 不通 | Endpoints、Pod 标签、端口映射 |
 | 配置不生效 | ConfigMap/Secret 挂载方式、Pod 是否重启 |
+
+## 相关案例
+
+- [Docker 容器反复重启排查](../cases/DOCKER-RESTARTING.md)
+- [Docker 镜像拉取失败排查](../cases/DOCKER-IMAGE-PULL-FAILED.md)
+- [Docker Compose 启动失败排查](../cases/DOCKER-COMPOSE-FAILED.md)
+- [Kubernetes Pod CrashLoopBackOff 排查](../cases/K8S-CRASHLOOPBACKOFF.md)
+- [Kubernetes ImagePullBackOff 排查](../cases/K8S-IMAGEPULLBACKOFF.md)
+- [Kubernetes Node NotReady 排查](../cases/K8S-NODE-NOTREADY.md)

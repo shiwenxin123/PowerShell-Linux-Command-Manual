@@ -112,3 +112,4 @@ lsof | grep deleted
 - [CPU 飙高排查](../../cases/CPU-HIGH.md)
 - [磁盘空间满排查](../../cases/DISK-FULL.md)
 - [Java 服务 OOM 排查](../../cases/JAVA-OOM.md)
+- [systemd 服务启动失败排查](../../cases/SYSTEMD-SERVICE-FAILED.md)

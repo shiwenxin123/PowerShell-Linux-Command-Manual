@@ -122,3 +122,4 @@ findmnt
 - [DNS 解析失败排查](../../cases/DNS-RESOLUTION-FAILED.md)
 - [TLS 证书链不完整排查](../../cases/TLS-CHAIN-INCOMPLETE.md)
 - [端口被占用排查](../../cases/PORT-IN-USE.md)
+- [Kubernetes Node NotReady 排查](../../cases/K8S-NODE-NOTREADY.md)

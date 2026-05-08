@@ -32,6 +32,8 @@ sudo command
 
 不要一上来就执行 `chmod -R 777`。这会扩大权限风险。
 
+延伸案例: [Linux Permission denied 排查](../cases/LINUX-PERMISSION-DENIED.md)。
+
 ## command not found
 
 常见原因:
@@ -85,6 +87,8 @@ Get-NetTCPConnection -LocalPort 8080
 - 确认占用端口的进程是否属于当前服务。
 - 优先使用服务管理命令停止，不确定时不要直接强杀。
 
+延伸案例: [端口被占用排查](../cases/PORT-IN-USE.md)。
+
 ## No space left on device
 
 常见原因:
@@ -112,6 +116,8 @@ find / -type f -size +500M 2>/dev/null
 lsof | grep deleted
 ```
 
+延伸案例: [磁盘空间满排查](../cases/DISK-FULL.md)。
+
 ## Network is unreachable
 
 常见原因:
@@ -131,6 +137,11 @@ ping example.com
 cat /etc/resolv.conf
 ```
 
+延伸案例:
+
+- [DNS 解析失败排查](../cases/DNS-RESOLUTION-FAILED.md)
+- [SSH 连接失败排查](../cases/SSH-CONNECTION-FAILED.md)
+
 ## systemctl service failed
 
 排查命令:
@@ -146,3 +157,5 @@ systemctl --failed
 - 先看启动失败日志，不要反复重启。
 - 检查配置文件语法。
 - 检查端口、权限、路径、依赖服务。
+
+延伸案例: [systemd 服务启动失败排查](../cases/SYSTEMD-SERVICE-FAILED.md)。

@@ -106,3 +106,9 @@ chmod 1777 dir/
 ```
 
 高危提醒: `chmod -R`、`chown -R` 会递归修改目录，执行前必须确认路径边界。
+
+## 相关案例
+
+- [Linux Permission denied 排查](../../cases/LINUX-PERMISSION-DENIED.md)
+- [SSH 连接失败排查](../../cases/SSH-CONNECTION-FAILED.md)
+- [systemd 服务启动失败排查](../../cases/SYSTEMD-SERVICE-FAILED.md)

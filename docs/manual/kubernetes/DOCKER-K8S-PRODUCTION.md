@@ -162,5 +162,7 @@ kubectl uncordon <node-name>
 - [Docker 与 Kubernetes 运维速查](../../containers/DOCKER-KUBERNETES-CHEATSHEET.md)
 - [Kubernetes 进阶排查](ADVANCED-TROUBLESHOOTING.md)
 - [Docker 容器反复重启排查](../../cases/DOCKER-RESTARTING.md)
+- [Docker 镜像拉取失败排查](../../cases/DOCKER-IMAGE-PULL-FAILED.md)
 - [Docker Compose 启动失败排查](../../cases/DOCKER-COMPOSE-FAILED.md)
 - [Pod CrashLoopBackOff 排查](../../cases/K8S-CRASHLOOPBACKOFF.md)
+- [Kubernetes Node NotReady 排查](../../cases/K8S-NODE-NOTREADY.md)
