@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/domestic-linux/ARCHITECTURE-CHECKLIST/">
+        <link rel="canonical" href="https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/PDF-EXPORT/">
       
       
-        <link rel="prev" href="../OFFLINE-PACKAGE-GUIDE/">
+        <link rel="prev" href="../RELEASE-CHECKLIST/">
       
       
-        <link rel="next" href="../VERSION-DIFFERENCES/">
+        <link rel="next" href="../RELEASE-2.16-DRAFT/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>架构与兼容性检查 - PowerShell-Linux 命令手册</title>
+        <title>离线 PDF 发布流程 - PowerShell-Linux 命令手册</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -50,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#pdf" class="md-skip">
           跳转至
         </a>
       
@@ -84,7 +84,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="PowerShell-Linux 命令手册" class="md-header__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
+    <a href=".." title="PowerShell-Linux 命令手册" class="md-header__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              架构与兼容性检查
+              离线 PDF 发布流程
             
           </span>
         </div>
@@ -191,7 +191,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -212,7 +212,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../routes/BEGINNER/" class="md-tabs__link">
+        <a href="../routes/BEGINNER/" class="md-tabs__link">
           
   
   
@@ -232,7 +232,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../manual/" class="md-tabs__link">
+        <a href="../manual/" class="md-tabs__link">
           
   
   
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-tabs__link">
+        <a href="../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-tabs__link">
           
   
   
@@ -272,7 +272,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../routes/KUBERNETES-TROUBLESHOOTING/" class="md-tabs__link">
+        <a href="../routes/KUBERNETES-TROUBLESHOOTING/" class="md-tabs__link">
           
   
   
@@ -288,13 +288,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../routes/DOMESTIC-LINUX/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../routes/DOMESTIC-LINUX/" class="md-tabs__link">
           
   
   
@@ -314,7 +312,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../manual/devtools/" class="md-tabs__link">
+        <a href="../manual/devtools/" class="md-tabs__link">
           
   
   
@@ -330,11 +328,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../MANUAL-MIGRATION/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../MANUAL-MIGRATION/" class="md-tabs__link">
           
   
   
@@ -368,7 +368,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="PowerShell-Linux 命令手册" class="md-nav__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
+    <a href=".." title="PowerShell-Linux 命令手册" class="md-nav__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -398,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -477,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../routes/BEGINNER/" class="md-nav__link">
+      <a href="../routes/BEGINNER/" class="md-nav__link">
         
   
   
@@ -505,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../routes/OPS-ONCALL/" class="md-nav__link">
+      <a href="../routes/OPS-ONCALL/" class="md-nav__link">
         
   
   
@@ -533,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../COMMAND-CHEATSHEET/" class="md-nav__link">
+      <a href="../COMMAND-CHEATSHEET/" class="md-nav__link">
         
   
   
@@ -561,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../COMMAND-INDEX/" class="md-nav__link">
+      <a href="../COMMAND-INDEX/" class="md-nav__link">
         
   
   
@@ -589,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../COMMAND-COVERAGE-MATRIX/" class="md-nav__link">
+      <a href="../COMMAND-COVERAGE-MATRIX/" class="md-nav__link">
         
   
   
@@ -617,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FAQ/" class="md-nav__link">
+      <a href="../FAQ/" class="md-nav__link">
         
   
   
@@ -645,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../POWERSHELL-BASH-COMPARISON/" class="md-nav__link">
+      <a href="../POWERSHELL-BASH-COMPARISON/" class="md-nav__link">
         
   
   
@@ -732,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/" class="md-nav__link">
+      <a href="../manual/" class="md-nav__link">
         
   
   
@@ -760,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/powershell/BASIC/" class="md-nav__link">
+      <a href="../manual/powershell/BASIC/" class="md-nav__link">
         
   
   
@@ -788,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/powershell/SYSTEM-ADMIN/" class="md-nav__link">
+      <a href="../manual/powershell/SYSTEM-ADMIN/" class="md-nav__link">
         
   
   
@@ -816,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/powershell/ADVANCED-SCRIPTING/" class="md-nav__link">
+      <a href="../manual/powershell/ADVANCED-SCRIPTING/" class="md-nav__link">
         
   
   
@@ -844,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../powershell/POWERSHELL-PRACTICAL/" class="md-nav__link">
+      <a href="../powershell/POWERSHELL-PRACTICAL/" class="md-nav__link">
         
   
   
@@ -872,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/BASIC/" class="md-nav__link">
+      <a href="../manual/linux/BASIC/" class="md-nav__link">
         
   
   
@@ -900,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/PACKAGE-MANAGEMENT/" class="md-nav__link">
+      <a href="../manual/linux/PACKAGE-MANAGEMENT/" class="md-nav__link">
         
   
   
@@ -928,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/USERS-PERMISSIONS/" class="md-nav__link">
+      <a href="../manual/linux/USERS-PERMISSIONS/" class="md-nav__link">
         
   
   
@@ -956,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/SHELL-SCRIPTING/" class="md-nav__link">
+      <a href="../manual/linux/SHELL-SCRIPTING/" class="md-nav__link">
         
   
   
@@ -984,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/NETWORK/" class="md-nav__link">
+      <a href="../manual/linux/NETWORK/" class="md-nav__link">
         
   
   
@@ -1012,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/STORAGE-LOGS/" class="md-nav__link">
+      <a href="../manual/linux/STORAGE-LOGS/" class="md-nav__link">
         
   
   
@@ -1040,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/MONITORING-LOGS/" class="md-nav__link">
+      <a href="../manual/linux/MONITORING-LOGS/" class="md-nav__link">
         
   
   
@@ -1068,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/DISK-LVM/" class="md-nav__link">
+      <a href="../manual/linux/DISK-LVM/" class="md-nav__link">
         
   
   
@@ -1096,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/linux/PERFORMANCE-TUNING/" class="md-nav__link">
+      <a href="../manual/linux/PERFORMANCE-TUNING/" class="md-nav__link">
         
   
   
@@ -1124,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/BASH-TEXT-PROCESSING/" class="md-nav__link">
+      <a href="../linux/BASH-TEXT-PROCESSING/" class="md-nav__link">
         
   
   
@@ -1152,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/security/HARDENING/" class="md-nav__link">
+      <a href="../manual/security/HARDENING/" class="md-nav__link">
         
   
   
@@ -1180,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/security/FIREWALL-SELINUX/" class="md-nav__link">
+      <a href="../manual/security/FIREWALL-SELINUX/" class="md-nav__link">
         
   
   
@@ -1208,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/security/LOGGING-AUDIT/" class="md-nav__link">
+      <a href="../manual/security/LOGGING-AUDIT/" class="md-nav__link">
         
   
   
@@ -1236,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/security/SUDOERS-APPARMOR/" class="md-nav__link">
+      <a href="../manual/security/SUDOERS-APPARMOR/" class="md-nav__link">
         
   
   
@@ -1264,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/RISK-LEVELS/" class="md-nav__link">
+      <a href="../security/RISK-LEVELS/" class="md-nav__link">
         
   
   
@@ -1292,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/windows/ADMIN-COMMANDS/" class="md-nav__link">
+      <a href="../manual/windows/ADMIN-COMMANDS/" class="md-nav__link">
         
   
   
@@ -1379,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-nav__link">
+      <a href="../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -1407,7 +1407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/COMMON-ERRORS/" class="md-nav__link">
+      <a href="../troubleshooting/COMMON-ERRORS/" class="md-nav__link">
         
   
   
@@ -1435,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/" class="md-nav__link">
+      <a href="../cases/" class="md-nav__link">
         
   
   
@@ -1463,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/CASE-TEMPLATE/" class="md-nav__link">
+      <a href="../cases/CASE-TEMPLATE/" class="md-nav__link">
         
   
   
@@ -1491,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/DISK-FULL/" class="md-nav__link">
+      <a href="../cases/DISK-FULL/" class="md-nav__link">
         
   
   
@@ -1519,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/CPU-HIGH/" class="md-nav__link">
+      <a href="../cases/CPU-HIGH/" class="md-nav__link">
         
   
   
@@ -1547,7 +1547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/PORT-IN-USE/" class="md-nav__link">
+      <a href="../cases/PORT-IN-USE/" class="md-nav__link">
         
   
   
@@ -1575,7 +1575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/SSH-CONNECTION-FAILED/" class="md-nav__link">
+      <a href="../cases/SSH-CONNECTION-FAILED/" class="md-nav__link">
         
   
   
@@ -1603,7 +1603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/LINUX-PERMISSION-DENIED/" class="md-nav__link">
+      <a href="../cases/LINUX-PERMISSION-DENIED/" class="md-nav__link">
         
   
   
@@ -1631,7 +1631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/SYSTEMD-SERVICE-FAILED/" class="md-nav__link">
+      <a href="../cases/SYSTEMD-SERVICE-FAILED/" class="md-nav__link">
         
   
   
@@ -1659,7 +1659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/NGINX-START-FAILED/" class="md-nav__link">
+      <a href="../cases/NGINX-START-FAILED/" class="md-nav__link">
         
   
   
@@ -1687,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/NGINX-502-504/" class="md-nav__link">
+      <a href="../cases/NGINX-502-504/" class="md-nav__link">
         
   
   
@@ -1715,7 +1715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/MYSQL-START-FAILED/" class="md-nav__link">
+      <a href="../cases/MYSQL-START-FAILED/" class="md-nav__link">
         
   
   
@@ -1743,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/MYSQL-TOO-MANY-CONNECTIONS/" class="md-nav__link">
+      <a href="../cases/MYSQL-TOO-MANY-CONNECTIONS/" class="md-nav__link">
         
   
   
@@ -1771,7 +1771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
+      <a href="../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
   
@@ -1799,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/JAVA-OOM/" class="md-nav__link">
+      <a href="../cases/JAVA-OOM/" class="md-nav__link">
         
   
   
@@ -1827,7 +1827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/DNS-RESOLUTION-FAILED/" class="md-nav__link">
+      <a href="../cases/DNS-RESOLUTION-FAILED/" class="md-nav__link">
         
   
   
@@ -1855,7 +1855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/CERTIFICATE-EXPIRED/" class="md-nav__link">
+      <a href="../cases/CERTIFICATE-EXPIRED/" class="md-nav__link">
         
   
   
@@ -1883,7 +1883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/TLS-CHAIN-INCOMPLETE/" class="md-nav__link">
+      <a href="../cases/TLS-CHAIN-INCOMPLETE/" class="md-nav__link">
         
   
   
@@ -1911,7 +1911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/DOCKER-RESTARTING/" class="md-nav__link">
+      <a href="../cases/DOCKER-RESTARTING/" class="md-nav__link">
         
   
   
@@ -1939,7 +1939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/DOCKER-IMAGE-PULL-FAILED/" class="md-nav__link">
+      <a href="../cases/DOCKER-IMAGE-PULL-FAILED/" class="md-nav__link">
         
   
   
@@ -1967,7 +1967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/DOCKER-COMPOSE-FAILED/" class="md-nav__link">
+      <a href="../cases/DOCKER-COMPOSE-FAILED/" class="md-nav__link">
         
   
   
@@ -1995,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/K8S-CRASHLOOPBACKOFF/" class="md-nav__link">
+      <a href="../cases/K8S-CRASHLOOPBACKOFF/" class="md-nav__link">
         
   
   
@@ -2023,7 +2023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/K8S-IMAGEPULLBACKOFF/" class="md-nav__link">
+      <a href="../cases/K8S-IMAGEPULLBACKOFF/" class="md-nav__link">
         
   
   
@@ -2051,7 +2051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/K8S-NODE-NOTREADY/" class="md-nav__link">
+      <a href="../cases/K8S-NODE-NOTREADY/" class="md-nav__link">
         
   
   
@@ -2079,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/K8S-DNS-FAILED/" class="md-nav__link">
+      <a href="../cases/K8S-DNS-FAILED/" class="md-nav__link">
         
   
   
@@ -2107,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/PROMETHEUS-TARGET-DOWN/" class="md-nav__link">
+      <a href="../cases/PROMETHEUS-TARGET-DOWN/" class="md-nav__link">
         
   
   
@@ -2135,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cases/GRAFANA-NO-DATA/" class="md-nav__link">
+      <a href="../cases/GRAFANA-NO-DATA/" class="md-nav__link">
         
   
   
@@ -2222,7 +2222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../routes/KUBERNETES-TROUBLESHOOTING/" class="md-nav__link">
+      <a href="../routes/KUBERNETES-TROUBLESHOOTING/" class="md-nav__link">
         
   
   
@@ -2250,7 +2250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/kubernetes/ADVANCED-TROUBLESHOOTING/" class="md-nav__link">
+      <a href="../manual/kubernetes/ADVANCED-TROUBLESHOOTING/" class="md-nav__link">
         
   
   
@@ -2278,7 +2278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/kubernetes/DOCKER-K8S-PRODUCTION/" class="md-nav__link">
+      <a href="../manual/kubernetes/DOCKER-K8S-PRODUCTION/" class="md-nav__link">
         
   
   
@@ -2306,7 +2306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/DOCKER-KUBERNETES-CHEATSHEET/" class="md-nav__link">
+      <a href="../containers/DOCKER-KUBERNETES-CHEATSHEET/" class="md-nav__link">
         
   
   
@@ -2334,7 +2334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/middleware/DATABASE-MIDDLEWARE/" class="md-nav__link">
+      <a href="../manual/middleware/DATABASE-MIDDLEWARE/" class="md-nav__link">
         
   
   
@@ -2362,7 +2362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/middleware/POSTGRES-MONGO-ELASTIC/" class="md-nav__link">
+      <a href="../manual/middleware/POSTGRES-MONGO-ELASTIC/" class="md-nav__link">
         
   
   
@@ -2390,7 +2390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/cloud/CLOUD-LB-TROUBLESHOOTING/" class="md-nav__link">
+      <a href="../manual/cloud/CLOUD-LB-TROUBLESHOOTING/" class="md-nav__link">
         
   
   
@@ -2418,7 +2418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/observability/LOGGING-MONITORING/" class="md-nav__link">
+      <a href="../manual/observability/LOGGING-MONITORING/" class="md-nav__link">
         
   
   
@@ -2446,7 +2446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/observability/PROMQL-LOGQL-ALERTS/" class="md-nav__link">
+      <a href="../manual/observability/PROMQL-LOGQL-ALERTS/" class="md-nav__link">
         
   
   
@@ -2478,31 +2478,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -2520,7 +2515,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2538,7 +2533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../routes/DOMESTIC-LINUX/" class="md-nav__link">
+      <a href="../routes/DOMESTIC-LINUX/" class="md-nav__link">
         
   
   
@@ -2566,7 +2561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../KYLIN-UOS-COMMANDS/" class="md-nav__link">
+      <a href="../domestic-linux/KYLIN-UOS-COMMANDS/" class="md-nav__link">
         
   
   
@@ -2594,7 +2589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../OFFLINE-PACKAGE-GUIDE/" class="md-nav__link">
+      <a href="../domestic-linux/OFFLINE-PACKAGE-GUIDE/" class="md-nav__link">
         
   
   
@@ -2619,37 +2614,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    架构与兼容性检查
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../domestic-linux/ARCHITECTURE-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -2665,81 +2633,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        基础信息采集
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        包管理与软件源
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见架构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        容器镜像检查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        排查清单
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2752,7 +2645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../VERSION-DIFFERENCES/" class="md-nav__link">
+      <a href="../domestic-linux/VERSION-DIFFERENCES/" class="md-nav__link">
         
   
   
@@ -2839,7 +2732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/devtools/" class="md-nav__link">
+      <a href="../manual/devtools/" class="md-nav__link">
         
   
   
@@ -2867,7 +2760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/devtools/GIT-SSH-CURL-JQ/" class="md-nav__link">
+      <a href="../manual/devtools/GIT-SSH-CURL-JQ/" class="md-nav__link">
         
   
   
@@ -2895,7 +2788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/automation/HEALTH-CHECK-SCRIPTS/" class="md-nav__link">
+      <a href="../manual/automation/HEALTH-CHECK-SCRIPTS/" class="md-nav__link">
         
   
   
@@ -2923,7 +2816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/cross-platform/PYTHON-NODE-SCRIPTS/" class="md-nav__link">
+      <a href="../manual/cross-platform/PYTHON-NODE-SCRIPTS/" class="md-nav__link">
         
   
   
@@ -2951,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/ha/KEEPALIVED/" class="md-nav__link">
+      <a href="../manual/ha/KEEPALIVED/" class="md-nav__link">
         
   
   
@@ -2979,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/cross-platform/TOOLS/" class="md-nav__link">
+      <a href="../manual/cross-platform/TOOLS/" class="md-nav__link">
         
   
   
@@ -3011,26 +2904,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -3048,7 +2946,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3066,7 +2964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../MANUAL-MIGRATION/" class="md-nav__link">
+      <a href="../MANUAL-MIGRATION/" class="md-nav__link">
         
   
   
@@ -3094,7 +2992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../NEXT-STAGE-PLAN/" class="md-nav__link">
+      <a href="../NEXT-STAGE-PLAN/" class="md-nav__link">
         
   
   
@@ -3122,7 +3020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GITHUB-GROWTH-CHECKLIST/" class="md-nav__link">
+      <a href="../GITHUB-GROWTH-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -3150,7 +3048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ROADMAP/" class="md-nav__link">
+      <a href="../ROADMAP/" class="md-nav__link">
         
   
   
@@ -3178,7 +3076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PROJECT-AUDIT/" class="md-nav__link">
+      <a href="../PROJECT-AUDIT/" class="md-nav__link">
         
   
   
@@ -3206,7 +3104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GOOD-FIRST-ISSUES/" class="md-nav__link">
+      <a href="../GOOD-FIRST-ISSUES/" class="md-nav__link">
         
   
   
@@ -3234,7 +3132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OPEN-SOURCE-OPERATIONS/" class="md-nav__link">
+      <a href="../OPEN-SOURCE-OPERATIONS/" class="md-nav__link">
         
   
   
@@ -3262,7 +3160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../MAINTAINER-GUIDE/" class="md-nav__link">
+      <a href="../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
   
@@ -3290,7 +3188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RELEASE-CHECKLIST/" class="md-nav__link">
+      <a href="../RELEASE-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -3315,10 +3213,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../PDF-EXPORT/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    离线 PDF 发布流程
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3334,6 +3259,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建议导出页面
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release 附件命名
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发布前检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后续可自动化方向
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3346,7 +3346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RELEASE-2.16-DRAFT/" class="md-nav__link">
+      <a href="../RELEASE-2.16-DRAFT/" class="md-nav__link">
         
   
   
@@ -3401,10 +3401,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        基础信息采集
+        建议导出页面
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release 附件命名
       
     </span>
   </a>
@@ -3415,7 +3437,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        包管理与软件源
+        发布前检查
       
     </span>
   </a>
@@ -3426,29 +3448,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见架构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        容器镜像检查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        排查清单
+        后续可自动化方向
       
     </span>
   </a>
@@ -3475,75 +3475,66 @@
   
 
 
-<h1 id="_1">信创环境架构与兼容性检查<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>国产化环境中，同一个命令或软件包可能因为 CPU 架构、系统版本、厂商补丁而表现不同。排查问题前，先收集基础信息。</p>
-<h2 id="_2">基础信息采集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/os-release
-uname<span class="w"> </span>-a
-uname<span class="w"> </span>-m
-lscpu
-</code></pre></div>
-<h2 id="_3">包管理与软件源<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># APT 系</span>
-apt<span class="w"> </span>policy<span class="w"> </span><span class="m">2</span>&gt;/dev/null
-apt<span class="w"> </span>list<span class="w"> </span>--installed<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
-
-<span class="c1"># RPM 系</span>
-yum<span class="w"> </span>repolist<span class="w"> </span><span class="m">2</span>&gt;/dev/null
-rpm<span class="w"> </span>-qa<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
-</code></pre></div>
-<h2 id="_4">常见架构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h1 id="pdf">离线 PDF 发布流程<a class="headerlink" href="#pdf" title="Permanent link">&para;</a></h1>
+<p>这个流程用于在发布版本时生成可离线分发的文档包。当前项目默认发布 GitHub Pages；PDF 可作为 Release 附件或内部知识库归档。</p>
+<h2 id="_1">推荐方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>优先使用浏览器从 GitHub Pages 导出关键页面 PDF，适合手册类项目，避免引入额外构建依赖。</p>
+<ol>
+<li>打开文档站首页。</li>
+<li>进入需要归档的页面，例如路线页、命令速查表、巡检脚本文档或案例库。</li>
+<li>使用浏览器打印功能保存为 PDF。</li>
+<li>文件名使用版本号和页面名，例如 <code>v2.16.0-command-cheatsheet.pdf</code>。</li>
+<li>发布 Release 时将 PDF 作为附件上传。</li>
+</ol>
+<h2 id="_2">建议导出页面<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>架构</th>
-<th>常见场景</th>
-<th>注意事项</th>
+<th>类型</th>
+<th>页面</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>x86_64</code></td>
-<td>通用服务器和桌面</td>
-<td>软件兼容性最好</td>
+<td>总入口</td>
+<td><a href="../">文档站首页</a>、<a href="../manual/">专题手册入口</a></td>
 </tr>
 <tr>
-<td><code>aarch64</code></td>
-<td>ARM 服务器、终端</td>
-<td>注意软件包架构和镜像架构</td>
+<td>路线页</td>
+<td><a href="../routes/BEGINNER/">新手路线</a>、<a href="../routes/OPS-ONCALL/">运维值班路线</a>、<a href="../routes/DOMESTIC-LINUX/">国产 Linux 路线</a>、<a href="../routes/KUBERNETES-TROUBLESHOOTING/">Kubernetes 排障路线</a></td>
 </tr>
 <tr>
-<td><code>loongarch64</code></td>
-<td>龙芯环境</td>
-<td>需要确认软件生态和专用源</td>
+<td>速查</td>
+<td><a href="../COMMAND-CHEATSHEET/">命令速查表</a>、<a href="../POWERSHELL-BASH-COMPARISON/">PowerShell/Bash 对照</a></td>
 </tr>
 <tr>
-<td><code>mips64el</code></td>
-<td>部分国产平台</td>
-<td>通用二进制兼容性有限</td>
+<td>排障</td>
+<td><a href="../troubleshooting/LINUX-INCIDENT-CHECKLIST/">Linux 应急排查清单</a>、<a href="../cases/">真实故障案例库</a></td>
+</tr>
+<tr>
+<td>自动化</td>
+<td><a href="../manual/automation/HEALTH-CHECK-SCRIPTS/">巡检脚本工具化</a>、<a href="../schema/health-check-report.schema.json">JSON Schema</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_5">容器镜像检查<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 查看本机架构</span>
-uname<span class="w"> </span>-m
-
-<span class="c1"># 查看镜像信息</span>
-docker<span class="w"> </span>image<span class="w"> </span>inspect<span class="w"> </span>&lt;image&gt;
+<h2 id="release">Release 附件命名<a class="headerlink" href="#release" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>v2.16.0-index.pdf
+v2.16.0-command-cheatsheet.pdf
+v2.16.0-oncall-route.pdf
+v2.16.0-health-check-scripts.pdf
 </code></pre></div>
-<p>建议:</p>
+<h2 id="_3">发布前检查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>ARM 环境优先使用多架构镜像。</li>
-<li>不确定镜像架构时，先在测试环境启动。</li>
-<li>CI 构建时明确目标架构。</li>
+<li>PDF 中不要包含本机路径、真实 IP、Token、密码或内网域名。</li>
+<li>页面链接应优先指向 GitHub Pages 或仓库公开地址。</li>
+<li>导出后抽查目录、代码块换行、表格宽度和中文字体显示。</li>
+<li>Release 说明中注明 PDF 生成版本和对应文档站地址。</li>
 </ul>
-<h2 id="_6">排查清单<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_4">后续可自动化方向<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
-<li>系统版本是否与文档一致。</li>
-<li>CPU 架构是否与软件包一致。</li>
-<li>软件源是否匹配系统版本。</li>
-<li>内核版本是否满足驱动或软件要求。</li>
-<li>安全中心、防火墙、访问控制是否限制服务。</li>
+<li>增加 CI 手动触发任务生成静态文档包。</li>
+<li>使用浏览器自动化导出重点页面 PDF。</li>
+<li>将 PDF 附件和 Release 检查清单联动。</li>
 </ul>
 
 
@@ -3600,10 +3591,10 @@ docker<span class="w"> </span>image<span class="w"> </span>inspect<span class="w
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
