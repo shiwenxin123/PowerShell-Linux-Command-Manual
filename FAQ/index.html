@@ -3606,7 +3606,8 @@
 <li><code>CHANGELOG.md</code> 已记录变更。</li>
 </ul>
 <h2 id="github-pages">GitHub Pages 文档站如何更新？<a class="headerlink" href="#github-pages" title="Permanent link">&para;</a></h2>
-<p>推送到 <code>main</code> 或 <code>master</code> 后，会触发 Docs Site 工作流。工作流会安装 <code>requirements.txt</code> 中的依赖并执行 <code>mkdocs build --strict</code>，然后部署到 GitHub Pages。</p>
+<p>推荐统一使用 <code>.github/workflows/docs-site.yml</code> 发布 GitHub Pages。推送到 <code>main</code> 或手动触发 Docs Site 工作流后，工作流会安装 <code>requirements.txt</code> 中的依赖并执行 <code>mkdocs build --strict</code>，然后部署到 GitHub Pages。</p>
+<p>仓库如果曾经使用过 <code>gh-pages</code> 分支发布，建议在 GitHub Pages 设置中统一选择 GitHub Actions 作为发布来源，避免两套发布方式同时维护。</p>
 <p>如果 Pages 构建失败，优先检查 <code>mkdocs.yml</code> 导航路径、Markdown 代码块闭合、文件名大小写和依赖版本范围。</p>
 
 

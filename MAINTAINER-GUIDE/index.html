@@ -3612,7 +3612,9 @@
 <li>新增专题后，同步更新 README、<code>docs/index.md</code>、<code>mkdocs.yml</code>。</li>
 </ul>
 <h2 id="_5">文档站维护<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>启用 GitHub Pages 后，推送到 <code>main</code> 或 <code>master</code> 会触发 <code>.github/workflows/docs-site.yml</code>。如果构建失败，优先检查:</p>
+<p>GitHub Pages 推荐统一使用 <code>.github/workflows/docs-site.yml</code> 发布。推送到 <code>main</code> 或手动触发 Docs Site 工作流后，会执行 <code>mkdocs build --strict</code> 并部署到 Pages。</p>
+<p>如果仓库曾使用 <code>gh-pages</code> 分支发布，建议在 GitHub Pages 设置中统一选择 GitHub Actions 作为发布来源，避免同时维护两套发布方式。</p>
+<p>如果构建失败，优先检查:</p>
 <ul>
 <li><code>mkdocs.yml</code> 导航路径是否存在。</li>
 <li>Markdown 代码块是否闭合。</li>
