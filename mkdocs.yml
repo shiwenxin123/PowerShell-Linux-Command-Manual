@@ -56,18 +56,23 @@ nav:
       - CPU 飙高: cases/CPU-HIGH.md
       - 端口被占用: cases/PORT-IN-USE.md
       - SSH 连接失败: cases/SSH-CONNECTION-FAILED.md
+      - Linux Permission denied: cases/LINUX-PERMISSION-DENIED.md
+      - systemd 服务启动失败: cases/SYSTEMD-SERVICE-FAILED.md
       - Nginx 启动失败: cases/NGINX-START-FAILED.md
       - Nginx 502/504: cases/NGINX-502-504.md
       - MySQL 启动失败: cases/MYSQL-START-FAILED.md
+      - MySQL 连接数打满: cases/MYSQL-TOO-MANY-CONNECTIONS.md
       - Redis 连接失败: cases/REDIS-CONNECTION-FAILED.md
       - Java 服务 OOM: cases/JAVA-OOM.md
       - DNS 解析失败: cases/DNS-RESOLUTION-FAILED.md
       - 证书过期: cases/CERTIFICATE-EXPIRED.md
       - TLS 证书链不完整: cases/TLS-CHAIN-INCOMPLETE.md
       - Docker 容器反复重启: cases/DOCKER-RESTARTING.md
+      - Docker 镜像拉取失败: cases/DOCKER-IMAGE-PULL-FAILED.md
       - Docker Compose 启动失败: cases/DOCKER-COMPOSE-FAILED.md
       - Pod CrashLoopBackOff: cases/K8S-CRASHLOOPBACKOFF.md
       - ImagePullBackOff: cases/K8S-IMAGEPULLBACKOFF.md
+      - Kubernetes Node NotReady: cases/K8S-NODE-NOTREADY.md
       - Kubernetes DNS 异常: cases/K8S-DNS-FAILED.md
       - Prometheus Target Down: cases/PROMETHEUS-TARGET-DOWN.md
       - Grafana 无数据: cases/GRAFANA-NO-DATA.md
