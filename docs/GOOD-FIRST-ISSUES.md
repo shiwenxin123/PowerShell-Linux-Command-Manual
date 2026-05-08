@@ -9,8 +9,8 @@
 | 补充网关超时排查案例 | `documentation`, `troubleshooting`, `good first issue` | `docs/cases/` |
 | 补充云负载均衡健康检查失败案例 | `documentation`, `cloud`, `good first issue` | `docs/cases/` |
 | 补充 Kylin/UOS 不同版本命令差异 | `documentation`, `kylin`, `uos`, `good first issue` | `docs/domestic-linux/` |
-| 将主手册附录整理为专题入口 | `documentation`, `manual-migration`, `good first issue` | `docs/MANUAL-MIGRATION.md`、`docs/manual/README.md` |
-| 增加文档站新手路线入口页 | `documentation`, `good first issue` | `docs/index.md`、`docs/manual/README.md` |
+| 补充国产 Linux 离线源目录示例 | `documentation`, `kylin`, `uos`, `good first issue` | `docs/domestic-linux/` |
+| 给路线页补充初学者常见误区 | `documentation`, `good first issue` | `docs/routes/` |
 
 ## 脚本类
 

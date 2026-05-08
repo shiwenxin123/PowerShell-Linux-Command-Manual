@@ -1,6 +1,6 @@
 # 命令速查表
 
-这个页面用于快速查找高频命令。需要完整说明和更多示例时，请查看仓库根目录中的完整手册: [Windows-PowerShell-Linux-Command-Manual.md](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
+这个页面用于快速查找高频命令。需要完整说明和更多示例时，请进入对应专题页、命令索引或故障案例库；根目录 [主手册总导航](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/Windows-PowerShell-Linux-Command-Manual.md) 只保留入口和历史说明。
 
 ## PowerShell 与 Linux 常用对照
 

@@ -49,12 +49,12 @@
 | 为巡检脚本增加 security 模块 | `script`, `security`, `help wanted` |
 | 为巡检脚本增加 container 模块 | `script`, `container`, `help wanted` |
 | 补充 Kylin/UOS 不同版本命令差异 | `documentation`, `kylin`, `uos`, `good first issue` |
-| 将主手册附录整理为专题入口 | `documentation`, `manual-migration`, `good first issue` |
+| 补充国产 Linux 离线源目录示例 | `documentation`, `kylin`, `uos`, `good first issue` |
 
 ## README 维护原则
 
 - README 只放项目定位、快速入口、路线图摘要和贡献入口。
-- 具体命令放到 `docs/`。
+- 具体命令放到 `docs/`，根目录主手册只维护总导航和历史说明。
 - 新增专题后，同步更新 README、`docs/index.md`、`mkdocs.yml`。
 
 ## 文档站维护

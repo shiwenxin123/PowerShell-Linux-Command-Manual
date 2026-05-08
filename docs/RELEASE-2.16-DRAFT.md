@@ -4,6 +4,7 @@
 
 ## 本次更新
 
+- 主手册完成最终收口，根目录主手册改为总导航、历史说明和专题入口。
 - 主手册收口第 1 批，补充 Kylin/UOS 厂商命令、Linux 性能调优、企业日志配置和跨平台工具分类。
 - 巡检脚本工具化，支持统一 JSON 输出、明确退出码、示例报告和 JSON Schema。
 - 增加巡检脚本 GitHub Actions 功能测试，覆盖 Linux/Windows JSON 输出、输出文件和参数错误退出码。
@@ -19,7 +20,7 @@
 - [巡检脚本工具化](manual/automation/HEALTH-CHECK-SCRIPTS.md)
 - [真实故障案例库](cases/README.md)
 - [Linux 性能调优](manual/linux/PERFORMANCE-TUNING.md)
-- [主手册迁移进度](MANUAL-MIGRATION.md)
+- [主手册收口与专题化状态](MANUAL-MIGRATION.md)
 - [Good First Issues 清单](GOOD-FIRST-ISSUES.md)
 
 ## 发布前确认

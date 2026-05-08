@@ -29,10 +29,10 @@
 | 离线 PDF 发布 | [离线 PDF 发布流程](PDF-EXPORT.md) |
 | 按命令查找 | [命令索引](COMMAND-INDEX.md) |
 | 覆盖面评估 | [命令覆盖矩阵](COMMAND-COVERAGE-MATRIX.md) |
-| 迁移进度 | [主手册专题化迁移进度](MANUAL-MIGRATION.md) |
+| 迁移状态 | [主手册收口与专题化状态](MANUAL-MIGRATION.md) |
 | 下一阶段 | [下一阶段优化计划](NEXT-STAGE-PLAN.md) |
 | 快速查命令 | [命令速查表](COMMAND-CHEATSHEET.md) |
-| 专题化手册 | [完整手册专题化入口](manual/README.md) |
+| 专题手册 | [专题手册入口](manual/README.md) |
 | Linux 包管理 | [Linux 包管理](manual/linux/PACKAGE-MANAGEMENT.md) |
 | Linux 用户权限 | [Linux 用户、组与权限](manual/linux/USERS-PERMISSIONS.md) |
 | Shell 脚本 | [Shell 脚本基础与高级技巧](manual/linux/SHELL-SCRIPTING.md) |

@@ -102,7 +102,7 @@ nav:
       - Keepalived 高可用: manual/ha/KEEPALIVED.md
       - 跨平台工具: manual/cross-platform/TOOLS.md
   - 项目维护:
-      - 主手册迁移进度: MANUAL-MIGRATION.md
+      - 主手册收口状态: MANUAL-MIGRATION.md
       - 下一阶段计划: NEXT-STAGE-PLAN.md
       - GitHub 热度优化: GITHUB-GROWTH-CHECKLIST.md
       - Roadmap: ROADMAP.md

@@ -1,8 +1,8 @@
-# 完整手册专题化入口
+# 专题手册入口
 
-主手册仍保留在仓库根目录: [Windows-PowerShell-Linux-Command-Manual.md](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
+根目录主手册已经收口为总导航和历史说明: [Windows-PowerShell-Linux-Command-Manual.md](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
 
-这个目录用于把 3000 多行完整手册逐步拆成更容易阅读和维护的专题页。当前先提供结构化入口和高频内容摘要，后续可以把主手册原文逐章迁移进来。
+这个目录承接原主手册中的高频命令、专题说明和运维场景。后续新增内容应优先进入对应专题页，根目录主手册只维护入口、历史说明和项目定位。
 
 ## 专题列表
 

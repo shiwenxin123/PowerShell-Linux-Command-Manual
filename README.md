@@ -10,7 +10,7 @@
 
 > 在线文档: [https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/](https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/)
 > 当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/releases/tag/v2.16.0)
-> 历史主手册: [Windows-PowerShell-Linux-Command-Manual.md](Windows-PowerShell-Linux-Command-Manual.md)
+> 主手册总导航: [Windows-PowerShell-Linux-Command-Manual.md](Windows-PowerShell-Linux-Command-Manual.md)
 
 ## 10 秒了解项目
 
@@ -60,7 +60,7 @@ Set-Location PowerShell-Linux-Command-Manual
 | 按命令查找 | [命令索引](docs/COMMAND-INDEX.md) |
 | 覆盖面评估 | [命令覆盖矩阵](docs/COMMAND-COVERAGE-MATRIX.md) |
 | 快速查命令 | [命令速查表](docs/COMMAND-CHEATSHEET.md) |
-| 专题化手册 | [完整手册专题化入口](docs/manual/README.md) |
+| 专题手册 | [专题手册入口](docs/manual/README.md) |
 | 迁移进度 | [主手册迁移进度](docs/MANUAL-MIGRATION.md) |
 | 下一阶段 | [下一阶段优化计划](docs/NEXT-STAGE-PLAN.md) |
 | Linux 应急排障 | [Linux 故障应急排查清单](docs/troubleshooting/LINUX-INCIDENT-CHECKLIST.md) |
@@ -93,7 +93,7 @@ Set-Location PowerShell-Linux-Command-Manual
 
 1. 先收藏项目，日常遇到命令时直接搜索关键字。
 2. 从 [命令速查表](docs/COMMAND-CHEATSHEET.md) 找到常用命令。
-3. 在完整手册里查看更详细示例。
+3. 在对应专题页或故障案例里查看更详细示例。
 4. 发现遗漏或错误时，通过 Issue 或 Pull Request 补充。
 
 ## 按场景找命令
@@ -131,7 +131,7 @@ Set-Location PowerShell-Linux-Command-Manual
 - [x] 国产 Linux 离线安装与架构兼容性专题
 - [x] 巡检脚本支持保存报告
 - [x] 巡检脚本支持模块化检查和 Markdown 报告
-- [x] 完整手册专题化入口第一阶段
+- [x] 主手册收口为总导航和历史说明
 - [x] Nginx、DNS、证书过期故障案例
 - [x] ImagePullBackOff、Docker Compose、TLS 证书链案例
 - [x] ShellCheck、PSScriptAnalyzer、markdownlint、敏感信息扫描
@@ -149,7 +149,7 @@ Set-Location PowerShell-Linux-Command-Manual
 - [x] PowerShell 高级、Linux 权限、Shell 脚本、跨平台脚本、Keepalived 章节迁移
 - [x] 下一阶段优化计划
 - [x] 巡检脚本 JSON 输出、统一结构和明确退出码
-- [ ] 完整手册原文逐章迁移
+- [x] 主手册正文迁移到专题页、路线页和案例库
 
 ## 安全提醒
 
