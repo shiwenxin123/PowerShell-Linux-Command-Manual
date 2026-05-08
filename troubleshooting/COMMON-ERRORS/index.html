@@ -3381,6 +3381,7 @@ chmod<span class="w"> </span>+x<span class="w"> </span>script.sh
 sudo<span class="w"> </span><span class="nb">command</span>
 </code></pre></div>
 <p>不要一上来就执行 <code>chmod -R 777</code>。这会扩大权限风险。</p>
+<p>延伸案例: <a href="../../cases/LINUX-PERMISSION-DENIED/">Linux Permission denied 排查</a>。</p>
 <h2 id="command-not-found">command not found<a class="headerlink" href="#command-not-found" title="Permanent link">&para;</a></h2>
 <p>常见原因:</p>
 <ul>
@@ -3420,6 +3421,7 @@ lsof<span class="w"> </span>-i<span class="w"> </span>:8080
 <li>确认占用端口的进程是否属于当前服务。</li>
 <li>优先使用服务管理命令停止，不确定时不要直接强杀。</li>
 </ul>
+<p>延伸案例: <a href="../../cases/PORT-IN-USE/">端口被占用排查</a>。</p>
 <h2 id="no-space-left-on-device">No space left on device<a class="headerlink" href="#no-space-left-on-device" title="Permanent link">&para;</a></h2>
 <p>常见原因:</p>
 <ul>
@@ -3441,6 +3443,7 @@ find<span class="w"> </span>/<span class="w"> </span>-type<span class="w"> </spa
 </ul>
 <div class="highlight"><pre><span></span><code>lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>deleted
 </code></pre></div>
+<p>延伸案例: <a href="../../cases/DISK-FULL/">磁盘空间满排查</a>。</p>
 <h2 id="network-is-unreachable">Network is unreachable<a class="headerlink" href="#network-is-unreachable" title="Permanent link">&para;</a></h2>
 <p>常见原因:</p>
 <ul>
@@ -3456,6 +3459,11 @@ ping<span class="w"> </span><span class="m">8</span>.8.8.8
 ping<span class="w"> </span>example.com
 cat<span class="w"> </span>/etc/resolv.conf
 </code></pre></div>
+<p>延伸案例:</p>
+<ul>
+<li><a href="../../cases/DNS-RESOLUTION-FAILED/">DNS 解析失败排查</a></li>
+<li><a href="../../cases/SSH-CONNECTION-FAILED/">SSH 连接失败排查</a></li>
+</ul>
 <h2 id="systemctl-service-failed">systemctl service failed<a class="headerlink" href="#systemctl-service-failed" title="Permanent link">&para;</a></h2>
 <p>排查命令:</p>
 <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>&lt;service&gt;
@@ -3468,6 +3476,7 @@ systemctl<span class="w"> </span>--failed
 <li>检查配置文件语法。</li>
 <li>检查端口、权限、路径、依赖服务。</li>
 </ul>
+<p>延伸案例: <a href="../../cases/SYSTEMD-SERVICE-FAILED/">systemd 服务启动失败排查</a>。</p>
 
 
 
