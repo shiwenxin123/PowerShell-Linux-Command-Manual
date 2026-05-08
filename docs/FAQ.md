@@ -62,6 +62,8 @@
 
 ## GitHub Pages 文档站如何更新？
 
-推送到 `main` 或 `master` 后，会触发 Docs Site 工作流。工作流会安装 `requirements.txt` 中的依赖并执行 `mkdocs build --strict`，然后部署到 GitHub Pages。
+推荐统一使用 `.github/workflows/docs-site.yml` 发布 GitHub Pages。推送到 `main` 或手动触发 Docs Site 工作流后，工作流会安装 `requirements.txt` 中的依赖并执行 `mkdocs build --strict`，然后部署到 GitHub Pages。
+
+仓库如果曾经使用过 `gh-pages` 分支发布，建议在 GitHub Pages 设置中统一选择 GitHub Actions 作为发布来源，避免两套发布方式同时维护。
 
 如果 Pages 构建失败，优先检查 `mkdocs.yml` 导航路径、Markdown 代码块闭合、文件名大小写和依赖版本范围。

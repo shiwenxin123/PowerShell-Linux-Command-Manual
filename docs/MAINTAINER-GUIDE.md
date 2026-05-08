@@ -59,7 +59,11 @@
 
 ## 文档站维护
 
-启用 GitHub Pages 后，推送到 `main` 或 `master` 会触发 `.github/workflows/docs-site.yml`。如果构建失败，优先检查:
+GitHub Pages 推荐统一使用 `.github/workflows/docs-site.yml` 发布。推送到 `main` 或手动触发 Docs Site 工作流后，会执行 `mkdocs build --strict` 并部署到 Pages。
+
+如果仓库曾使用 `gh-pages` 分支发布，建议在 GitHub Pages 设置中统一选择 GitHub Actions 作为发布来源，避免同时维护两套发布方式。
+
+如果构建失败，优先检查:
 
 - `mkdocs.yml` 导航路径是否存在。
 - Markdown 代码块是否闭合。

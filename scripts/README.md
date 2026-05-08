@@ -70,6 +70,26 @@ Windows PowerShell:
 | `2` | 参数错误 |
 | `3` | 脚本内部异常或关键输出写入失败 |
 
+## 本地检查
+
+```powershell
+# 文档检查
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\check-docs.ps1
+
+# Windows 脚本语法检查
+$parseErrors = $null
+[System.Management.Automation.PSParser]::Tokenize((Get-Content -Raw 'scripts/windows-health-check.ps1'), [ref]$parseErrors) | Out-Null
+$parseErrors
+```
+
+Linux 脚本语法检查需要本机有 Bash:
+
+```bash
+bash -n scripts/linux-health-check.sh
+```
+
+如果 Windows 本机没有 Bash，可以以 GitHub Actions 中 Ubuntu 环境的 `bash -n` 检查结果为准。
+
 ## 使用建议
 
 - 生产环境执行前先阅读脚本内容。

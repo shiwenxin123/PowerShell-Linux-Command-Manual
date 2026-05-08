@@ -25,6 +25,7 @@
 - `requirements.txt` 增加 MkDocs、Material for MkDocs 和 pymdown-extensions 版本范围。
 - 更新维护者指南和 Release 检查清单，补充依赖维护和本地验证步骤。
 - 新增 FAQ 页面，并挂载到 README、文档站首页和 MkDocs 导航。
+- 修复 Issue 模板旧仓库链接，补充本地 Bash 检查说明并统一 GitHub Pages 发布说明。
 - 更新 README、文档站首页、专题入口、覆盖矩阵、路线图、下一阶段计划和审查报告。
 
 ## 2.15.0
