@@ -70,6 +70,7 @@
 | GitHub 项目优化 | [GitHub 热度优化清单](GITHUB-GROWTH-CHECKLIST.md) |
 | 开源运营 | [开源运营手册](OPEN-SOURCE-OPERATIONS.md) |
 | 技术文章草稿 | [v2.16.0 技术文章草稿](articles/V2.16.0-TECH-ARTICLE.md) |
+| 发布素材包 | [v2.16.0 发布运营素材包](articles/V2.16.0-PUBLISHING-PACK.md) |
 | 项目审查 | [项目整体审查报告](PROJECT-AUDIT.md) |
 | 新手任务 | [Good First Issues 清单](GOOD-FIRST-ISSUES.md) |
 | Issue 创建批次 | [Good First Issue 创建批次](ISSUE-CREATION-BATCH.md) |

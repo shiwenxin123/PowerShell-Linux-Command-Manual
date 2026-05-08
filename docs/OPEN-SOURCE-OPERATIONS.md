@@ -32,6 +32,7 @@
 当前可复用文章草稿:
 
 - [v2.16.0 技术文章草稿](articles/V2.16.0-TECH-ARTICLE.md)
+- [v2.16.0 发布运营素材包](articles/V2.16.0-PUBLISHING-PACK.md)
 
 当前可复制创建的 Issue 批次:
 
