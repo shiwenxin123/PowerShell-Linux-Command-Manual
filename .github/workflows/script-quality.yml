@@ -50,6 +50,17 @@ jobs:
           bash scripts/linux-health-check.sh --module system --format json > linux-health-check.json
           python -m json.tool linux-health-check.json > /dev/null
 
+      - name: Validate extended modules
+        run: |
+          for module in package security container log; do
+            set +e
+            bash scripts/linux-health-check.sh --module "$module" --format json > "linux-$module.json"
+            code=$?
+            set -e
+            test "$code" -eq 0 -o "$code" -eq 1
+            python -m json.tool "linux-$module.json" > /dev/null
+          done
+
       - name: Validate output file
         run: |
           bash scripts/linux-health-check.sh --module disk --format json --output reports/linux-health-check.json > /dev/null
@@ -86,6 +97,18 @@ jobs:
           $json = ./scripts/windows-health-check.ps1 -Module process -Format json | ConvertFrom-Json
           if ($json.metadata.format -ne 'json') { throw 'Unexpected metadata.format' }
           if (-not $json.modules.process) { throw 'Missing process module' }
+
+      - name: Validate extended modules
+        shell: pwsh
+        run: |
+          foreach ($module in @('package', 'security', 'container', 'log')) {
+            $output = & ./scripts/windows-health-check.ps1 -Module $module -Format json
+            if ($LASTEXITCODE -notin @(0, 1)) {
+              throw "Unexpected exit code $LASTEXITCODE for module $module"
+            }
+            $json = $output | ConvertFrom-Json
+            if (-not $json.modules.$module) { throw "Missing module $module" }
+          }
 
       - name: Validate output file
         shell: pwsh

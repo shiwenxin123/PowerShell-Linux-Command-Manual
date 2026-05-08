@@ -5,9 +5,9 @@
 ## 近期
 
 - 维护主手册收口后的专题体系: 新增内容优先进入专题页、路线页和案例库。
-- 扩展巡检脚本模块: package、security、container、log。
-- 继续扩展真实故障案例库，增加网关超时、云负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽和 Prometheus 告警规则误报。
-- 将离线 PDF 生成流程接入 CI 手动触发任务。
+- 继续打磨巡检脚本 package、security、container、log 模块的平台兼容样例。
+- 继续扩展真实故障案例库，增加 Kubernetes NetworkPolicy、Elasticsearch 磁盘水位、Loki 查询为空等案例。
+- 打磨 PDF Export 手动工作流，并考虑和 Release 附件联动。
 
 ## 中期
 

@@ -59,7 +59,7 @@
 - [常见报错排查](docs/troubleshooting/COMMON-ERRORS.md)
 - [案例写作模板](docs/cases/CASE-TEMPLATE.md)
 
-后续新增案例建议优先覆盖: 网关超时、云负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报。
+后续新增案例建议优先覆盖: Kubernetes NetworkPolicy 拦截、Elasticsearch 磁盘水位、Loki 日志查询为空、国产 Linux 真实版本差异等场景。
 
 ## 巡检脚本
 

@@ -7,6 +7,10 @@
 - 主手册完成最终收口，根目录主手册改为总导航、历史说明和专题入口。
 - 主手册收口第 1 批，补充 Kylin/UOS 厂商命令、Linux 性能调优、企业日志配置和跨平台工具分类。
 - 巡检脚本工具化，支持统一 JSON 输出、明确退出码、示例报告和 JSON Schema。
+- 巡检脚本新增 package、security、container、log 模块，并同步 Schema、示例报告和 CI 测试。
+- 新增网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。
+- 新增 PDF Export 手动工作流，支持导出重点页面 PDF artifact。
+- 新增 v2.16.0 技术文章草稿，方便发布到 CSDN 和微信公众号。
 - 增加巡检脚本 GitHub Actions 功能测试，覆盖 Linux/Windows JSON 输出、输出文件和参数错误退出码。
 - 新增 FAQ、README 学习路线、案例库按症状查找索引。
 - 新增 Kubernetes DNS 异常、Prometheus Target Down、Grafana 无数据排查案例。

@@ -9,7 +9,7 @@ ERRORS_COUNT=0
 
 usage() {
   cat <<'EOF'
-Usage: bash scripts/linux-health-check.sh [--module all|system|disk|network|service|process] [--format text|markdown|json] [--output reports/linux.md]
+Usage: bash scripts/linux-health-check.sh [--module all|system|disk|network|service|process|package|security|container|log] [--format text|markdown|json] [--output reports/linux.md]
 
 Examples:
   bash scripts/linux-health-check.sh
@@ -58,7 +58,7 @@ while [ "$#" -gt 0 ]; do
 done
 
 case "$MODULE" in
-  all|system|disk|network|service|process) ;;
+  all|system|disk|network|service|process|package|security|container|log) ;;
   *) fail_param "Unsupported module: $MODULE" ;;
 esac
 
@@ -257,6 +257,137 @@ collect_service_json() {
   set_module_json service "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
 }
 
+collect_package_json() {
+  MODULE_WARNINGS=0
+  MODULE_ERRORS=0
+  local commands=""
+  local warnings=""
+
+  run_json_command package_managers sh -c 'for c in apt apt-get dnf yum zypper pacman rpm dpkg; do if command -v "$c" >/dev/null 2>&1; then printf "== %s ==\n" "$c"; "$c" --version 2>&1 | head -n 3; fi; done'
+  commands="$COMMAND_JSON"
+
+  if command -v apt-cache >/dev/null 2>&1; then
+    run_json_command apt_policy apt-cache policy
+    commands="$commands,$COMMAND_JSON"
+  elif command -v dnf >/dev/null 2>&1; then
+    run_json_command dnf_repolist dnf repolist
+    commands="$commands,$COMMAND_JSON"
+  elif command -v yum >/dev/null 2>&1; then
+    run_json_command yum_repolist yum repolist
+    commands="$commands,$COMMAND_JSON"
+  elif command -v zypper >/dev/null 2>&1; then
+    run_json_command zypper_repos zypper repos
+    commands="$commands,$COMMAND_JSON"
+  else
+    missing_command_json package-manager
+    warnings="$WARNING_JSON"
+  fi
+
+  set_module_json package "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
+}
+
+collect_security_json() {
+  MODULE_WARNINGS=0
+  MODULE_ERRORS=0
+  local commands=""
+  local warnings=""
+
+  if [ -r /etc/ssh/sshd_config ]; then
+    run_json_command sshd_config sh -c "grep -E '^(PermitRootLogin|PasswordAuthentication|PubkeyAuthentication|Port)\\b' /etc/ssh/sshd_config || true"
+    commands="$COMMAND_JSON"
+  else
+    missing_command_json /etc/ssh/sshd_config
+    warnings="$WARNING_JSON"
+  fi
+
+  if command -v sudo >/dev/null 2>&1; then
+    run_json_command sudo_version sudo -V
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  fi
+
+  if command -v firewall-cmd >/dev/null 2>&1; then
+    run_json_command firewall_state firewall-cmd --state
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  elif command -v ufw >/dev/null 2>&1; then
+    run_json_command firewall_state ufw status
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  else
+    missing_command_json firewall-cmd
+    if [ -n "$warnings" ]; then warnings="$warnings,$WARNING_JSON"; else warnings="$WARNING_JSON"; fi
+  fi
+
+  if command -v getenforce >/dev/null 2>&1; then
+    run_json_command selinux getenforce
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  elif command -v aa-status >/dev/null 2>&1; then
+    run_json_command apparmor aa-status
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  fi
+
+  set_module_json security "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
+}
+
+collect_container_json() {
+  MODULE_WARNINGS=0
+  MODULE_ERRORS=0
+  local commands=""
+  local warnings=""
+
+  if command -v docker >/dev/null 2>&1; then
+    run_json_command docker_version docker version
+    commands="$COMMAND_JSON"
+    run_json_command docker_ps docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+    commands="$commands,$COMMAND_JSON"
+  else
+    missing_command_json docker
+    warnings="$WARNING_JSON"
+  fi
+
+  if command -v ctr >/dev/null 2>&1; then
+    run_json_command containerd_version ctr version
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  fi
+
+  if command -v kubectl >/dev/null 2>&1; then
+    run_json_command kubectl_nodes kubectl get nodes -o wide
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  else
+    missing_command_json kubectl
+    if [ -n "$warnings" ]; then warnings="$warnings,$WARNING_JSON"; else warnings="$WARNING_JSON"; fi
+  fi
+
+  set_module_json container "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
+}
+
+collect_log_json() {
+  MODULE_WARNINGS=0
+  MODULE_ERRORS=0
+  local commands=""
+  local warnings=""
+
+  if command -v journalctl >/dev/null 2>&1; then
+    run_json_command journal_errors journalctl -p 3 -n 50 --no-pager
+    commands="$COMMAND_JSON"
+    run_json_command journal_disk_usage journalctl --disk-usage
+    commands="$commands,$COMMAND_JSON"
+  else
+    missing_command_json journalctl
+    warnings="$WARNING_JSON"
+  fi
+
+  if command -v dmesg >/dev/null 2>&1; then
+    run_json_command kernel_warnings dmesg -T --level=err,warn
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  fi
+
+  if [ -d /var/log ]; then
+    run_json_command var_log_usage sh -c "du -sh /var/log 2>/dev/null || true"
+    if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+  fi
+
+  set_module_json log "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
+}
+
 json_report() {
   local timestamp
   local hostname_value
@@ -265,7 +396,7 @@ json_report() {
   hostname_value=$(hostname 2>/dev/null || echo "unknown")
   os_value=$(uname -s 2>/dev/null || echo "Linux")
 
-  local system_json disk_json network_json service_json process_json
+  local system_json disk_json network_json service_json process_json package_json security_json container_json log_json
   if should_run system; then collect_system_json; else skipped_json_module system; fi
   system_json="$MODULE_JSON"
   if should_run disk; then collect_disk_json; else skipped_json_module disk; fi
@@ -276,6 +407,14 @@ json_report() {
   service_json="$MODULE_JSON"
   if should_run process; then collect_process_json; else skipped_json_module process; fi
   process_json="$MODULE_JSON"
+  if should_run package; then collect_package_json; else skipped_json_module package; fi
+  package_json="$MODULE_JSON"
+  if should_run security; then collect_security_json; else skipped_json_module security; fi
+  security_json="$MODULE_JSON"
+  if should_run container; then collect_container_json; else skipped_json_module container; fi
+  container_json="$MODULE_JSON"
+  if should_run log; then collect_log_json; else skipped_json_module log; fi
+  log_json="$MODULE_JSON"
 
   local status="ok"
   if [ "$ERRORS_COUNT" -gt 0 ]; then
@@ -290,9 +429,9 @@ json_report() {
   timestamp_escaped=$(json_escape "$timestamp")
   module_escaped=$(json_escape "$MODULE")
   status_escaped=$(json_escape "$status")
-  REPORT=$(printf '{"metadata":{"os":"%s","hostname":"%s","timestamp":"%s","module":"%s","format":"json","script":"linux-health-check.sh"},"modules":{%s,%s,%s,%s,%s},"summary":{"status":"%s","warnings_count":%s,"errors_count":%s},"errors":[]}\n' \
+  REPORT=$(printf '{"metadata":{"os":"%s","hostname":"%s","timestamp":"%s","module":"%s","format":"json","script":"linux-health-check.sh"},"modules":{%s,%s,%s,%s,%s,%s,%s,%s,%s},"summary":{"status":"%s","warnings_count":%s,"errors_count":%s},"errors":[]}\n' \
     "$os_escaped" "$hostname_escaped" "$timestamp_escaped" "$module_escaped" \
-    "$system_json" "$disk_json" "$network_json" "$service_json" "$process_json" \
+    "$system_json" "$disk_json" "$network_json" "$service_json" "$process_json" "$package_json" "$security_json" "$container_json" "$log_json" \
     "$status_escaped" "$WARNINGS_COUNT" "$ERRORS_COUNT")
 }
 
@@ -360,6 +499,62 @@ text_or_markdown_report() {
     else
       echo "systemctl not available"
     fi
+    if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
+  fi
+
+  if should_run package; then
+    section "Package"
+    if [ "$FORMAT" = "markdown" ]; then echo '```text'; fi
+    run_block sh -c 'for c in apt apt-get dnf yum zypper pacman rpm dpkg; do if command -v "$c" >/dev/null 2>&1; then printf "== %s ==\n" "$c"; "$c" --version 2>&1 | head -n 3; fi; done'
+    if command -v apt-cache >/dev/null 2>&1; then
+      run_block apt-cache policy
+    elif command -v dnf >/dev/null 2>&1; then
+      run_block dnf repolist
+    elif command -v yum >/dev/null 2>&1; then
+      run_block yum repolist
+    elif command -v zypper >/dev/null 2>&1; then
+      run_block zypper repos
+    else
+      echo "package manager not detected"
+    fi
+    if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
+  fi
+
+  if should_run security; then
+    section "Security"
+    if [ "$FORMAT" = "markdown" ]; then echo '```text'; fi
+    if [ -r /etc/ssh/sshd_config ]; then run_block sh -c "grep -E '^(PermitRootLogin|PasswordAuthentication|PubkeyAuthentication|Port)\\b' /etc/ssh/sshd_config || true"; fi
+    if command -v sudo >/dev/null 2>&1; then run_block sudo -V; fi
+    if command -v firewall-cmd >/dev/null 2>&1; then run_block firewall-cmd --state; elif command -v ufw >/dev/null 2>&1; then run_block ufw status; fi
+    if command -v getenforce >/dev/null 2>&1; then run_block getenforce; elif command -v aa-status >/dev/null 2>&1; then run_block aa-status; fi
+    if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
+  fi
+
+  if should_run container; then
+    section "Container"
+    if [ "$FORMAT" = "markdown" ]; then echo '```text'; fi
+    if command -v docker >/dev/null 2>&1; then
+      run_block docker version
+      run_block docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+    else
+      echo "docker not available"
+    fi
+    if command -v ctr >/dev/null 2>&1; then run_block ctr version; fi
+    if command -v kubectl >/dev/null 2>&1; then run_block kubectl get nodes -o wide; else echo "kubectl not available"; fi
+    if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
+  fi
+
+  if should_run log; then
+    section "Log"
+    if [ "$FORMAT" = "markdown" ]; then echo '```text'; fi
+    if command -v journalctl >/dev/null 2>&1; then
+      run_block journalctl -p 3 -n 50 --no-pager
+      run_block journalctl --disk-usage
+    else
+      echo "journalctl not available"
+    fi
+    if command -v dmesg >/dev/null 2>&1; then run_block dmesg -T --level=err,warn; fi
+    if [ -d /var/log ]; then run_block sh -c "du -sh /var/log 2>/dev/null || true"; fi
     if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
   fi
 

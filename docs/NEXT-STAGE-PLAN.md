@@ -34,15 +34,14 @@
 - 示例报告。
 - GitHub Actions 基础功能测试，覆盖 JSON 输出、输出文件和参数错误退出码。
 - JSON Schema 文件，便于自动化平台对接和字段校验。
+- `package`、`security`、`container`、`log` 模块。
+- 新增模块已同步 JSON Schema、示例报告、文档说明和 GitHub Actions 基础测试。
 
 建议继续补充:
 
-| 模块 | 目标 |
-| --- | --- |
-| `package` | 收集包管理器、软件源、关键包版本和更新状态 |
-| `security` | 收集 SSH、防火墙、SELinux/AppArmor、sudo 和审计基础状态 |
-| `container` | 收集 Docker、containerd、Kubernetes 节点和 Pod 基础状态 |
-| `log` | 收集 journal 占用、关键系统日志和最近错误摘要 |
+- 更多发行版和 Windows Server 版本样例。
+- containerd-only、无 systemd、最小化镜像等环境差异说明。
+- 新模块字段稳定性和平台兼容测试。
 
 ## 第三优先级: 补真实生产案例
 
@@ -53,14 +52,13 @@
 - 新增 Grafana 无数据排查。
 - 统一故障案例模板，补齐“常见原因”和“相关专题”结构。
 - 新增 systemd 服务启动失败、Linux Permission denied、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满排查案例。
+- 新增网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。
 
 建议新增:
 
-- 网关超时。
-- 云负载均衡健康检查失败。
-- 消息队列连接失败。
-- 数据库连接池耗尽。
-- Prometheus 告警规则误报。
+- Kubernetes NetworkPolicy 拦截。
+- Elasticsearch 磁盘水位。
+- Loki 日志查询为空。
 
 ## 第四优先级: 文档站体验
 
@@ -73,10 +71,10 @@
 - 新增案例和专题页之间的反向链接。
 - 新增新手路线、运维值班路线、国产 Linux 路线和 Kubernetes 排障路线独立入口。
 - 新增离线 PDF 发布流程。
+- 新增 `PDF Export` 手动触发工作流，导出重点页面 PDF artifact。
 
 建议优化:
 
-- 将离线 PDF 生成流程接入 CI 手动触发任务。
 - 继续检查导航在移动端和宽屏下的可读性。
 - 让路线页持续沉淀“先看什么、再做什么、遇到问题去哪查”。
 
@@ -91,6 +89,7 @@
 - 发布 GitHub Release。
 - 将文档站地址填入 GitHub About。
 - 新增开源运营手册，沉淀 CSDN、微信公众号、Issue 和 Release 运营动作。
+- 新增 v2.16.0 技术文章草稿，并更新 Good First Issues 候选池。
 
 建议:
 

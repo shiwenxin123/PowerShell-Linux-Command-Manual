@@ -20,6 +20,10 @@ Linux 和 Windows 巡检脚本支持文本、Markdown 和 JSON 输出。JSON 输
 | `network` | 监听端口和网络路由 |
 | `service` | 异常服务或未运行服务 |
 | `process` | CPU 和内存占用较高的进程 |
+| `package` | 包管理器、软件源、已安装包或仓库状态 |
+| `security` | SSH、防火墙、SELinux/AppArmor、Defender 等基础安全状态 |
+| `container` | Docker、containerd、Kubernetes 客户端或节点基础状态 |
+| `log` | 系统错误日志、journal 占用、Windows 事件日志摘要 |
 
 ## Linux 示例
 
@@ -29,6 +33,12 @@ bash scripts/linux-health-check.sh
 
 # 只检查磁盘
 bash scripts/linux-health-check.sh --module disk
+
+# 只检查包管理器和软件源
+bash scripts/linux-health-check.sh --module package
+
+# 只检查系统日志
+bash scripts/linux-health-check.sh --module log
 
 # Markdown 报告
 bash scripts/linux-health-check.sh --format markdown --output reports/linux-health-check.md
@@ -45,6 +55,12 @@ bash scripts/linux-health-check.sh --format json --output reports/linux-health-c
 
 # 只检查网络
 .\scripts\windows-health-check.ps1 -Module network
+
+# 只检查安全状态
+.\scripts\windows-health-check.ps1 -Module security
+
+# 只检查容器工具
+.\scripts\windows-health-check.ps1 -Module container
 
 # Markdown 报告
 .\scripts\windows-health-check.ps1 -Format markdown -OutputFile reports\windows-health-check.md
@@ -69,6 +85,12 @@ bash scripts/linux-health-check.sh --format json --output reports/linux-health-c
   },
   "modules": {
     "system": {
+      "status": "ok",
+      "commands": [],
+      "warnings": [],
+      "errors": []
+    },
+    "package": {
       "status": "ok",
       "commands": [],
       "warnings": [],

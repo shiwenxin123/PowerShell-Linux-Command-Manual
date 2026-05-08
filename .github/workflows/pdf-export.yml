@@ -1,0 +1,80 @@
+name: PDF Export
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version label used in PDF filenames"
+        required: false
+        default: "v2.16.0"
+
+permissions:
+  contents: read
+
+jobs:
+  export-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install MkDocs
+        run: pip install -r requirements.txt
+
+      - name: Build site
+        run: mkdocs build --strict
+
+      - name: Install Playwright
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Export selected pages to PDF
+        env:
+          PDF_VERSION: ${{ inputs.version }}
+        run: |
+          mkdir -p pdf
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const path = require('path');
+          const version = process.env.PDF_VERSION || 'v2.16.0';
+          const pages = [
+            ['index', 'site/index.html'],
+            ['command-cheatsheet', 'site/COMMAND-CHEATSHEET/index.html'],
+            ['oncall-route', 'site/routes/OPS-ONCALL/index.html'],
+            ['health-check-scripts', 'site/manual/automation/HEALTH-CHECK-SCRIPTS/index.html'],
+            ['case-library', 'site/cases/index.html']
+          ];
+
+          (async () => {
+            const browser = await chromium.launch();
+            const page = await browser.newPage({ viewport: { width: 1280, height: 1600 } });
+            for (const [name, file] of pages) {
+              const target = 'file://' + path.resolve(file);
+              await page.goto(target, { waitUntil: 'networkidle' });
+              await page.pdf({
+                path: `pdf/${version}-${name}.pdf`,
+                format: 'A4',
+                printBackground: true,
+                margin: { top: '12mm', right: '10mm', bottom: '12mm', left: '10mm' }
+              });
+            }
+            await browser.close();
+          })();
+          NODE
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-pdf-${{ inputs.version }}
+          path: pdf/*.pdf

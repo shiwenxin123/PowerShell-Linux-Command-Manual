@@ -60,7 +60,7 @@
 | Linux 线上排障 | [Linux 故障应急排查清单](troubleshooting/LINUX-INCIDENT-CHECKLIST.md) |
 | 常见报错 | [常见报错排查](troubleshooting/COMMON-ERRORS.md) |
 | 真实故障案例 | [真实故障案例库](cases/README.md) |
-| 监控告警故障 | [Prometheus Target Down](cases/PROMETHEUS-TARGET-DOWN.md) / [Grafana 无数据](cases/GRAFANA-NO-DATA.md) |
+| 监控告警故障 | [Prometheus 告警规则误报](cases/PROMETHEUS-ALERT-FALSE-POSITIVE.md) / [Prometheus Target Down](cases/PROMETHEUS-TARGET-DOWN.md) / [Grafana 无数据](cases/GRAFANA-NO-DATA.md) |
 | Kubernetes DNS | [Kubernetes DNS 异常排查](cases/K8S-DNS-FAILED.md) |
 | Docker/Kubernetes | [Docker 与 Kubernetes 运维速查](containers/DOCKER-KUBERNETES-CHEATSHEET.md) |
 | 国产 Linux 运维 | [银河麒麟与统信 UOS 常用命令](domestic-linux/KYLIN-UOS-COMMANDS.md) |
@@ -69,6 +69,7 @@
 | 命令安全 | [命令风险等级说明](security/RISK-LEVELS.md) |
 | GitHub 项目优化 | [GitHub 热度优化清单](GITHUB-GROWTH-CHECKLIST.md) |
 | 开源运营 | [开源运营手册](OPEN-SOURCE-OPERATIONS.md) |
+| 技术文章草稿 | [v2.16.0 技术文章草稿](articles/V2.16.0-TECH-ARTICLE.md) |
 | 项目审查 | [项目整体审查报告](PROJECT-AUDIT.md) |
 | 新手任务 | [Good First Issues 清单](GOOD-FIRST-ISSUES.md) |
 | 项目维护 | [维护者指南](MAINTAINER-GUIDE.md) |
@@ -105,7 +106,10 @@
 | --- | --- |
 | 查端口和连接 | [Linux 网络排查](manual/linux/NETWORK.md) |
 | 找大文件和磁盘占用 | [Linux 磁盘、挂载与 LVM](manual/linux/DISK-LVM.md) |
+| 排查网关超时 | [网关超时](cases/GATEWAY-TIMEOUT.md) / [负载均衡健康检查失败](cases/LB-HEALTH-CHECK-FAILED.md) |
 | 排查 DNS | [DNS 解析失败](cases/DNS-RESOLUTION-FAILED.md) / [Kubernetes DNS 异常](cases/K8S-DNS-FAILED.md) |
+| 排查数据库连接 | [数据库连接池耗尽](cases/DB-CONNECTION-POOL-EXHAUSTED.md) / [MySQL 连接数打满](cases/MYSQL-TOO-MANY-CONNECTIONS.md) |
+| 排查消息队列 | [消息队列连接失败](cases/MESSAGE-QUEUE-CONNECTION-FAILED.md) |
 | 分析日志 | [日志轮转、审计与系统日志](manual/security/LOGGING-AUDIT.md) |
 | 看 Prometheus/Grafana | [PromQL、LogQL 与告警规则](manual/observability/PROMQL-LOGQL-ALERTS.md) |
 | 排查容器和 Kubernetes | [Docker 与 Kubernetes 生产级命令](manual/kubernetes/DOCKER-K8S-PRODUCTION.md) |

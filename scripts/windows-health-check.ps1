@@ -7,7 +7,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$validModules = @("all", "system", "disk", "network", "service", "process")
+$validModules = @("all", "system", "disk", "network", "service", "process", "package", "security", "container", "log")
 $validFormats = @("text", "markdown", "json")
 
 if ($validModules -notcontains $Module) {
@@ -118,6 +118,18 @@ function New-SkippedModule {
     }
 }
 
+function New-ModuleWarning {
+    param(
+        [string]$Name,
+        [string]$Message
+    )
+
+    [pscustomobject]@{
+        name = $Name
+        message = $Message
+    }
+}
+
 function Add-TextSection {
     param(
         [string]$Title,
@@ -180,7 +192,67 @@ function Get-NetworkModule {
     New-ModuleResult -Name "network" -Commands $commands
 }
 
-$moduleOrder = @("system", "disk", "network", "service", "process")
+function Get-PackageModule {
+    $commands = @()
+    $commands += Invoke-HealthCommand -Name "installed_packages" -Command { Get-Package | Select-Object -First 30 | Format-Table -AutoSize }
+    $commands += Invoke-HealthCommand -Name "powershell_repositories" -Command { Get-PSRepository | Format-Table -AutoSize }
+
+    if (Get-Command winget -ErrorAction SilentlyContinue) {
+        $commands += Invoke-HealthCommand -Name "winget_version" -Command { winget --version }
+    }
+    else {
+        $warnings = @(New-ModuleWarning "winget" "Command not available: winget")
+        return New-ModuleResult -Name "package" -Commands $commands -Warnings $warnings
+    }
+
+    New-ModuleResult -Name "package" -Commands $commands
+}
+
+function Get-SecurityModule {
+    $commands = @()
+    $commands += Invoke-HealthCommand -Name "firewall_profiles" -Command { Get-NetFirewallProfile | Format-Table -AutoSize }
+
+    if (Get-Command Get-MpComputerStatus -ErrorAction SilentlyContinue) {
+        $commands += Invoke-HealthCommand -Name "defender_status" -Command { Get-MpComputerStatus | Format-List AMServiceEnabled, AntivirusEnabled, RealTimeProtectionEnabled }
+    }
+    else {
+        $warnings = @(New-ModuleWarning "Get-MpComputerStatus" "Command not available: Get-MpComputerStatus")
+        return New-ModuleResult -Name "security" -Commands $commands -Warnings $warnings
+    }
+
+    New-ModuleResult -Name "security" -Commands $commands
+}
+
+function Get-ContainerModule {
+    $commands = @()
+    $warnings = @()
+
+    if (Get-Command docker -ErrorAction SilentlyContinue) {
+        $commands += Invoke-HealthCommand -Name "docker_version" -Command { docker version }
+        $commands += Invoke-HealthCommand -Name "docker_ps" -Command { docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}" }
+    }
+    else {
+        $warnings += New-ModuleWarning "docker" "Command not available: docker"
+    }
+
+    if (Get-Command kubectl -ErrorAction SilentlyContinue) {
+        $commands += Invoke-HealthCommand -Name "kubectl_client" -Command { kubectl version --client=true }
+    }
+    else {
+        $warnings += New-ModuleWarning "kubectl" "Command not available: kubectl"
+    }
+
+    New-ModuleResult -Name "container" -Commands $commands -Warnings $warnings
+}
+
+function Get-LogModule {
+    $commands = @()
+    $commands += Invoke-HealthCommand -Name "system_errors" -Command { Get-WinEvent -FilterHashtable @{ LogName = "System"; Level = 2 } -MaxEvents 20 | Format-Table -AutoSize }
+    $commands += Invoke-HealthCommand -Name "application_errors" -Command { Get-WinEvent -FilterHashtable @{ LogName = "Application"; Level = 2 } -MaxEvents 20 | Format-Table -AutoSize }
+    New-ModuleResult -Name "log" -Commands $commands
+}
+
+$moduleOrder = @("system", "disk", "network", "service", "process", "package", "security", "container", "log")
 foreach ($moduleName in $moduleOrder) {
     if (-not (Should-Run $moduleName)) {
         $script:ReportModules[$moduleName] = New-SkippedModule
@@ -193,6 +265,10 @@ foreach ($moduleName in $moduleOrder) {
         "network" { $script:ReportModules[$moduleName] = Get-NetworkModule }
         "service" { $script:ReportModules[$moduleName] = Get-ServiceModule }
         "process" { $script:ReportModules[$moduleName] = Get-ProcessModule }
+        "package" { $script:ReportModules[$moduleName] = Get-PackageModule }
+        "security" { $script:ReportModules[$moduleName] = Get-SecurityModule }
+        "container" { $script:ReportModules[$moduleName] = Get-ContainerModule }
+        "log" { $script:ReportModules[$moduleName] = Get-LogModule }
     }
 }
 

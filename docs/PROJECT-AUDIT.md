@@ -43,15 +43,13 @@ README 的快速入口已精简为主入口，完整导航交给文档站首页�
 
 ### 4. 故障案例还可以继续补真实业务场景
 
-当前案例已经覆盖基础运维问题，并补充了 Nginx 502/504、MySQL、Redis、Java OOM、Kubernetes ImagePullBackOff、Docker Compose、TLS 证书链不完整、Kubernetes DNS、systemd 服务启动失败、Linux 权限、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满等应用层和中间件案例。
+当前案例已经覆盖基础运维问题，并补充了 Nginx 502/504、MySQL、Redis、Java OOM、Kubernetes ImagePullBackOff、Docker Compose、TLS 证书链不完整、Kubernetes DNS、systemd 服务启动失败、Linux 权限、Docker 镜像拉取失败、Kubernetes Node NotReady、MySQL 连接数打满、网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报等应用层和中间件案例。
 
 建议继续补充:
 
-- 网关超时
-- 云负载均衡健康检查失败
-- 消息队列连接失败
-- 数据库连接池耗尽
-- Prometheus 告警规则误报
+- Kubernetes NetworkPolicy 拦截
+- Elasticsearch 磁盘水位
+- Loki 日志查询为空
 
 ### 5. 国产 Linux 内容还可补真实版本案例
 
@@ -66,20 +64,20 @@ README 的快速入口已精简为主入口，完整导航交给文档站首页�
 
 ### 6. 巡检脚本已具备工具化基础
 
-当前脚本已经支持按模块执行，并支持 text、Markdown、JSON 输出，Linux/Windows JSON 使用统一结构，已有 JSON Schema、示例报告和 GitHub Actions 基础功能测试。
+当前脚本已经支持按模块执行，并支持 text、Markdown、JSON 输出，Linux/Windows JSON 使用统一结构，已有 JSON Schema、示例报告和 GitHub Actions 基础功能测试。`package`、`security`、`container`、`log` 模块已接入。
 
 建议:
 
-- 后续扩展 package、security、container、log 等模块。
-- 为新增模块同步更新 JSON Schema、示例报告和文档说明。
+- 补充更多发行版和 Windows Server 版本样例。
+- 补充 containerd-only、最小化系统等环境兼容说明。
 - 继续补充针对新模块的脚本测试样例。
 
 ## 下一步优先级
 
-1. 扩展巡检脚本 package、security、container、log 模块，并同步 Schema、示例报告和测试。
-2. 补网关超时、云负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警规则误报案例。
-3. 补充国产 Linux 真实版本案例、离线源目录示例和架构兼容案例。
-4. 将离线 PDF 生成流程接入 CI 手动触发任务。
+1. 补充国产 Linux 真实版本案例、离线源目录示例和架构兼容案例。
+2. 补 Kubernetes NetworkPolicy、Elasticsearch 磁盘水位、Loki 查询为空等案例。
+3. 补巡检脚本新增模块的多平台样例和兼容说明。
+4. 打磨 PDF Export 工作流，并考虑和 Release 附件联动。
 5. 持续维护 Release、技术文章和 good first issue 任务池。
 
 ## 已在本次审查中修复

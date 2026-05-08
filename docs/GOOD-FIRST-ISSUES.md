@@ -6,29 +6,26 @@
 
 | Issue 标题 | 建议标签 | 建议修改位置 |
 | --- | --- | --- |
-| 补充网关超时排查案例 | `documentation`, `troubleshooting`, `good first issue` | `docs/cases/` |
-| 补充云负载均衡健康检查失败案例 | `documentation`, `cloud`, `good first issue` | `docs/cases/` |
 | 补充 Kylin/UOS 不同版本命令差异 | `documentation`, `kylin`, `uos`, `good first issue` | `docs/domestic-linux/` |
 | 补充国产 Linux 离线源目录示例 | `documentation`, `kylin`, `uos`, `good first issue` | `docs/domestic-linux/` |
 | 给路线页补充初学者常见误区 | `documentation`, `good first issue` | `docs/routes/` |
+| 补充云厂商负载均衡差异说明 | `documentation`, `cloud`, `good first issue` | `docs/manual/cloud/` |
 
 ## 脚本类
 
 | Issue 标题 | 建议标签 | 建议修改位置 |
 | --- | --- | --- |
-| 为巡检脚本增加 package 模块 | `script`, `linux`, `windows`, `help wanted` | `scripts/`、`docs/manual/automation/` |
-| 为巡检脚本增加 security 模块 | `script`, `security`, `help wanted` | `scripts/`、`docs/manual/automation/` |
-| 为巡检脚本增加 container 模块 | `script`, `container`, `help wanted` | `scripts/`、`docs/manual/automation/` |
-| 为巡检脚本增加 log 模块 | `script`, `linux`, `windows`, `help wanted` | `scripts/`、`docs/manual/automation/` |
-| 为巡检脚本新增模块补示例报告 | `documentation`, `script`, `good first issue` | `docs/examples/`、`docs/manual/automation/` |
+| 为巡检脚本新增模块补更多平台样例 | `documentation`, `script`, `good first issue` | `docs/examples/`、`docs/manual/automation/` |
+| 为巡检脚本补 containerd-only 环境说明 | `script`, `container`, `help wanted` | `scripts/`、`docs/manual/automation/` |
+| 为巡检脚本补 Windows Server 版本差异说明 | `documentation`, `windows`, `good first issue` | `docs/manual/automation/` |
 
 ## 生产案例类
 
 | Issue 标题 | 建议标签 | 建议修改位置 |
 | --- | --- | --- |
-| 补充消息队列连接失败排查案例 | `documentation`, `middleware`, `help wanted` | `docs/cases/` |
-| 补充数据库连接池耗尽排查案例 | `documentation`, `database`, `help wanted` | `docs/cases/` |
-| 补充 Prometheus 告警规则误报案例 | `documentation`, `observability`, `good first issue` | `docs/cases/` |
+| 补充 Kubernetes NetworkPolicy 拦截案例 | `documentation`, `kubernetes`, `help wanted` | `docs/cases/` |
+| 补充 Elasticsearch 磁盘水位案例 | `documentation`, `middleware`, `help wanted` | `docs/cases/` |
+| 补充 Loki 日志查询为空案例 | `documentation`, `observability`, `good first issue` | `docs/cases/` |
 
 ## Issue 描述模板
 

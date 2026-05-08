@@ -40,14 +40,11 @@
 
 | 标题 | 标签 |
 | --- | --- |
-| 补充网关超时排查案例 | `documentation`, `troubleshooting`, `good first issue` |
-| 补充消息队列连接失败案例 | `documentation`, `middleware`, `help wanted` |
-| 补充数据库连接池耗尽案例 | `documentation`, `database`, `help wanted` |
-| 补充云负载均衡健康检查失败案例 | `documentation`, `cloud`, `good first issue` |
-| 补充 Prometheus 告警规则误报案例 | `documentation`, `observability`, `good first issue` |
-| 为巡检脚本增加 package 模块 | `script`, `linux`, `windows`, `help wanted` |
-| 为巡检脚本增加 security 模块 | `script`, `security`, `help wanted` |
-| 为巡检脚本增加 container 模块 | `script`, `container`, `help wanted` |
+| 补充 Kubernetes NetworkPolicy 拦截案例 | `documentation`, `kubernetes`, `help wanted` |
+| 补充 Elasticsearch 磁盘水位案例 | `documentation`, `middleware`, `help wanted` |
+| 补充 Loki 日志查询为空案例 | `documentation`, `observability`, `good first issue` |
+| 为巡检脚本新增模块补更多平台样例 | `documentation`, `script`, `good first issue` |
+| 为巡检脚本补 containerd-only 环境说明 | `script`, `container`, `help wanted` |
 | 补充 Kylin/UOS 不同版本命令差异 | `documentation`, `kylin`, `uos`, `good first issue` |
 | 补充国产 Linux 离线源目录示例 | `documentation`, `kylin`, `uos`, `good first issue` |
 

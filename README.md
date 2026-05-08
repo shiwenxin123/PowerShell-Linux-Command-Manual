@@ -149,6 +149,10 @@ Set-Location PowerShell-Linux-Command-Manual
 - [x] PowerShell 高级、Linux 权限、Shell 脚本、跨平台脚本、Keepalived 章节迁移
 - [x] 下一阶段优化计划
 - [x] 巡检脚本 JSON 输出、统一结构和明确退出码
+- [x] 巡检脚本 package、security、container、log 模块
+- [x] 网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警误报案例
+- [x] PDF Export 手动发布工作流
+- [x] v2.16.0 技术文章草稿
 - [x] 主手册正文迁移到专题页、路线页和案例库
 
 ## 安全提醒

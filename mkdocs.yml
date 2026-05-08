@@ -62,9 +62,13 @@ nav:
       - systemd 服务启动失败: cases/SYSTEMD-SERVICE-FAILED.md
       - Nginx 启动失败: cases/NGINX-START-FAILED.md
       - Nginx 502/504: cases/NGINX-502-504.md
+      - 网关超时: cases/GATEWAY-TIMEOUT.md
+      - 负载均衡健康检查失败: cases/LB-HEALTH-CHECK-FAILED.md
       - MySQL 启动失败: cases/MYSQL-START-FAILED.md
       - MySQL 连接数打满: cases/MYSQL-TOO-MANY-CONNECTIONS.md
+      - 数据库连接池耗尽: cases/DB-CONNECTION-POOL-EXHAUSTED.md
       - Redis 连接失败: cases/REDIS-CONNECTION-FAILED.md
+      - 消息队列连接失败: cases/MESSAGE-QUEUE-CONNECTION-FAILED.md
       - Java 服务 OOM: cases/JAVA-OOM.md
       - DNS 解析失败: cases/DNS-RESOLUTION-FAILED.md
       - 证书过期: cases/CERTIFICATE-EXPIRED.md
@@ -77,6 +81,7 @@ nav:
       - Kubernetes Node NotReady: cases/K8S-NODE-NOTREADY.md
       - Kubernetes DNS 异常: cases/K8S-DNS-FAILED.md
       - Prometheus Target Down: cases/PROMETHEUS-TARGET-DOWN.md
+      - Prometheus 告警规则误报: cases/PROMETHEUS-ALERT-FALSE-POSITIVE.md
       - Grafana 无数据: cases/GRAFANA-NO-DATA.md
   - 容器与云:
       - Kubernetes 排障路线: routes/KUBERNETES-TROUBLESHOOTING.md
@@ -109,6 +114,7 @@ nav:
       - 项目审查报告: PROJECT-AUDIT.md
       - Good First Issues: GOOD-FIRST-ISSUES.md
       - 开源运营手册: OPEN-SOURCE-OPERATIONS.md
+      - v2.16.0 技术文章草稿: articles/V2.16.0-TECH-ARTICLE.md
       - 维护者指南: MAINTAINER-GUIDE.md
       - Release 检查清单: RELEASE-CHECKLIST.md
       - 离线 PDF 发布流程: PDF-EXPORT.md
