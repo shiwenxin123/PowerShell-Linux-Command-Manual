@@ -1,15 +1,15 @@
 # Windows PowerShell 与 Linux 常用命令手册
 
-[![Docs Site](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/docs-site.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/docs-site.yml)
-[![Markdown Check](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/markdown-check.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/markdown-check.yml)
-[![Script Quality](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/script-quality.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/script-quality.yml)
-[![Secret Scan](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-/actions/workflows/secret-scan.yml)
+[![Docs Site](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/docs-site.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/docs-site.yml)
+[![Markdown Check](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/markdown-check.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/markdown-check.yml)
+[![Script Quality](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/script-quality.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/script-quality.yml)
+[![Secret Scan](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/actions/workflows/secret-scan.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 一份面向桌面用户、运维工程师、国产 Linux 使用者和跨平台脚本学习者的命令速查手册。项目覆盖 Windows PowerShell、Linux、银河麒麟、统信 UOS、安全加固和常见自动化场景，适合日常查阅、教学和内部培训。
 
-> 在线文档: [https://shiwenxin123.github.io/PowerShell-Linux-/](https://shiwenxin123.github.io/PowerShell-Linux-/)
-> 当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-/releases/tag/v2.16.0)
+> 在线文档: [https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/](https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/)
+> 当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/releases/tag/v2.16.0)
 > 历史主手册: [Windows-PowerShell-Linux-Command-Manual.md](Windows-PowerShell-Linux-Command-Manual.md)
 
 ## 10 秒了解项目
@@ -37,20 +37,20 @@
 克隆项目后可以直接查阅 Markdown，也可以运行巡检脚本生成报告。
 
 ```bash
-git clone https://github.com/shiwenxin123/PowerShell-Linux-.git
-cd PowerShell-Linux-
+git clone https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual.git
+cd PowerShell-Linux-Command-Manual
 bash scripts/linux-health-check.sh --format markdown --output reports/linux-health-check.md
 ```
 
 Windows PowerShell:
 
 ```powershell
-git clone https://github.com/shiwenxin123/PowerShell-Linux-.git
-Set-Location PowerShell-Linux-
+git clone https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual.git
+Set-Location PowerShell-Linux-Command-Manual
 .\scripts\windows-health-check.ps1 -Format markdown -OutputFile reports\windows-health-check.md
 ```
 
-如果只想在线阅读，推荐直接打开 [文档站](https://shiwenxin123.github.io/PowerShell-Linux-/)。
+如果只想在线阅读，推荐直接打开 [文档站](https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/)。
 
 ## 快速入口
 
@@ -161,13 +161,13 @@ Set-Location PowerShell-Linux-
 
 - Description: `Windows PowerShell、Linux、银河麒麟、统信 UOS 常用命令中文速查手册`
 - Topics: `powershell`, `linux`, `windows`, `kylin`, `uos`, `devops`, `sysadmin`, `command-line`, `cheatsheet`, `chinese`
-- Website: 启用 GitHub Pages 后可填写 `https://shiwenxin123.github.io/PowerShell-Linux-/`
+- Website: 启用 GitHub Pages 后可填写 `https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/`
 
 发布 CSDN、微信公众号或技术社区文章时，可以参考 [开源运营手册](docs/OPEN-SOURCE-OPERATIONS.md)，并在文章中回链 GitHub、在线文档和 Release 页面。
 
 ## 贡献
 
-欢迎补充命令、修正文档、增加真实场景示例。提交前请阅读 [贡献指南](CONTRIBUTING.md)，也可以直接 [创建 Issue](https://github.com/shiwenxin123/PowerShell-Linux-/issues/new/choose)。
+欢迎补充命令、修正文档、增加真实场景示例。提交前请阅读 [贡献指南](CONTRIBUTING.md)，也可以直接 [创建 Issue](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/issues/new/choose)。
 
 如果你第一次参与，可以从这些任务开始:
 

@@ -1,6 +1,6 @@
 # 命令索引
 
-这个索引用于按关键词快速定位常用命令。需要更完整的说明时，可以继续查看仓库根目录中的 [完整手册](https://github.com/shiwenxin123/PowerShell-Linux-/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
+这个索引用于按关键词快速定位常用命令。需要更完整的说明时，可以继续查看仓库根目录中的 [完整手册](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
 
 ## 文件与目录
 

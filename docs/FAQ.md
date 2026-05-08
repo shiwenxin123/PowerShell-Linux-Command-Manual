@@ -41,7 +41,7 @@
 
 ## 如何贡献内容？
 
-可以补命令、修正文档、增加故障案例、扩展脚本模块或完善风险说明。提交前请阅读 [贡献指南](https://github.com/shiwenxin123/PowerShell-Linux-/blob/main/CONTRIBUTING.md)。
+可以补命令、修正文档、增加故障案例、扩展脚本模块或完善风险说明。提交前请阅读 [贡献指南](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/CONTRIBUTING.md)。
 
 建议优先贡献小而清晰的内容，例如：
 

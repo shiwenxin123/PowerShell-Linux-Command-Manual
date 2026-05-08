@@ -2,8 +2,8 @@
 
 一份中文命令速查与运维排障文档，覆盖 Windows PowerShell、Linux、银河麒麟、统信 UOS 和跨平台脚本场景。
 
-项目地址: [GitHub 仓库](https://github.com/shiwenxin123/PowerShell-Linux-)
-当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-/releases/tag/v2.16.0)
+项目地址: [GitHub 仓库](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual)
+当前版本: [v2.16.0](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/releases/tag/v2.16.0)
 
 ## 推荐从这里开始
 

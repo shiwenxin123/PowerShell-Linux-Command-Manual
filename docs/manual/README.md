@@ -1,6 +1,6 @@
 # 完整手册专题化入口
 
-主手册仍保留在仓库根目录: [Windows-PowerShell-Linux-Command-Manual.md](https://github.com/shiwenxin123/PowerShell-Linux-/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
+主手册仍保留在仓库根目录: [Windows-PowerShell-Linux-Command-Manual.md](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/blob/main/Windows-PowerShell-Linux-Command-Manual.md)。
 
 这个目录用于把 3000 多行完整手册逐步拆成更容易阅读和维护的专题页。当前先提供结构化入口和高频内容摘要，后续可以把主手册原文逐章迁移进来。
 

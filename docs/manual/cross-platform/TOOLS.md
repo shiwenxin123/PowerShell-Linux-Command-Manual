@@ -135,5 +135,5 @@ mtr example.com
 
 ## 延伸阅读
 
-- [示例脚本](https://github.com/shiwenxin123/PowerShell-Linux-/tree/main/scripts)
+- [示例脚本](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/tree/main/scripts)
 - [PowerShell 与 Bash 命令对照](../../POWERSHELL-BASH-COMPARISON.md)

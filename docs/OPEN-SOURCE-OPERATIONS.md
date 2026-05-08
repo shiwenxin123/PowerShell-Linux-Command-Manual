@@ -6,10 +6,10 @@
 
 | 类型 | 地址 |
 | --- | --- |
-| GitHub 仓库 | <https://github.com/shiwenxin123/PowerShell-Linux-> |
-| 在线文档 | <https://shiwenxin123.github.io/PowerShell-Linux-/> |
-| 最新 Release | <https://github.com/shiwenxin123/PowerShell-Linux-/releases/tag/v2.16.0> |
-| Good First Issues | <https://github.com/shiwenxin123/PowerShell-Linux-/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22> |
+| GitHub 仓库 | <https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual> |
+| 在线文档 | <https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/> |
+| 最新 Release | <https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/releases/tag/v2.16.0> |
+| Good First Issues | <https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22> |
 
 ## 每次发布后的检查清单
 
@@ -54,9 +54,9 @@
 - 文章末尾加入:
 
 ```text
-GitHub: https://github.com/shiwenxin123/PowerShell-Linux-
-在线文档: https://shiwenxin123.github.io/PowerShell-Linux-/
-Release: https://github.com/shiwenxin123/PowerShell-Linux-/releases/tag/v2.16.0
+GitHub: https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual
+在线文档: https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/
+Release: https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/releases/tag/v2.16.0
 ```
 
 ## 微信公众号发布建议

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://shiwenxin123.github.io/PowerShell-Linux-/schema/health-check-report.schema.json",
+  "$id": "https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/schema/health-check-report.schema.json",
   "title": "Health Check Report",
   "type": "object",
   "required": [

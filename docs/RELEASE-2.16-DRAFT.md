@@ -47,5 +47,5 @@ powershell, linux, windows, kylin, uos, devops, sysadmin, command-line, cheatshe
 Website:
 
 ```text
-https://shiwenxin123.github.io/PowerShell-Linux-/
+https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/
 ```

@@ -1,8 +1,8 @@
 site_name: PowerShell-Linux 命令手册
 site_description: Windows PowerShell、Linux、银河麒麟、统信 UOS 常用命令中文速查手册
-site_url: https://shiwenxin123.github.io/PowerShell-Linux-/
-repo_url: https://github.com/shiwenxin123/PowerShell-Linux-
-repo_name: shiwenxin123/PowerShell-Linux-
+site_url: https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/
+repo_url: https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual
+repo_name: shiwenxin123/PowerShell-Linux-Command-Manual
 
 theme:
   name: material
