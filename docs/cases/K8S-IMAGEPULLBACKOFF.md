@@ -51,3 +51,9 @@ kubectl get nodes -o wide
 
 - 不要随意把生产镜像 tag 改成 `latest`。
 - 修复镜像仓库认证时不要把账号密码写进明文 YAML。
+
+## 相关专题
+
+- [Kubernetes 进阶排查](../manual/kubernetes/ADVANCED-TROUBLESHOOTING.md)
+- [Docker/Kubernetes 生产命令](../manual/kubernetes/DOCKER-K8S-PRODUCTION.md)
+- [Docker 与 Kubernetes 运维速查](../containers/DOCKER-KUBERNETES-CHEATSHEET.md)

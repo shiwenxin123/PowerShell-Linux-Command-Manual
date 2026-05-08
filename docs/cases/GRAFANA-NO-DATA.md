@@ -77,3 +77,9 @@ curl -s http://elasticsearch.example.com:9200/_cluster/health?pretty
 - 不要直接删除 Dashboard 或数据源，先导出 JSON 备份。
 - 修改共享 Dashboard 变量会影响所有使用者。
 - 为了“让图有数据”而扩大查询范围，可能导致数据源压力升高。
+
+## 相关专题
+
+- [日志与监控体系](../manual/observability/LOGGING-MONITORING.md)
+- [PromQL、LogQL 与告警规则](../manual/observability/PROMQL-LOGQL-ALERTS.md)
+- [Linux 监控与日志](../manual/linux/MONITORING-LOGS.md)

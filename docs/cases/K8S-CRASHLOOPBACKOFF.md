@@ -57,3 +57,9 @@ kubectl rollout undo deploy/<deployment> -n <namespace>
 
 - 回滚前确认影响范围和当前流量。
 - 不要直接删除生产命名空间资源。
+
+## 相关专题
+
+- [Kubernetes 进阶排查](../manual/kubernetes/ADVANCED-TROUBLESHOOTING.md)
+- [Docker/Kubernetes 生产命令](../manual/kubernetes/DOCKER-K8S-PRODUCTION.md)
+- [Linux 监控与日志](../manual/linux/MONITORING-LOGS.md)

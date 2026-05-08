@@ -23,6 +23,16 @@ body:
       label: 已尝试排查
       description: 请列出已经执行过的命令、日志或排查结论。
   - type: textarea
+    id: possible_causes
+    attributes:
+      label: 可能原因
+      description: 如果已经有判断，请列出可能原因；不确定可以留空。
+  - type: textarea
+    id: risk
+    attributes:
+      label: 风险提醒
+      description: 请说明哪些修复动作可能导致断连、数据丢失或业务中断。
+  - type: textarea
     id: expected
     attributes:
       label: 期望补充内容

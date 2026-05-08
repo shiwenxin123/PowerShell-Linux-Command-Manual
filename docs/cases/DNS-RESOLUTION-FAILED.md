@@ -50,3 +50,9 @@ nslookup example.com 8.8.8.8
 
 - 修改 DNS 配置可能影响整台机器的所有域名访问。
 - 生产环境修改前记录原始 `/etc/resolv.conf`。
+
+## 相关专题
+
+- [Linux 网络排查](../manual/linux/NETWORK.md)
+- [云网络与负载均衡排查](../manual/cloud/CLOUD-LB-TROUBLESHOOTING.md)
+- [Kubernetes 进阶排查](../manual/kubernetes/ADVANCED-TROUBLESHOOTING.md)

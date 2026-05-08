@@ -73,3 +73,9 @@ kubectl rollout status deploy/coredns -n kube-system
 - 不要直接删除 kube-system 中的 DNS 资源。
 - 修改 CoreDNS 配置会影响整个集群解析，生产环境应先在测试集群验证。
 - 重启 CoreDNS 前确认副本数和 PodDisruptionBudget，避免短时间内解析不可用。
+
+## 相关专题
+
+- [Kubernetes 进阶排查](../manual/kubernetes/ADVANCED-TROUBLESHOOTING.md)
+- [Docker/Kubernetes 生产命令](../manual/kubernetes/DOCKER-K8S-PRODUCTION.md)
+- [Linux 网络排查](../manual/linux/NETWORK.md)

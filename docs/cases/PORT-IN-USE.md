@@ -40,6 +40,13 @@ PowerShell:
 Get-Process -Id <PID>
 ```
 
+## 常见原因
+
+- 服务旧进程未退出，仍占用原端口。
+- 多个实例配置了相同监听端口。
+- 本机已有中间件、代理、调试进程占用端口。
+- 容器端口映射与宿主机已有端口冲突。
+
 ## 处理建议
 
 - 如果端口被同一个服务旧进程占用，优先用服务管理命令停止或重启。
@@ -50,3 +57,9 @@ Get-Process -Id <PID>
 
 - 不要只看到端口占用就直接强杀 PID。
 - SSH、数据库、网关、注册中心等基础服务被误杀会造成更大故障。
+
+## 相关专题
+
+- [Linux 网络排查](../manual/linux/NETWORK.md)
+- [Windows 管理命令](../manual/windows/ADMIN-COMMANDS.md)
+- [数据库与中间件运维命令](../manual/middleware/DATABASE-MIDDLEWARE.md)

@@ -52,3 +52,9 @@ ls -ld /var/lib/mysql
 - 不要删除 `/var/lib/mysql` 下不认识的文件。
 - 不要在没有备份的情况下执行修复或初始化命令。
 - 生产数据库操作前必须确认备份和恢复方案。
+
+## 相关专题
+
+- [数据库与中间件运维命令](../manual/middleware/DATABASE-MIDDLEWARE.md)
+- [磁盘、分区与 LVM](../manual/linux/DISK-LVM.md)
+- [Linux 监控与日志](../manual/linux/MONITORING-LOGS.md)

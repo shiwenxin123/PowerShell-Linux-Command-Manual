@@ -89,3 +89,9 @@ systemctl reload prometheus
 - 不要只关闭告警，应先确认监控缺口是否影响生产发现能力。
 - 修改全局 scrape interval 或 relabel 规则前，评估 Prometheus 负载和指标基数。
 - 生产环境不要随意暴露 `/metrics` 到公网。
+
+## 相关专题
+
+- [日志与监控体系](../manual/observability/LOGGING-MONITORING.md)
+- [PromQL、LogQL 与告警规则](../manual/observability/PROMQL-LOGQL-ALERTS.md)
+- [Kubernetes 进阶排查](../manual/kubernetes/ADVANCED-TROUBLESHOOTING.md)

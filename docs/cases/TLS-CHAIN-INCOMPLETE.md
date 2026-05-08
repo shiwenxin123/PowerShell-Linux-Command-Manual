@@ -45,3 +45,9 @@ nginx -T | grep -E "ssl_certificate|ssl_certificate_key"
 
 - 不要覆盖旧证书文件后直接重启，先备份。
 - 不要把私钥提交到 Git 仓库或粘贴到 Issue。
+
+## 相关专题
+
+- [安全加固与基线检查](../manual/security/HARDENING.md)
+- [云网络与负载均衡排查](../manual/cloud/CLOUD-LB-TROUBLESHOOTING.md)
+- [证书过期排查](CERTIFICATE-EXPIRED.md)

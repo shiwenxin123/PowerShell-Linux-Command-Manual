@@ -57,3 +57,9 @@ jmap -dump:format=b,file=heap.hprof <PID>
 
 - `jmap -dump` 可能生成很大的文件，执行前确认磁盘空间。
 - heap dump 可能包含敏感业务数据，传输和分享前要脱敏。
+
+## 相关专题
+
+- [Linux 监控与日志](../manual/linux/MONITORING-LOGS.md)
+- [系统性能调优](../manual/linux/PERFORMANCE-TUNING.md)
+- [PromQL、LogQL 与告警规则](../manual/observability/PROMQL-LOGQL-ALERTS.md)

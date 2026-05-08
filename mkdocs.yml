@@ -51,6 +51,7 @@ nav:
       - 应急排查清单: troubleshooting/LINUX-INCIDENT-CHECKLIST.md
       - 常见报错排查: troubleshooting/COMMON-ERRORS.md
       - 案例库首页: cases/README.md
+      - 故障案例写作模板: cases/CASE-TEMPLATE.md
       - 磁盘空间满: cases/DISK-FULL.md
       - CPU 飙高: cases/CPU-HIGH.md
       - 端口被占用: cases/PORT-IN-USE.md

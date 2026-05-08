@@ -33,6 +33,13 @@ Java 服务可继续查看线程栈:
 jstack <PID> | head
 ```
 
+## 常见原因
+
+- 定时任务、报表任务、备份任务在高峰期运行。
+- 应用线程死循环、锁竞争或频繁 GC。
+- 异常进程、挖矿进程或未知脚本占用 CPU。
+- 容器 CPU limit 过低，导致应用持续抢占。
+
 ## 处理建议
 
 - 先确认高 CPU 进程是否为业务进程、定时任务、备份任务或异常进程。
@@ -43,3 +50,9 @@ jstack <PID> | head
 
 - `kill -9` 会直接终止进程，可能导致未写入数据丢失。
 - 重启服务前确认是否有流量切换、主备切换或告警通知机制。
+
+## 相关专题
+
+- [Linux 监控与日志](../manual/linux/MONITORING-LOGS.md)
+- [系统性能调优](../manual/linux/PERFORMANCE-TUNING.md)
+- [PromQL、LogQL 与告警规则](../manual/observability/PROMQL-LOGQL-ALERTS.md)

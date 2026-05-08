@@ -49,3 +49,9 @@ grep -E "^(bind|port|requirepass|protected-mode)" /etc/redis/redis.conf 2>/dev/n
 
 - Redis 暴露到公网风险极高。
 - 修改 `bind`、`protected-mode`、密码前确认网络边界和访问控制。
+
+## 相关专题
+
+- [数据库与中间件运维命令](../manual/middleware/DATABASE-MIDDLEWARE.md)
+- [Linux 网络排查](../manual/linux/NETWORK.md)
+- [安全加固与基线检查](../manual/security/HARDENING.md)

@@ -57,3 +57,9 @@ kubectl describe ingress <ingress> -n <namespace>
 
 - 不要删除旧证书后再排查，先备份。
 - 不要在配置未验证时直接重启网关或 Ingress 控制器。
+
+## 相关专题
+
+- [安全加固与基线检查](../manual/security/HARDENING.md)
+- [云网络与负载均衡排查](../manual/cloud/CLOUD-LB-TROUBLESHOOTING.md)
+- [TLS 证书链不完整排查](TLS-CHAIN-INCOMPLETE.md)

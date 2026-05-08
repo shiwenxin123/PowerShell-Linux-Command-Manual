@@ -17,7 +17,7 @@ nc -vz <server> 22
 ssh -vvv user@server
 ```
 
-## 服务端排查
+## 排查命令
 
 ```bash
 # 查看 SSH 服务
@@ -49,3 +49,9 @@ journalctl -u sshd -n 100 --no-pager
 
 - 不要在远程会话里直接停止 SSH 服务后退出。
 - 修改防火墙规则前确认不会阻断当前管理通道。
+
+## 相关专题
+
+- [Linux 网络排查](../manual/linux/NETWORK.md)
+- [安全加固与基线检查](../manual/security/HARDENING.md)
+- [防火墙、SELinux 与网络安全](../manual/security/FIREWALL-SELINUX.md)

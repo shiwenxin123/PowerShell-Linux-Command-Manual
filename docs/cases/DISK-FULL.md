@@ -32,6 +32,14 @@ find / -type f -size +500M 2>/dev/null
 lsof | grep deleted
 ```
 
+## 常见原因
+
+- 应用日志、访问日志或审计日志持续增长。
+- 数据库 binlog、慢日志、备份文件未定期清理。
+- 容器镜像、volume、构建缓存占用过大。
+- inode 用尽，导致还有空间但无法创建新文件。
+- 文件已删除但仍被进程占用，空间未释放。
+
 ## 处理建议
 
 - 优先清理明确可删除的旧日志、临时文件、旧备份。
@@ -44,3 +52,9 @@ lsof | grep deleted
 - 不要直接执行 `rm -rf /var/*`。
 - 不要清理不了解用途的数据库目录。
 - 删除生产日志前，先保留关键排障证据。
+
+## 相关专题
+
+- [磁盘、分区与 LVM](../manual/linux/DISK-LVM.md)
+- [Linux 监控与日志](../manual/linux/MONITORING-LOGS.md)
+- [日志轮转、审计与系统日志](../manual/security/LOGGING-AUDIT.md)
