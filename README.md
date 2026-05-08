@@ -155,16 +155,6 @@ Set-Location PowerShell-Linux-Command-Manual
 
 涉及删除、权限、磁盘、网络和系统服务的命令请先在测试环境验证。特别是 `rm -rf`、`Remove-Item -Recurse -Force`、磁盘格式化、用户权限修改等操作，执行前务必确认路径、目标机器和备份状态。
 
-## 让项目更容易被看见
-
-建议在 GitHub 仓库的 **About** 区域补充:
-
-- Description: `Windows PowerShell、Linux、银河麒麟、统信 UOS 常用命令中文速查手册`
-- Topics: `powershell`, `linux`, `windows`, `kylin`, `uos`, `devops`, `sysadmin`, `command-line`, `cheatsheet`, `chinese`
-- Website: 启用 GitHub Pages 后可填写 `https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/`
-
-发布 CSDN、微信公众号或技术社区文章时，可以参考 [开源运营手册](docs/OPEN-SOURCE-OPERATIONS.md)，并在文章中回链 GitHub、在线文档和 Release 页面。
-
 ## 贡献
 
 欢迎补充命令、修正文档、增加真实场景示例。提交前请阅读 [贡献指南](CONTRIBUTING.md)，也可以直接 [创建 Issue](https://github.com/shiwenxin123/PowerShell-Linux-Command-Manual/issues/new/choose)。
