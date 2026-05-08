@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/manual/linux/MONITORING-LOGS/">
+        <link rel="canonical" href="https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/MYSQL-TOO-MANY-CONNECTIONS/">
       
       
-        <link rel="prev" href="../STORAGE-LOGS/">
+        <link rel="prev" href="../MYSQL-START-FAILED/">
       
       
-        <link rel="next" href="../DISK-LVM/">
+        <link rel="next" href="../REDIS-CONNECTION-FAILED/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Linux 系统监控与日志 - PowerShell-Linux 命令手册</title>
+        <title>MySQL 连接数打满 - PowerShell-Linux 命令手册</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -50,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linux" class="md-skip">
+        <a href="#mysql" class="md-skip">
           跳转至
         </a>
       
@@ -84,7 +84,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="PowerShell-Linux 命令手册" class="md-header__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
+    <a href="../.." title="PowerShell-Linux 命令手册" class="md-header__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux 系统监控与日志
+              MySQL 连接数打满
             
           </span>
         </div>
@@ -191,7 +191,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -212,11 +212,31 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../COMMAND-CHEATSHEET/" class="md-tabs__link">
+        <a href="../../COMMAND-CHEATSHEET/" class="md-tabs__link">
           
   
   
   快速查命令
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manual/" class="md-tabs__link">
+          
+  
+  
+  专题手册
 
         </a>
       </li>
@@ -234,27 +254,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
-          
-  
-  
-  专题手册
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-tabs__link">
+        <a href="../../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-tabs__link">
           
   
   
@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../kubernetes/ADVANCED-TROUBLESHOOTING/" class="md-tabs__link">
+        <a href="../../manual/kubernetes/ADVANCED-TROUBLESHOOTING/" class="md-tabs__link">
           
   
   
@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../domestic-linux/KYLIN-UOS-COMMANDS/" class="md-tabs__link">
+        <a href="../../domestic-linux/KYLIN-UOS-COMMANDS/" class="md-tabs__link">
           
   
   
@@ -314,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../devtools/" class="md-tabs__link">
+        <a href="../../manual/devtools/" class="md-tabs__link">
           
   
   
@@ -334,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../MANUAL-MIGRATION/" class="md-tabs__link">
+        <a href="../../MANUAL-MIGRATION/" class="md-tabs__link">
           
   
   
@@ -368,7 +368,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="PowerShell-Linux 命令手册" class="md-nav__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
+    <a href="../.." title="PowerShell-Linux 命令手册" class="md-nav__button md-logo" aria-label="PowerShell-Linux 命令手册" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -398,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -477,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../COMMAND-CHEATSHEET/" class="md-nav__link">
+      <a href="../../COMMAND-CHEATSHEET/" class="md-nav__link">
         
   
   
@@ -505,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../COMMAND-INDEX/" class="md-nav__link">
+      <a href="../../COMMAND-INDEX/" class="md-nav__link">
         
   
   
@@ -533,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../COMMAND-COVERAGE-MATRIX/" class="md-nav__link">
+      <a href="../../COMMAND-COVERAGE-MATRIX/" class="md-nav__link">
         
   
   
@@ -561,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../FAQ/" class="md-nav__link">
+      <a href="../../FAQ/" class="md-nav__link">
         
   
   
@@ -589,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../POWERSHELL-BASH-COMPARISON/" class="md-nav__link">
+      <a href="../../POWERSHELL-BASH-COMPARISON/" class="md-nav__link">
         
   
   
@@ -597,6 +597,653 @@
     
   
     PowerShell/Bash 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    专题手册
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    专题手册
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/powershell/BASIC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/powershell/SYSTEM-ADMIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 系统管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/powershell/ADVANCED-SCRIPTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 高级技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/POWERSHELL-PRACTICAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 实用场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/BASIC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/PACKAGE-MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 包管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/USERS-PERMISSIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 用户组与权限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/SHELL-SCRIPTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell 脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/NETWORK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 网络排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/STORAGE-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 存储与日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/MONITORING-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 系统监控与日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/DISK-LVM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 磁盘与 LVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/linux/PERFORMANCE-TUNING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 性能调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/BASH-TEXT-PROCESSING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash 文本处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/security/HARDENING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全加固
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/security/FIREWALL-SELINUX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    防火墙与 SELinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/security/LOGGING-AUDIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日志轮转与审计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/security/SUDOERS-APPARMOR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sudoers 与 AppArmor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/RISK-LEVELS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    命令风险等级
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/windows/ADMIN-COMMANDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows 管理命令
   
 
     
@@ -642,17 +1289,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    专题手册
+    排障案例
   
 
     
@@ -663,12 +1310,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    专题手册
+    排障案例
   
 
           </label>
@@ -681,14 +1328,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    入口
+    应急排查清单
   
 
     
@@ -709,14 +1356,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../powershell/BASIC/" class="md-nav__link">
+      <a href="../../troubleshooting/COMMON-ERRORS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    PowerShell 基础
+    常见报错排查
   
 
     
@@ -737,14 +1384,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../powershell/SYSTEM-ADMIN/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    PowerShell 系统管理
+    案例库首页
   
 
     
@@ -765,14 +1412,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../powershell/ADVANCED-SCRIPTING/" class="md-nav__link">
+      <a href="../CASE-TEMPLATE/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    PowerShell 高级技巧
+    故障案例写作模板
   
 
     
@@ -793,14 +1440,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../powershell/POWERSHELL-PRACTICAL/" class="md-nav__link">
+      <a href="../DISK-FULL/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    PowerShell 实用场景
+    磁盘空间满
   
 
     
@@ -821,14 +1468,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../BASIC/" class="md-nav__link">
+      <a href="../CPU-HIGH/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux 基础
+    CPU 飙高
   
 
     
@@ -849,14 +1496,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../PACKAGE-MANAGEMENT/" class="md-nav__link">
+      <a href="../PORT-IN-USE/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux 包管理
+    端口被占用
   
 
     
@@ -877,14 +1524,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../USERS-PERMISSIONS/" class="md-nav__link">
+      <a href="../SSH-CONNECTION-FAILED/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux 用户组与权限
+    SSH 连接失败
   
 
     
@@ -905,14 +1552,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../SHELL-SCRIPTING/" class="md-nav__link">
+      <a href="../LINUX-PERMISSION-DENIED/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shell 脚本
+    Linux Permission denied
   
 
     
@@ -933,14 +1580,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../NETWORK/" class="md-nav__link">
+      <a href="../SYSTEMD-SERVICE-FAILED/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux 网络排查
+    systemd 服务启动失败
   
 
     
@@ -961,14 +1608,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../STORAGE-LOGS/" class="md-nav__link">
+      <a href="../NGINX-START-FAILED/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux 存储与日志
+    Nginx 启动失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGINX-502-504/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nginx 502/504
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MYSQL-START-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL 启动失败
   
 
     
@@ -1005,7 +1708,7 @@
   <span class="md-ellipsis">
     
   
-    Linux 系统监控与日志
+    MySQL 连接数打满
   
 
     
@@ -1023,7 +1726,7 @@
   <span class="md-ellipsis">
     
   
-    Linux 系统监控与日志
+    MySQL 连接数打满
   
 
     
@@ -1052,7 +1755,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        系统资源
+        现象
       
     </span>
   </a>
@@ -1063,18 +1766,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        硬件信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#systemd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        systemd 日志
+        快速判断
       
     </span>
   </a>
@@ -1085,7 +1777,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        内核日志
+        排查命令
       
     </span>
   </a>
@@ -1096,7 +1788,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        传统日志文件
+        常见原因
       
     </span>
   </a>
@@ -1107,7 +1799,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见排查组合
+        处理建议
       
     </span>
   </a>
@@ -1118,7 +1810,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        相关案例
+        高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -1141,710 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DISK-LVM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux 磁盘与 LVM
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../PERFORMANCE-TUNING/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux 性能调优
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../linux/BASH-TEXT-PROCESSING/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bash 文本处理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/HARDENING/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    系统安全加固
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/FIREWALL-SELINUX/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    防火墙与 SELinux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/LOGGING-AUDIT/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    日志轮转与审计
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/SUDOERS-APPARMOR/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    sudoers 与 AppArmor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../security/RISK-LEVELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    命令风险等级
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../windows/ADMIN-COMMANDS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Windows 管理命令
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    排障案例
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    排障案例
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../troubleshooting/LINUX-INCIDENT-CHECKLIST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    应急排查清单
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../troubleshooting/COMMON-ERRORS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    常见报错排查
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    案例库首页
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/CASE-TEMPLATE/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    故障案例写作模板
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/DISK-FULL/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    磁盘空间满
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/CPU-HIGH/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CPU 飙高
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/PORT-IN-USE/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    端口被占用
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/SSH-CONNECTION-FAILED/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SSH 连接失败
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/LINUX-PERMISSION-DENIED/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux Permission denied
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/SYSTEMD-SERVICE-FAILED/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    systemd 服务启动失败
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/NGINX-START-FAILED/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Nginx 启动失败
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/NGINX-502-504/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Nginx 502/504
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/MYSQL-START-FAILED/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MySQL 启动失败
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/MYSQL-TOO-MANY-CONNECTIONS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MySQL 连接数打满
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cases/REDIS-CONNECTION-FAILED/" class="md-nav__link">
+      <a href="../REDIS-CONNECTION-FAILED/" class="md-nav__link">
         
   
   
@@ -1872,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/JAVA-OOM/" class="md-nav__link">
+      <a href="../JAVA-OOM/" class="md-nav__link">
         
   
   
@@ -1900,7 +1900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/DNS-RESOLUTION-FAILED/" class="md-nav__link">
+      <a href="../DNS-RESOLUTION-FAILED/" class="md-nav__link">
         
   
   
@@ -1928,7 +1928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/CERTIFICATE-EXPIRED/" class="md-nav__link">
+      <a href="../CERTIFICATE-EXPIRED/" class="md-nav__link">
         
   
   
@@ -1956,7 +1956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/TLS-CHAIN-INCOMPLETE/" class="md-nav__link">
+      <a href="../TLS-CHAIN-INCOMPLETE/" class="md-nav__link">
         
   
   
@@ -1984,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/DOCKER-RESTARTING/" class="md-nav__link">
+      <a href="../DOCKER-RESTARTING/" class="md-nav__link">
         
   
   
@@ -2012,7 +2012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/DOCKER-IMAGE-PULL-FAILED/" class="md-nav__link">
+      <a href="../DOCKER-IMAGE-PULL-FAILED/" class="md-nav__link">
         
   
   
@@ -2040,7 +2040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/DOCKER-COMPOSE-FAILED/" class="md-nav__link">
+      <a href="../DOCKER-COMPOSE-FAILED/" class="md-nav__link">
         
   
   
@@ -2068,7 +2068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/K8S-CRASHLOOPBACKOFF/" class="md-nav__link">
+      <a href="../K8S-CRASHLOOPBACKOFF/" class="md-nav__link">
         
   
   
@@ -2096,7 +2096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/K8S-IMAGEPULLBACKOFF/" class="md-nav__link">
+      <a href="../K8S-IMAGEPULLBACKOFF/" class="md-nav__link">
         
   
   
@@ -2124,7 +2124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/K8S-NODE-NOTREADY/" class="md-nav__link">
+      <a href="../K8S-NODE-NOTREADY/" class="md-nav__link">
         
   
   
@@ -2152,7 +2152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/K8S-DNS-FAILED/" class="md-nav__link">
+      <a href="../K8S-DNS-FAILED/" class="md-nav__link">
         
   
   
@@ -2180,7 +2180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/PROMETHEUS-TARGET-DOWN/" class="md-nav__link">
+      <a href="../PROMETHEUS-TARGET-DOWN/" class="md-nav__link">
         
   
   
@@ -2208,7 +2208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cases/GRAFANA-NO-DATA/" class="md-nav__link">
+      <a href="../GRAFANA-NO-DATA/" class="md-nav__link">
         
   
   
@@ -2295,7 +2295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/ADVANCED-TROUBLESHOOTING/" class="md-nav__link">
+      <a href="../../manual/kubernetes/ADVANCED-TROUBLESHOOTING/" class="md-nav__link">
         
   
   
@@ -2323,7 +2323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/DOCKER-K8S-PRODUCTION/" class="md-nav__link">
+      <a href="../../manual/kubernetes/DOCKER-K8S-PRODUCTION/" class="md-nav__link">
         
   
   
@@ -2351,7 +2351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/DOCKER-KUBERNETES-CHEATSHEET/" class="md-nav__link">
+      <a href="../../containers/DOCKER-KUBERNETES-CHEATSHEET/" class="md-nav__link">
         
   
   
@@ -2379,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../middleware/DATABASE-MIDDLEWARE/" class="md-nav__link">
+      <a href="../../manual/middleware/DATABASE-MIDDLEWARE/" class="md-nav__link">
         
   
   
@@ -2407,7 +2407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../middleware/POSTGRES-MONGO-ELASTIC/" class="md-nav__link">
+      <a href="../../manual/middleware/POSTGRES-MONGO-ELASTIC/" class="md-nav__link">
         
   
   
@@ -2435,7 +2435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloud/CLOUD-LB-TROUBLESHOOTING/" class="md-nav__link">
+      <a href="../../manual/cloud/CLOUD-LB-TROUBLESHOOTING/" class="md-nav__link">
         
   
   
@@ -2463,7 +2463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/LOGGING-MONITORING/" class="md-nav__link">
+      <a href="../../manual/observability/LOGGING-MONITORING/" class="md-nav__link">
         
   
   
@@ -2491,7 +2491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/PROMQL-LOGQL-ALERTS/" class="md-nav__link">
+      <a href="../../manual/observability/PROMQL-LOGQL-ALERTS/" class="md-nav__link">
         
   
   
@@ -2578,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../domestic-linux/KYLIN-UOS-COMMANDS/" class="md-nav__link">
+      <a href="../../domestic-linux/KYLIN-UOS-COMMANDS/" class="md-nav__link">
         
   
   
@@ -2606,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../domestic-linux/OFFLINE-PACKAGE-GUIDE/" class="md-nav__link">
+      <a href="../../domestic-linux/OFFLINE-PACKAGE-GUIDE/" class="md-nav__link">
         
   
   
@@ -2634,7 +2634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../domestic-linux/ARCHITECTURE-CHECKLIST/" class="md-nav__link">
+      <a href="../../domestic-linux/ARCHITECTURE-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -2662,7 +2662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../domestic-linux/VERSION-DIFFERENCES/" class="md-nav__link">
+      <a href="../../domestic-linux/VERSION-DIFFERENCES/" class="md-nav__link">
         
   
   
@@ -2749,7 +2749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devtools/" class="md-nav__link">
+      <a href="../../manual/devtools/" class="md-nav__link">
         
   
   
@@ -2777,7 +2777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devtools/GIT-SSH-CURL-JQ/" class="md-nav__link">
+      <a href="../../manual/devtools/GIT-SSH-CURL-JQ/" class="md-nav__link">
         
   
   
@@ -2805,7 +2805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../automation/HEALTH-CHECK-SCRIPTS/" class="md-nav__link">
+      <a href="../../manual/automation/HEALTH-CHECK-SCRIPTS/" class="md-nav__link">
         
   
   
@@ -2833,7 +2833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cross-platform/PYTHON-NODE-SCRIPTS/" class="md-nav__link">
+      <a href="../../manual/cross-platform/PYTHON-NODE-SCRIPTS/" class="md-nav__link">
         
   
   
@@ -2861,7 +2861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ha/KEEPALIVED/" class="md-nav__link">
+      <a href="../../manual/ha/KEEPALIVED/" class="md-nav__link">
         
   
   
@@ -2889,7 +2889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cross-platform/TOOLS/" class="md-nav__link">
+      <a href="../../manual/cross-platform/TOOLS/" class="md-nav__link">
         
   
   
@@ -2976,7 +2976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../MANUAL-MIGRATION/" class="md-nav__link">
+      <a href="../../MANUAL-MIGRATION/" class="md-nav__link">
         
   
   
@@ -3004,7 +3004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../NEXT-STAGE-PLAN/" class="md-nav__link">
+      <a href="../../NEXT-STAGE-PLAN/" class="md-nav__link">
         
   
   
@@ -3032,7 +3032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../GITHUB-GROWTH-CHECKLIST/" class="md-nav__link">
+      <a href="../../GITHUB-GROWTH-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -3060,7 +3060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ROADMAP/" class="md-nav__link">
+      <a href="../../ROADMAP/" class="md-nav__link">
         
   
   
@@ -3088,7 +3088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PROJECT-AUDIT/" class="md-nav__link">
+      <a href="../../PROJECT-AUDIT/" class="md-nav__link">
         
   
   
@@ -3116,7 +3116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../GOOD-FIRST-ISSUES/" class="md-nav__link">
+      <a href="../../GOOD-FIRST-ISSUES/" class="md-nav__link">
         
   
   
@@ -3144,7 +3144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OPEN-SOURCE-OPERATIONS/" class="md-nav__link">
+      <a href="../../OPEN-SOURCE-OPERATIONS/" class="md-nav__link">
         
   
   
@@ -3172,7 +3172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../MAINTAINER-GUIDE/" class="md-nav__link">
+      <a href="../../MAINTAINER-GUIDE/" class="md-nav__link">
         
   
   
@@ -3200,7 +3200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RELEASE-CHECKLIST/" class="md-nav__link">
+      <a href="../../RELEASE-CHECKLIST/" class="md-nav__link">
         
   
   
@@ -3228,7 +3228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RELEASE-2.16-DRAFT/" class="md-nav__link">
+      <a href="../../RELEASE-2.16-DRAFT/" class="md-nav__link">
         
   
   
@@ -3286,7 +3286,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        系统资源
+        现象
       
     </span>
   </a>
@@ -3297,18 +3297,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        硬件信息
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#systemd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        systemd 日志
+        快速判断
       
     </span>
   </a>
@@ -3319,7 +3308,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        内核日志
+        排查命令
       
     </span>
   </a>
@@ -3330,7 +3319,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        传统日志文件
+        常见原因
       
     </span>
   </a>
@@ -3341,7 +3330,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常见排查组合
+        处理建议
       
     </span>
   </a>
@@ -3352,7 +3341,18 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        相关案例
+        高危提醒
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关专题
       
     </span>
   </a>
@@ -3379,100 +3379,68 @@
   
 
 
-<h1 id="linux">Linux 系统监控与日志<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h1>
-<p>这个专题从主手册迁移 Linux 系统监控与日志相关内容，覆盖资源查看、硬件信息、systemd 日志、内核日志和传统日志文件。</p>
-<h2 id="_1">系统资源<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 实时监控系统资源</span>
-top
-
-<span class="c1"># 更强的交互式监控</span>
-htop
-
-<span class="c1"># 内存</span>
-free<span class="w"> </span>-h
-
-<span class="c1"># 磁盘</span>
-df<span class="w"> </span>-h
-
-<span class="c1"># 目录大小</span>
-du<span class="w"> </span>-sh<span class="w"> </span>/path/to/dir
-
-<span class="c1"># 平均负载</span>
-uptime
-</code></pre></div>
-<h2 id="_2">硬件信息<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># CPU 信息</span>
-lscpu
-
-<span class="c1"># PCI 设备</span>
-lspci
-
-<span class="c1"># USB 设备</span>
-lsusb
-
-<span class="c1"># 硬件信息</span>
-lshw
-</code></pre></div>
-<h2 id="systemd">systemd 日志<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 显示系统日志</span>
-journalctl
-
-<span class="c1"># 最近 100 条</span>
-journalctl<span class="w"> </span>-n<span class="w"> </span><span class="m">100</span>
-
-<span class="c1"># 实时监控</span>
-journalctl<span class="w"> </span>-f
-
-<span class="c1"># 指定服务</span>
-journalctl<span class="w"> </span>-u<span class="w"> </span>nginx
-
-<span class="c1"># 今天的日志</span>
-journalctl<span class="w"> </span>--since<span class="w"> </span>today
-
-<span class="c1"># 指定时间段</span>
-journalctl<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;2026-03-13 09:00:00&quot;</span><span class="w"> </span>--until<span class="w"> </span><span class="s2">&quot;2026-03-13 17:00:00&quot;</span>
-</code></pre></div>
-<h2 id="_3">内核日志<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 显示内核日志</span>
-dmesg
-
-<span class="c1"># 实时监控内核日志</span>
-dmesg<span class="w"> </span>-w
-
-<span class="c1"># 查看 OOM 记录</span>
-dmesg<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;out of memory&quot;</span>
-</code></pre></div>
-<h2 id="_4">传统日志文件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Debian/Ubuntu/UOS 常见日志</span>
-cat<span class="w"> </span>/var/log/syslog
-cat<span class="w"> </span>/var/log/auth.log
-cat<span class="w"> </span>/var/log/kern.log
-
-<span class="c1"># RHEL/Kylin 常见日志</span>
-cat<span class="w"> </span>/var/log/messages
-cat<span class="w"> </span>/var/log/secure
-</code></pre></div>
-<h2 id="_5">常见排查组合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># CPU 高</span>
-ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%cpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
-
-<span class="c1"># 内存高</span>
-ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
-
-<span class="c1"># 磁盘满</span>
-df<span class="w"> </span>-h
-du<span class="w"> </span>-sh<span class="w"> </span>/*<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-h
-
-<span class="c1"># 已删除但仍占用空间的文件</span>
-lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>deleted
-</code></pre></div>
-<h2 id="_6">相关案例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h1 id="mysql">MySQL 连接数打满排查<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h1>
+<h2 id="_1">现象<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../../troubleshooting/LINUX-INCIDENT-CHECKLIST/">Linux 故障应急排查清单</a></li>
-<li><a href="../../security/LOGGING-AUDIT/">日志轮转、审计与系统日志</a></li>
-<li><a href="../../../cases/CPU-HIGH/">CPU 飙高排查</a></li>
-<li><a href="../../../cases/DISK-FULL/">磁盘空间满排查</a></li>
-<li><a href="../../../cases/JAVA-OOM/">Java 服务 OOM 排查</a></li>
+<li>应用连接数据库失败，报 <code>Too many connections</code>。</li>
+<li>MySQL CPU 或线程数升高，连接池等待超时。</li>
+<li>新连接无法建立，但已有连接可能仍在执行。</li>
+<li>监控显示 <code>Threads_connected</code> 接近或达到 <code>max_connections</code>。</li>
+</ul>
+<h2 id="_2">快速判断<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>先确认当前连接数、最大连接数和主要来源。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">STATUS</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;Threads_connected&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;max_connections&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="n">PROCESSLIST</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="_3">排查命令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 查看连接来源和用户分布</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">user</span><span class="p">,</span><span class="w"> </span><span class="k">host</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cnt</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">processlist</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">user</span><span class="p">,</span><span class="w"> </span><span class="k">host</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">command</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+
+<span class="c1">-- 查看长时间运行连接</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">user</span><span class="p">,</span><span class="w"> </span><span class="k">host</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="k">time</span><span class="p">,</span><span class="w"> </span><span class="k">state</span><span class="p">,</span><span class="w"> </span><span class="n">info</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">processlist</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">60</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+
+<span class="c1">-- 查看连接相关状态</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">STATUS</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;Threads%&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">STATUS</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;Aborted_connects&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>Linux 侧可辅助确认来源连接。</p>
+<div class="highlight"><pre><span></span><code>ss<span class="w"> </span>-antp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;:3306&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+ss<span class="w"> </span>-ant<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;:3306&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $5}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d:<span class="w"> </span>-f1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+<h2 id="_4">常见原因<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>应用连接池配置过大，多实例叠加超过数据库上限。</li>
+<li>应用连接泄漏，连接未及时释放。</li>
+<li>慢 SQL 或锁等待导致连接长时间占用。</li>
+<li>定时任务、批处理或压测流量集中打到数据库。</li>
+<li>MySQL <code>max_connections</code> 过低，或内存不足不适合继续增大。</li>
+</ul>
+<h2 id="_5">处理建议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>先按来源统计连接，确认是哪个应用、主机或用户占用最多。</li>
+<li>对长时间连接结合 SQL、锁等待和慢日志定位根因。</li>
+<li>临时恢复可谨慎 kill 明确异常的空闲连接或异常任务连接。</li>
+<li>从应用侧收敛连接池大小，避免所有实例连接池总和超过数据库承载。</li>
+<li>调整 <code>max_connections</code> 前评估内存、线程栈和数据库负载。</li>
+</ul>
+<h2 id="_6">高危提醒<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>不要批量 kill 不明连接，可能中断正在执行的业务事务。</li>
+<li>不要只调大 <code>max_connections</code> 掩盖连接泄漏或慢 SQL。</li>
+<li>生产变更连接池和数据库参数前确认灰度和回滚方式。</li>
+</ul>
+<h2 id="_7">相关专题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../manual/middleware/DATABASE-MIDDLEWARE/">数据库与中间件运维命令</a></li>
+<li><a href="../MYSQL-START-FAILED/">MySQL 启动失败排查</a></li>
+<li><a href="../../manual/linux/PERFORMANCE-TUNING/">系统性能调优</a></li>
 </ul>
 
 
@@ -3529,10 +3497,10 @@ lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

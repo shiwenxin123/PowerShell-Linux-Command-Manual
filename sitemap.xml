@@ -93,6 +93,10 @@
          <lastmod>2026-05-08</lastmod>
     </url>
     <url>
+         <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/DOCKER-IMAGE-PULL-FAILED/</loc>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
          <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/DOCKER-RESTARTING/</loc>
          <lastmod>2026-05-08</lastmod>
     </url>
@@ -117,7 +121,19 @@
          <lastmod>2026-05-08</lastmod>
     </url>
     <url>
+         <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/K8S-NODE-NOTREADY/</loc>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
+         <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/LINUX-PERMISSION-DENIED/</loc>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
          <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/MYSQL-START-FAILED/</loc>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
+         <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/MYSQL-TOO-MANY-CONNECTIONS/</loc>
          <lastmod>2026-05-08</lastmod>
     </url>
     <url>
@@ -142,6 +158,10 @@
     </url>
     <url>
          <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/SSH-CONNECTION-FAILED/</loc>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
+         <loc>https://shiwenxin123.github.io/PowerShell-Linux-Command-Manual/cases/SYSTEMD-SERVICE-FAILED/</loc>
          <lastmod>2026-05-08</lastmod>
     </url>
     <url>

@@ -1632,6 +1632,62 @@
   
   
     <li class="md-nav__item">
+      <a href="LINUX-PERMISSION-DENIED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Permission denied
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="SYSTEMD-SERVICE-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    systemd 服务启动失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="NGINX-START-FAILED/" class="md-nav__link">
         
   
@@ -1696,6 +1752,34 @@
     
   
     MySQL 启动失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="MYSQL-TOO-MANY-CONNECTIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL 连接数打满
   
 
     
@@ -1884,6 +1968,34 @@
   
   
     <li class="md-nav__item">
+      <a href="DOCKER-IMAGE-PULL-FAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker 镜像拉取失败
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="DOCKER-COMPOSE-FAILED/" class="md-nav__link">
         
   
@@ -1948,6 +2060,34 @@
     
   
     ImagePullBackOff
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="K8S-NODE-NOTREADY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Node NotReady
   
 
     
@@ -3171,12 +3311,20 @@
 <td><a href="PORT-IN-USE/">端口被占用</a>、<a href="NGINX-START-FAILED/">Nginx 启动失败</a>、<a href="MYSQL-START-FAILED/">MySQL 启动失败</a>、<a href="REDIS-CONNECTION-FAILED/">Redis 连接失败</a></td>
 </tr>
 <tr>
+<td>服务启动失败</td>
+<td><a href="SYSTEMD-SERVICE-FAILED/">systemd 服务启动失败</a>、<a href="NGINX-START-FAILED/">Nginx 启动失败</a>、<a href="DOCKER-COMPOSE-FAILED/">Docker Compose 启动失败</a></td>
+</tr>
+<tr>
 <td>主机资源异常</td>
-<td><a href="DISK-FULL/">磁盘空间满</a>、<a href="CPU-HIGH/">CPU 飙高</a>、<a href="JAVA-OOM/">Java 服务 OOM</a></td>
+<td><a href="DISK-FULL/">磁盘空间满</a>、<a href="CPU-HIGH/">CPU 飙高</a>、<a href="JAVA-OOM/">Java 服务 OOM</a>、<a href="LINUX-PERMISSION-DENIED/">Linux Permission denied</a></td>
 </tr>
 <tr>
 <td>容器或 Pod 异常</td>
-<td><a href="DOCKER-RESTARTING/">Docker 容器反复重启</a>、<a href="K8S-CRASHLOOPBACKOFF/">Pod CrashLoopBackOff</a>、<a href="K8S-IMAGEPULLBACKOFF/">ImagePullBackOff</a>、<a href="K8S-DNS-FAILED/">Kubernetes DNS 异常</a></td>
+<td><a href="DOCKER-RESTARTING/">Docker 容器反复重启</a>、<a href="DOCKER-IMAGE-PULL-FAILED/">Docker 镜像拉取失败</a>、<a href="K8S-CRASHLOOPBACKOFF/">Pod CrashLoopBackOff</a>、<a href="K8S-IMAGEPULLBACKOFF/">ImagePullBackOff</a>、<a href="K8S-NODE-NOTREADY/">Kubernetes Node NotReady</a>、<a href="K8S-DNS-FAILED/">Kubernetes DNS 异常</a></td>
+</tr>
+<tr>
+<td>数据库连接异常</td>
+<td><a href="MYSQL-START-FAILED/">MySQL 启动失败</a>、<a href="MYSQL-TOO-MANY-CONNECTIONS/">MySQL 连接数打满</a>、<a href="REDIS-CONNECTION-FAILED/">Redis 连接失败</a></td>
 </tr>
 <tr>
 <td>监控无数据或告警</td>
@@ -3214,6 +3362,14 @@
 <td><a href="SSH-CONNECTION-FAILED/">SSH 连接失败排查</a></td>
 </tr>
 <tr>
+<td>Linux Permission denied</td>
+<td><a href="LINUX-PERMISSION-DENIED/">Linux Permission denied 排查</a></td>
+</tr>
+<tr>
+<td>systemd 服务启动失败</td>
+<td><a href="SYSTEMD-SERVICE-FAILED/">systemd 服务启动失败排查</a></td>
+</tr>
+<tr>
 <td>Nginx 启动失败</td>
 <td><a href="NGINX-START-FAILED/">Nginx 启动失败排查</a></td>
 </tr>
@@ -3224,6 +3380,10 @@
 <tr>
 <td>MySQL 启动失败</td>
 <td><a href="MYSQL-START-FAILED/">MySQL 启动失败排查</a></td>
+</tr>
+<tr>
+<td>MySQL 连接数打满</td>
+<td><a href="MYSQL-TOO-MANY-CONNECTIONS/">MySQL 连接数打满排查</a></td>
 </tr>
 <tr>
 <td>Redis 连接失败</td>
@@ -3246,6 +3406,10 @@
 <td><a href="DOCKER-RESTARTING/">Docker 容器反复重启排查</a></td>
 </tr>
 <tr>
+<td>Docker 镜像拉取失败</td>
+<td><a href="DOCKER-IMAGE-PULL-FAILED/">Docker 镜像拉取失败排查</a></td>
+</tr>
+<tr>
 <td>Docker Compose 启动失败</td>
 <td><a href="DOCKER-COMPOSE-FAILED/">Docker Compose 启动失败排查</a></td>
 </tr>
@@ -3256,6 +3420,10 @@
 <tr>
 <td>Kubernetes ImagePullBackOff</td>
 <td><a href="K8S-IMAGEPULLBACKOFF/">ImagePullBackOff 排查</a></td>
+</tr>
+<tr>
+<td>Kubernetes Node NotReady</td>
+<td><a href="K8S-NODE-NOTREADY/">Kubernetes Node NotReady 排查</a></td>
 </tr>
 <tr>
 <td>Kubernetes DNS 异常</td>
