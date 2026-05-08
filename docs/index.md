@@ -72,6 +72,7 @@
 | 技术文章草稿 | [v2.16.0 技术文章草稿](articles/V2.16.0-TECH-ARTICLE.md) |
 | 项目审查 | [项目整体审查报告](PROJECT-AUDIT.md) |
 | 新手任务 | [Good First Issues 清单](GOOD-FIRST-ISSUES.md) |
+| Issue 创建批次 | [Good First Issue 创建批次](ISSUE-CREATION-BATCH.md) |
 | 项目维护 | [维护者指南](MAINTAINER-GUIDE.md) |
 | 发布检查 | [Release 检查清单](RELEASE-CHECKLIST.md) |
 | Release 草案 | [v2.16.0 Release 草案](RELEASE-2.16-DRAFT.md) |

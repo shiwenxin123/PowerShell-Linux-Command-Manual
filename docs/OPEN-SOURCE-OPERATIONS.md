@@ -33,6 +33,10 @@
 
 - [v2.16.0 技术文章草稿](articles/V2.16.0-TECH-ARTICLE.md)
 
+当前可复制创建的 Issue 批次:
+
+- [Good First Issue 创建批次](ISSUE-CREATION-BATCH.md)
+
 ## 技术文章发布模板
 
 建议每篇文章都包含:

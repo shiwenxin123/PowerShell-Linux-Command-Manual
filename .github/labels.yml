@@ -31,3 +31,27 @@
 - name: containers
   color: "1d76db"
   description: Docker 或 Kubernetes 相关内容
+- name: container
+  color: "1d76db"
+  description: 容器运行时或容器排障相关内容
+- name: script
+  color: "5319e7"
+  description: 脚本、自动化巡检或工具化相关内容
+- name: windows
+  color: "0078d4"
+  description: Windows 或 Windows Server 相关内容
+- name: cloud
+  color: "bfd4f2"
+  description: 云服务器、负载均衡或云厂商差异相关内容
+- name: kubernetes
+  color: "326ce5"
+  description: Kubernetes 集群、网络、Pod 或控制面相关内容
+- name: middleware
+  color: "fbca04"
+  description: 数据库、中间件、消息队列或搜索服务相关内容
+- name: observability
+  color: "c2e0c6"
+  description: Prometheus、Grafana、Loki、日志和告警相关内容
+- name: troubleshooting
+  color: "d4c5f9"
+  description: 真实故障案例和排障路径相关内容
