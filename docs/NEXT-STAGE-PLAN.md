@@ -89,7 +89,7 @@
 - 发布 GitHub Release。
 - 将文档站地址填入 GitHub About。
 - 新增开源运营手册，沉淀 CSDN、微信公众号、Issue 和 Release 运营动作。
-- 新增 v2.16.0 技术文章草稿，并更新 Good First Issues 候选池。
+- 更新 Good First Issues 候选池，便于持续维护贡献任务。
 
 建议:
 

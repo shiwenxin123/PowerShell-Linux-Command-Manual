@@ -29,11 +29,6 @@
 | 每月 | 发布 1 篇技术文章，回链 GitHub 和文档站 |
 | 每个版本 | 发布 GitHub Release，并同步更新 README 与文档站首页 |
 
-当前可复用文章草稿:
-
-- [v2.16.0 技术文章草稿](articles/V2.16.0-TECH-ARTICLE.md)
-- [v2.16.0 发布运营素材包](articles/V2.16.0-PUBLISHING-PACK.md)
-
 当前可复制创建的 Issue 批次:
 
 - [Good First Issue 创建批次](ISSUE-CREATION-BATCH.md)

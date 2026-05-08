@@ -152,7 +152,7 @@ Set-Location PowerShell-Linux-Command-Manual
 - [x] 巡检脚本 package、security、container、log 模块
 - [x] 网关超时、负载均衡健康检查失败、消息队列连接失败、数据库连接池耗尽、Prometheus 告警误报案例
 - [x] PDF Export 手动发布工作流
-- [x] v2.16.0 技术文章草稿
+- [x] 开源运营手册和 Issue 任务池
 - [x] 主手册正文迁移到专题页、路线页和案例库
 
 ## 安全提醒
