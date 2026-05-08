@@ -153,3 +153,10 @@ kafka-consumer-groups.sh --bootstrap-server <broker>:9092 --describe --group <gr
 4. 应用机器是否能连接。
 5. 认证、权限、配置是否一致。
 6. 查看错误日志和慢日志。
+
+## 相关案例
+
+- [MySQL 启动失败排查](../../cases/MYSQL-START-FAILED.md)
+- [Redis 连接失败排查](../../cases/REDIS-CONNECTION-FAILED.md)
+- [端口被占用排查](../../cases/PORT-IN-USE.md)
+- [磁盘空间满排查](../../cases/DISK-FULL.md)

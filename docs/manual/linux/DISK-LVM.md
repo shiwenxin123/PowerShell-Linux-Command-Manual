@@ -113,4 +113,8 @@ sudo xfs_growfs /data
 - `fdisk`、`parted` 会修改分区表，生产环境需备份。
 - 不要在不了解用途时删除数据库、容器 volume、业务上传目录。
 
-延伸案例: [磁盘空间满排查](../../cases/DISK-FULL.md)。
+## 相关案例
+
+- [磁盘空间满排查](../../cases/DISK-FULL.md)
+- [Docker 容器反复重启排查](../../cases/DOCKER-RESTARTING.md)
+- [MySQL 启动失败排查](../../cases/MYSQL-START-FAILED.md)

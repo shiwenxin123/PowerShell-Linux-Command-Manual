@@ -149,8 +149,10 @@ firewall-cmd --list-all
 ufw status
 ```
 
-## 延伸案例
+## 相关案例
 
 - [端口被占用排查](../../cases/PORT-IN-USE.md)
 - [SSH 连接失败排查](../../cases/SSH-CONNECTION-FAILED.md)
+- [DNS 解析失败排查](../../cases/DNS-RESOLUTION-FAILED.md)
+- [Nginx 502/504 排查](../../cases/NGINX-502-504.md)
 - [常见报错排查](../../troubleshooting/COMMON-ERRORS.md)

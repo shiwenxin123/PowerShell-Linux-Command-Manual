@@ -157,8 +157,10 @@ kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data
 kubectl uncordon <node-name>
 ```
 
-延伸阅读:
+## 相关案例
 
 - [Docker 与 Kubernetes 运维速查](../../containers/DOCKER-KUBERNETES-CHEATSHEET.md)
 - [Kubernetes 进阶排查](ADVANCED-TROUBLESHOOTING.md)
+- [Docker 容器反复重启排查](../../cases/DOCKER-RESTARTING.md)
 - [Docker Compose 启动失败排查](../../cases/DOCKER-COMPOSE-FAILED.md)
+- [Pod CrashLoopBackOff 排查](../../cases/K8S-CRASHLOOPBACKOFF.md)

@@ -122,3 +122,9 @@ ss -tulnp | grep ':5601'
 | 告警不触发 | PromQL、规则加载、Alertmanager |
 | 日志查不到 | agent、路径、label、时间范围 |
 | Dashboard 空白 | 数据源、变量、时间范围 |
+
+## 相关案例
+
+- [Prometheus Target Down 排查](../../cases/PROMETHEUS-TARGET-DOWN.md)
+- [Grafana 无数据排查](../../cases/GRAFANA-NO-DATA.md)
+- [Kubernetes DNS 异常排查](../../cases/K8S-DNS-FAILED.md)

@@ -253,3 +253,9 @@ sudo cp /etc/systemd/journald.conf /etc/systemd/journald.conf.bak
 - 审计规则过多可能影响性能，需要按关键路径配置。
 - 修改集中日志转发前，先确认网络、防火墙、证书和接收端容量。
 - 清理日志优先使用 `journalctl --vacuum-*`、logrotate 或服务 reload，不要直接 `rm -f` 正在写入的文件。
+
+## 相关案例
+
+- [磁盘空间满排查](../../cases/DISK-FULL.md)
+- [SSH 连接失败排查](../../cases/SSH-CONNECTION-FAILED.md)
+- [Nginx 启动失败排查](../../cases/NGINX-START-FAILED.md)

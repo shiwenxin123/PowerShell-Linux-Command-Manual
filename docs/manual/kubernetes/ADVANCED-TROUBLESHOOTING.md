@@ -138,7 +138,9 @@ helm rollback <release> <revision> -n <namespace>
 | PVC Pending | PVC、PV、StorageClass、存储插件 |
 | 发布失败 | Helm status、history、values |
 
-延伸案例:
+## 相关案例
 
 - [Pod CrashLoopBackOff 排查](../../cases/K8S-CRASHLOOPBACKOFF.md)
 - [ImagePullBackOff 排查](../../cases/K8S-IMAGEPULLBACKOFF.md)
+- [Kubernetes DNS 异常排查](../../cases/K8S-DNS-FAILED.md)
+- [Prometheus Target Down 排查](../../cases/PROMETHEUS-TARGET-DOWN.md)

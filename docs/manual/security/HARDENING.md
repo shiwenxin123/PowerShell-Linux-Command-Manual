@@ -71,3 +71,5 @@ grep -i "failed" /var/log/auth.log 2>/dev/null
 
 - [命令风险等级说明](../../security/RISK-LEVELS.md)
 - [SSH 连接失败排查](../../cases/SSH-CONNECTION-FAILED.md)
+- [TLS 证书链不完整排查](../../cases/TLS-CHAIN-INCOMPLETE.md)
+- [证书过期排查](../../cases/CERTIFICATE-EXPIRED.md)

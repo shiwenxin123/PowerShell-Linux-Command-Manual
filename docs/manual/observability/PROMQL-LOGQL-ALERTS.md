@@ -115,3 +115,10 @@ curl -s http://127.0.0.1:9093/api/v2/alerts
 - 避免过度敏感导致告警风暴。
 - 为每条告警写清楚 summary 和 description。
 - 告警标签至少包含 severity、service、instance。
+
+## 相关案例
+
+- [Prometheus Target Down 排查](../../cases/PROMETHEUS-TARGET-DOWN.md)
+- [Grafana 无数据排查](../../cases/GRAFANA-NO-DATA.md)
+- [CPU 飙高排查](../../cases/CPU-HIGH.md)
+- [磁盘空间满排查](../../cases/DISK-FULL.md)

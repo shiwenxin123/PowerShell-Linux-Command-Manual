@@ -115,3 +115,10 @@ findmnt
 | 负载均衡健康检查失败 | 后端端口、健康检查路径、安全组 |
 | 服务器能访问 IP 不能访问域名 | DNS、NAT、出站规则 |
 | 云盘扩容后空间不变 | 分区和文件系统扩容 |
+
+## 相关案例
+
+- [Nginx 502/504 排查](../../cases/NGINX-502-504.md)
+- [DNS 解析失败排查](../../cases/DNS-RESOLUTION-FAILED.md)
+- [TLS 证书链不完整排查](../../cases/TLS-CHAIN-INCOMPLETE.md)
+- [端口被占用排查](../../cases/PORT-IN-USE.md)

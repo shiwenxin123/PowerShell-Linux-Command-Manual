@@ -105,9 +105,10 @@ du -sh /* 2>/dev/null | sort -h
 lsof | grep deleted
 ```
 
-延伸阅读:
+## 相关案例
 
 - [Linux 故障应急排查清单](../../troubleshooting/LINUX-INCIDENT-CHECKLIST.md)
 - [日志轮转、审计与系统日志](../security/LOGGING-AUDIT.md)
 - [CPU 飙高排查](../../cases/CPU-HIGH.md)
 - [磁盘空间满排查](../../cases/DISK-FULL.md)
+- [Java 服务 OOM 排查](../../cases/JAVA-OOM.md)
