@@ -17,11 +17,11 @@
 | 现象 | 优先文档 |
 | --- | --- |
 | 机器变慢、CPU 高 | [CPU 飙高排查](../cases/CPU-HIGH.md)、[Linux 性能调优](../manual/linux/PERFORMANCE-TUNING.md) |
-| 磁盘写入失败 | [磁盘空间满排查](../cases/DISK-FULL.md)、[Linux 磁盘与 LVM](../manual/linux/DISK-LVM.md) |
+| 磁盘写入失败 | [磁盘空间满排查](../cases/DISK-FULL.md)、[Elasticsearch 磁盘水位](../cases/ELASTICSEARCH-DISK-WATERMARK.md)、[Linux 磁盘与 LVM](../manual/linux/DISK-LVM.md) |
 | 服务起不来 | [systemd 服务启动失败](../cases/SYSTEMD-SERVICE-FAILED.md)、[端口被占用](../cases/PORT-IN-USE.md) |
 | 页面 502/504 | [Nginx 502/504 排查](../cases/NGINX-502-504.md)、[云负载均衡排查](../manual/cloud/CLOUD-LB-TROUBLESHOOTING.md) |
 | SSH 登录失败 | [SSH 连接失败排查](../cases/SSH-CONNECTION-FAILED.md)、[Linux 网络排查](../manual/linux/NETWORK.md) |
-| 监控无数据 | [Prometheus Target Down](../cases/PROMETHEUS-TARGET-DOWN.md)、[Grafana 无数据](../cases/GRAFANA-NO-DATA.md) |
+| 监控无数据 | [Prometheus Target Down](../cases/PROMETHEUS-TARGET-DOWN.md)、[Grafana 无数据](../cases/GRAFANA-NO-DATA.md)、[Loki 日志查询为空](../cases/LOKI-NO-LOGS.md) |
 
 ## 值班前检查
 

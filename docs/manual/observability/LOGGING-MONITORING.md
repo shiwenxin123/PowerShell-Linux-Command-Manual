@@ -85,10 +85,22 @@ journalctl -u promtail -n 100 --no-pager
 
 排查重点:
 
-- Promtail 是否读取到日志文件。
-- label 是否符合查询条件。
-- Loki 是否可写入。
+- Promtail 或 Grafana Alloy 是否在运行，采集目标是否 ready。
+- label 是否符合查询条件。先看 `/loki/api/v1/labels`，再写 LogQL。
+- Loki 是否可写入，ingestion 是否因时间窗口或速率限制丢弃日志。
 - 日志时间戳是否异常。
+- Grafana 数据源 URL、租户头和时间范围是否与直接查询 Loki 一致。
+
+查询结果是空数组时，按采集端、Loki、Grafana 三层分开查，见 [Loki 日志查询为空排查](../../cases/LOKI-NO-LOGS.md)。
+
+```bash
+curl -sS http://127.0.0.1:3100/ready
+curl -sS http://127.0.0.1:3100/loki/api/v1/labels
+```
+
+```logql
+{job="example-app"}
+```
 
 ## ELK/Elastic Stack
 
@@ -127,4 +139,5 @@ ss -tulnp | grep ':5601'
 
 - [Prometheus Target Down 排查](../../cases/PROMETHEUS-TARGET-DOWN.md)
 - [Grafana 无数据排查](../../cases/GRAFANA-NO-DATA.md)
+- [Loki 日志查询为空排查](../../cases/LOKI-NO-LOGS.md)
 - [Kubernetes DNS 异常排查](../../cases/K8S-DNS-FAILED.md)

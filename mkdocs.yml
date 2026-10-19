@@ -80,9 +80,12 @@ nav:
       - ImagePullBackOff: cases/K8S-IMAGEPULLBACKOFF.md
       - Kubernetes Node NotReady: cases/K8S-NODE-NOTREADY.md
       - Kubernetes DNS 异常: cases/K8S-DNS-FAILED.md
+      - Kubernetes NetworkPolicy 拦截: cases/K8S-NETWORKPOLICY-BLOCKED.md
       - Prometheus Target Down: cases/PROMETHEUS-TARGET-DOWN.md
       - Prometheus 告警规则误报: cases/PROMETHEUS-ALERT-FALSE-POSITIVE.md
       - Grafana 无数据: cases/GRAFANA-NO-DATA.md
+      - Loki 日志查询为空: cases/LOKI-NO-LOGS.md
+      - Elasticsearch 磁盘水位: cases/ELASTICSEARCH-DISK-WATERMARK.md
   - 容器与云:
       - Kubernetes 排障路线: routes/KUBERNETES-TROUBLESHOOTING.md
       - Kubernetes 进阶排查: manual/kubernetes/ADVANCED-TROUBLESHOOTING.md

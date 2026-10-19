@@ -79,3 +79,4 @@ kubectl rollout status deploy/coredns -n kube-system
 - [Kubernetes 进阶排查](../manual/kubernetes/ADVANCED-TROUBLESHOOTING.md)
 - [Docker/Kubernetes 生产命令](../manual/kubernetes/DOCKER-K8S-PRODUCTION.md)
 - [Linux 网络排查](../manual/linux/NETWORK.md)
+- [Kubernetes NetworkPolicy 拦截排查](K8S-NETWORKPOLICY-BLOCKED.md)

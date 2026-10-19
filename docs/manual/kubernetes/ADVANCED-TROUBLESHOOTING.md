@@ -144,4 +144,5 @@ helm rollback <release> <revision> -n <namespace>
 - [ImagePullBackOff 排查](../../cases/K8S-IMAGEPULLBACKOFF.md)
 - [Kubernetes Node NotReady 排查](../../cases/K8S-NODE-NOTREADY.md)
 - [Kubernetes DNS 异常排查](../../cases/K8S-DNS-FAILED.md)
+- [Kubernetes NetworkPolicy 拦截排查](../../cases/K8S-NETWORKPOLICY-BLOCKED.md)
 - [Prometheus Target Down 排查](../../cases/PROMETHEUS-TARGET-DOWN.md)

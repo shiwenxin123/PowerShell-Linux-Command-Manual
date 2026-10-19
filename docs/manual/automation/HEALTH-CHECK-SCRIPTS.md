@@ -117,6 +117,95 @@ bash scripts/linux-health-check.sh --format json --output reports/linux-health-c
 
 ## 示例报告
 
+通用示例覆盖全部模块，字段名与脚本一致:
+
 - [Linux JSON 示例](../../examples/linux-health-check.sample.json)
 - [Windows JSON 示例](../../examples/windows-health-check.sample.json)
 - [JSON Schema](../../schema/health-check-report.schema.json)
+
+`package`、`security`、`container`、`log` 在不同系统上的输出不一样。下面的样例是脱敏后的完整报告，主机名和地址使用 `example-*` 与文档测试网段，不是生产环境。
+
+| 平台 | 样例 | 这几份报告里值得看的差异 |
+| --- | --- | --- |
+| Ubuntu 22.04 | [Ubuntu 样例](../../examples/health-check-ubuntu.sample.json) | `package` 走 `apt_policy`；`security` 走 `ufw` 和 `apparmor`；装了 Docker，没有 kubectl |
+| Rocky Linux 9 | [Rocky 样例](../../examples/health-check-rocky.sample.json) | `package` 走 `dnf_repolist`；`security` 走 `firewall-cmd` 和 `selinux`；只有 containerd |
+| CentOS 7 | [CentOS 7 样例](../../examples/health-check-centos7.sample.json) | 没有 dnf 时 `package` 的仓库命令名是 `yum_repolist` |
+| 银河麒麟桌面 V10 SP1 | [麒麟样例](../../examples/health-check-kylin.sample.json) | Debian 系命令；本机没有 firewalld/ufw 时出现 `firewall-cmd` 告警 |
+| 统信 UOS 服务器 20 | [UOS 样例](../../examples/health-check-uos.sample.json) | 同样可能是 `apt_policy`；`ufw status` 为 inactive 时脚本仍记为成功 |
+| Windows Server 2022 | [Windows Server 样例](../../examples/windows-health-check.sample.json) | `package` 看 `Get-Package` 和 `Get-PSRepository`；没有 winget 时告警 |
+
+样例是说明输出形状，不是“每台同类系统都会得到同样告警”。SP、架构和预装组件不同，命令有无就会变。
+
+校验 JSON 能被解析:
+
+```bash
+python -m json.tool docs/examples/health-check-ubuntu.sample.json >/dev/null
+```
+
+```powershell
+Get-Content docs/examples/health-check-windows-server.sample.json -Raw | ConvertFrom-Json
+```
+
+## 新增模块在各平台上怎么读
+
+脚本只执行本机存在的命令。`warnings` 里的 `Command not available` 表示命令不在 `PATH` 中，不表示防火墙关闭或主机不合规。
+
+### package
+
+Linux 先列出本机存在的包管理器，再按下面顺序只选一个仓库查询:
+
+1. 有 `apt-cache` 时执行 `apt-cache policy`，命令名为 `apt_policy`。
+2. 否则有 `dnf` 时执行 `dnf repolist`，命令名为 `dnf_repolist`。
+3. 否则有 `yum` 时执行 `yum repolist`，命令名为 `yum_repolist`。
+4. 否则有 `zypper` 时执行 `zypper repos`。
+5. 都没有时，模块告警 `package-manager`。
+
+因此同一台同时装有 `dnf` 和 `yum` 的 Rocky/CentOS 8+，仓库结果只会有 `dnf_repolist`。CentOS 7 通常没有 `dnf`，才会出现 `yum_repolist`。银河麒麟桌面 V10 和多数统信 UOS 20 会走 `apt_policy`。麒麟高级服务器里的 RPM 系镜像会走 `dnf_repolist` 或 `yum_repolist`，不要拿桌面样例否定服务器结果。
+
+Windows 的 `package` 模块执行:
+
+- `installed_packages`: `Get-Package` 的前 30 条。
+- `powershell_repositories`: `Get-PSRepository`。
+- 有 `winget` 时增加 `winget_version`；没有则告警 `winget`。Windows Server 默认经常没有 winget，这是样例里的预期告警。
+
+### security
+
+Linux 按存在与否收集，不是每项都有:
+
+| 检查 | 命令名 | 选择规则 |
+| --- | --- | --- |
+| SSH 守护配置 | `sshd_config` | 只读 `/etc/ssh/sshd_config` 里未注释的 `PermitRootLogin`、`PasswordAuthentication`、`PubkeyAuthentication`、`Port`。文件不可读则告警 |
+| sudo | `sudo_version` | 本机有 `sudo` 才执行 `sudo -V` |
+| 防火墙 | `firewall_state` | 优先 `firewall-cmd --state`，否则 `ufw status`。两个都不存在时告警 `firewall-cmd` |
+| SELinux 或 AppArmor | `selinux` 或 `apparmor` | 优先 `getenforce`，否则 `aa-status`。两个都没有时不额外告警 |
+
+Ubuntu 样例因此是 ufw + AppArmor。Rocky 和 CentOS 7 样例是 firewalld + SELinux。麒麟桌面样例没有这两种防火墙命令，所以 `security.status` 为 `warning`，同时仍可能有 `apparmor`。UOS 样例里 `ufw status` 输出 `inactive`，命令成功，模块状态仍是 `ok`。要确认厂商安全中心，需要另查服务名，巡检脚本目前不调用 `kylin-security-cli` 或 `deepin-defender`。
+
+Windows 的 `security` 模块执行 `Get-NetFirewallProfile`。有 `Get-MpComputerStatus` 时记录 Defender 状态，没有则告警。Server Core 或精简镜像上 Defender cmdlet 缺失是告警，不是脚本失败。
+
+### container
+
+Linux:
+
+- 有 `docker` 时记录 `docker_version` 和 `docker_ps`，否则告警 `docker`。
+- 有 `ctr` 时额外记录 `containerd_version`。没有 `ctr` 不单独告警。
+- 有 `kubectl` 时记录 `kubectl_nodes`，否则告警 `kubectl`。
+
+没有安装 Docker 的桌面麒麟、只有 containerd 的 Rocky 节点，都会出现 docker 告警。这不代表容器运行时损坏。`kubectl get nodes` 需要当前 kubeconfig 有权限；命令不存在和权限失败不是同一种结果，后者会体现在命令 `exit_code`。
+
+Windows 只检查 `docker` 和 `kubectl version --client=true`。没有 Linux 上的 `ctr` 检查。
+
+### log
+
+Linux 有 `journalctl` 时记录:
+
+- `journal_errors`: `journalctl -p 3 -n 50 --no-pager`
+- `journal_disk_usage`: `journalctl --disk-usage`
+
+有 `dmesg` 时增加 `kernel_warnings`。`/var/log` 存在时增加 `var_log_usage`。没有 `journalctl` 才告警。样例里的 `-- No entries --` 只表示最近没有 priority 3 日志，不表示系统从未报错。
+
+Windows 记录 System 和 Application 两个日志里 Level 为 2 的最近 20 条，命令名是 `system_errors` 和 `application_errors`。空表表示当前过滤条件下没有错误事件。
+
+## 和国产系统命令手册的关系
+
+巡检脚本的 `package` / `security` 结果只能说明通用 Linux 命令是否存在。银河麒麟、统信 UOS 的版本识别、软件源和安全中心还要按 [版本差异与排查要点](../../domestic-linux/VERSION-DIFFERENCES.md) 继续看。脚本不会因为发行版名字改变模块名。

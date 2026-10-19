@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "os": "Windows",
+    "hostname": "EXAMPLE-WIN-HOST",
+    "timestamp": "2026-05-08T02:30:00Z",
+    "module": "all",
+    "format": "json",
+    "script": "windows-health-check.ps1"
+  },
+  "modules": {
+    "system": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "computer_info",
+          "command": "Get-ComputerInfo | Select-Object CsName, WindowsProductName, WindowsVersion, OsArchitecture",
+          "exit_code": 0,
+          "output": "CsName           WindowsProductName              WindowsVersion OsArchitecture\nEXAMPLE-WIN-HOST Windows Server 2022 Datacenter 2009           64-bit"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "disk": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "drives",
+          "command": "Get-PSDrive -PSProvider FileSystem | Select-Object Name, Used, Free",
+          "exit_code": 0,
+          "output": "Name         Used         Free\nC    42949672960  75161927680"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "network": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "listening_tcp_ports",
+          "command": "Get-NetTCPConnection -State Listen | Select-Object LocalAddress, LocalPort, OwningProcess",
+          "exit_code": 0,
+          "output": "LocalAddress LocalPort OwningProcess\n0.0.0.0             3389          1200\n127.0.0.1           5985           980"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "service": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "services_not_running",
+          "command": "Get-Service | Where-Object Status -ne \"Running\" | Select-Object -First 20 Name, Status, StartType",
+          "exit_code": 0,
+          "output": "Name     Status StartType\nSpooler Stopped    Manual"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "process": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "top_cpu_processes",
+          "command": "Get-Process | Sort-Object CPU -Descending | Select-Object -First 10 Name, Id, CPU, WorkingSet",
+          "exit_code": 0,
+          "output": "Name      Id    CPU WorkingSet\nexample 2400  12.5   83886080"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "package": {
+      "status": "warning",
+      "commands": [
+        {
+          "name": "installed_packages",
+          "command": "Get-Package | Select-Object -First 30 | Format-Table -AutoSize",
+          "exit_code": 0,
+          "output": "Name       Version ProviderName\nPowerShell 7.4.6   Programs"
+        },
+        {
+          "name": "powershell_repositories",
+          "command": "Get-PSRepository | Format-Table -AutoSize",
+          "exit_code": 0,
+          "output": "Name      InstallationPolicy SourceLocation\nPSGallery Trusted            https://www.powershellgallery.com/api/v2"
+        }
+      ],
+      "warnings": [
+        {
+          "name": "winget",
+          "message": "Command not available: winget"
+        }
+      ],
+      "errors": []
+    },
+    "security": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "firewall_profiles",
+          "command": "Get-NetFirewallProfile | Format-Table -AutoSize",
+          "exit_code": 0,
+          "output": "Name    Enabled DefaultInboundAction DefaultOutboundAction\nDomain     True                Block                Allow\nPrivate    True                Block                Allow\nPublic     True                Block                Allow"
+        },
+        {
+          "name": "defender_status",
+          "command": "Get-MpComputerStatus | Format-List AMServiceEnabled, AntivirusEnabled, RealTimeProtectionEnabled",
+          "exit_code": 0,
+          "output": "AMServiceEnabled          : True\nAntivirusEnabled          : True\nRealTimeProtectionEnabled : True"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "container": {
+      "status": "warning",
+      "commands": [],
+      "warnings": [
+        {
+          "name": "docker",
+          "message": "Command not available: docker"
+        },
+        {
+          "name": "kubectl",
+          "message": "Command not available: kubectl"
+        }
+      ],
+      "errors": []
+    },
+    "log": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "system_errors",
+          "command": "Get-WinEvent -FilterHashtable @{ LogName = \"System\"; Level = 2 } -MaxEvents 20 | Format-Table -AutoSize",
+          "exit_code": 0,
+          "output": "TimeCreated         ProviderName Id Message\n2026-05-08 02:10:00 Example        100 Example event, no customer data"
+        },
+        {
+          "name": "application_errors",
+          "command": "Get-WinEvent -FilterHashtable @{ LogName = \"Application\"; Level = 2 } -MaxEvents 20 | Format-Table -AutoSize",
+          "exit_code": 0,
+          "output": "TimeCreated ProviderName Id Message"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "summary": {
+    "status": "warning",
+    "warnings_count": 3,
+    "errors_count": 0
+  },
+  "errors": []
+}
