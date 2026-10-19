@@ -71,6 +71,7 @@ curl -s http://elasticsearch.example.com:9200/_cluster/health?pretty
 - 如果只有某个 Dashboard 异常，优先检查变量和查询语句。
 - 如果所有面板无数据，优先检查数据源连接、认证和后端采集链路。
 - 对 Prometheus 面板，联动检查 [Prometheus Target Down 排查](PROMETHEUS-TARGET-DOWN.md)。
+- Loki 查询为空时，按采集端、Loki 和 Grafana 分开看 [Loki 日志查询为空排查](LOKI-NO-LOGS.md)。
 
 ## 高危提醒
 

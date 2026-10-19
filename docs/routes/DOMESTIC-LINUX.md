@@ -41,6 +41,7 @@ rpm --eval '%{_arch}' 2>/dev/null
 | 离线环境装包 | [离线安装与软件源](../domestic-linux/OFFLINE-PACKAGE-GUIDE.md) |
 | ARM/龙芯/鲲鹏兼容 | [架构与兼容性检查](../domestic-linux/ARCHITECTURE-CHECKLIST.md) |
 | 厂商版本命令差异 | [版本差异与排查要点](../domestic-linux/VERSION-DIFFERENCES.md) |
+| 包管理或安全中心命令不存在 | [版本差异与排查要点](../domestic-linux/VERSION-DIFFERENCES.md) |
 | SSH/网络问题 | [Linux 网络排查](../manual/linux/NETWORK.md)、[SSH 连接失败](../cases/SSH-CONNECTION-FAILED.md) |
 | 权限问题 | [Linux 用户组与权限](../manual/linux/USERS-PERMISSIONS.md)、[Permission denied 排查](../cases/LINUX-PERMISSION-DENIED.md) |
 

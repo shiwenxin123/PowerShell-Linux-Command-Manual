@@ -2,6 +2,9 @@
 
 ## 2.16.0
 
+- 补充银河麒麟与统信 UOS 的版本识别、包管理、安全中心和系统管理命令差异，并标明商业版本不能当成同一套命令。
+- 为巡检脚本 `package`、`security`、`container`、`log` 模块补充 Ubuntu、CentOS 7、Rocky Linux、麒麟、UOS 和 Windows Server 的脱敏 JSON 样例。
+- 新增 Kubernetes NetworkPolicy 拦截、Elasticsearch 磁盘水位和 Loki 日志查询为空排查案例。
 - README 和文档站首页新增学习路线，覆盖新手、运维值班、国产 Linux、容器/Kubernetes 和脚本自动化。
 - 案例库新增按症状查找索引。
 - 新增 v2.16.0 Release 草案，补充 GitHub About、发布文案和推荐阅读。

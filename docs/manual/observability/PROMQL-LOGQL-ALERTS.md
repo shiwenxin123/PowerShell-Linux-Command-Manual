@@ -120,5 +120,6 @@ curl -s http://127.0.0.1:9093/api/v2/alerts
 
 - [Prometheus Target Down 排查](../../cases/PROMETHEUS-TARGET-DOWN.md)
 - [Grafana 无数据排查](../../cases/GRAFANA-NO-DATA.md)
+- [Loki 日志查询为空排查](../../cases/LOKI-NO-LOGS.md)
 - [CPU 飙高排查](../../cases/CPU-HIGH.md)
 - [磁盘空间满排查](../../cases/DISK-FULL.md)

@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "os": "Linux",
+    "hostname": "example-uos-host",
+    "timestamp": "2026-05-08T02:30:00Z",
+    "module": "all",
+    "format": "json",
+    "script": "linux-health-check.sh"
+  },
+  "modules": {
+    "system": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "uname",
+          "command": "uname -a",
+          "exit_code": 0,
+          "output": "Linux example-uos-host 4.19.0-amd64-desktop #5.10.0uos SMP x86_64 GNU/Linux"
+        },
+        {
+          "name": "os-release",
+          "command": "cat /etc/os-release",
+          "exit_code": 0,
+          "output": "NAME=\"UnionTech OS\"\nVERSION=\"20\"\nID=uos\nVERSION_ID=\"20\"\nPRETTY_NAME=\"UnionTech OS Server 20\""
+        },
+        {
+          "name": "uptime",
+          "command": "uptime",
+          "exit_code": 0,
+          "output": " 02:30:00 up 12 days,  3:11,  1 user,  load average: 0.08, 0.12, 0.09"
+        },
+        {
+          "name": "memory",
+          "command": "free -h",
+          "exit_code": 0,
+          "output": "               total        used        free      shared  buff/cache   available\nMem:            15Gi       3.1Gi       9.4Gi       120Mi       2.8Gi        11Gi\nSwap:          4.0Gi          0B       4.0Gi"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "disk": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "disk",
+          "command": "df -h",
+          "exit_code": 0,
+          "output": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/vda1        80G   18G   62G   23% /"
+        },
+        {
+          "name": "inodes",
+          "command": "df -i",
+          "exit_code": 0,
+          "output": "Filesystem     Inodes  IUsed  IFree IUse% Mounted on\n/dev/vda1         5.0M   180K   4.8M    4% /"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "network": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "listening_ports",
+          "command": "ss -tulnp",
+          "exit_code": 0,
+          "output": "Netid State  Recv-Q Send-Q Local Address:Port Peer Address:Port\ntcp   LISTEN 0      128    0.0.0.0:22      0.0.0.0:*"
+        },
+        {
+          "name": "routes",
+          "command": "ip route",
+          "exit_code": 0,
+          "output": "default via 192.0.2.1 dev eth0 proto dhcp src 192.0.2.50\n192.0.2.0/24 dev eth0 proto kernel scope link src 192.0.2.50"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "service": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "failed_services",
+          "command": "systemctl --failed --no-pager",
+          "exit_code": 0,
+          "output": "  UNIT LOAD ACTIVE SUB DESCRIPTION\n0 loaded units listed."
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "process": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "top_cpu",
+          "command": "ps aux --sort=-%cpu | head -n 10",
+          "exit_code": 0,
+          "output": "USER PID %CPU %MEM COMMAND\nroot 1 0.1 0.2 /usr/lib/systemd/systemd"
+        },
+        {
+          "name": "top_memory",
+          "command": "ps aux --sort=-%mem | head -n 10",
+          "exit_code": 0,
+          "output": "USER PID %CPU %MEM COMMAND\nroot 800 0.2 1.1 /usr/bin/example-agent"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "package": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "package_managers",
+          "command": "for c in apt apt-get dnf yum zypper pacman rpm dpkg; do ...",
+          "exit_code": 0,
+          "output": "== apt ==\napt 1.8.2.3 (amd64)\n== apt-get ==\napt 1.8.2.3 (amd64)\n== dpkg ==\nDebian dpkg package management program version 1.19.8 (amd64)."
+        },
+        {
+          "name": "apt_policy",
+          "command": "apt-cache policy",
+          "exit_code": 0,
+          "output": "Package files:\n 100 /var/lib/dpkg/status\n     release a=now\n 500 http://mirror.example.com/uos eagle/main amd64 Packages"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "security": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "sshd_config",
+          "command": "grep -E '^(PermitRootLogin|PasswordAuthentication|PubkeyAuthentication|Port)\\b' /etc/ssh/sshd_config || true",
+          "exit_code": 0,
+          "output": "Port 22\nPermitRootLogin no\nPubkeyAuthentication yes"
+        },
+        {
+          "name": "sudo_version",
+          "command": "sudo -V",
+          "exit_code": 0,
+          "output": "Sudo version 1.8.27"
+        },
+        {
+          "name": "firewall_state",
+          "command": "ufw status",
+          "exit_code": 0,
+          "output": "Status: inactive"
+        },
+        {
+          "name": "apparmor",
+          "command": "aa-status",
+          "exit_code": 0,
+          "output": "apparmor module is loaded.\n5 profiles are in enforce mode."
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "container": {
+      "status": "warning",
+      "commands": [
+        {
+          "name": "docker_version",
+          "command": "docker version",
+          "exit_code": 0,
+          "output": "Client: Docker Engine - Community\n Version: 24.0.9\nServer: Docker Engine - Community\n Version: 24.0.9"
+        },
+        {
+          "name": "docker_ps",
+          "command": "docker ps --format 'table {{.Names}}\\t{{.Image}}\\t{{.Status}}\\t{{.Ports}}'",
+          "exit_code": 0,
+          "output": "NAMES    IMAGE            STATUS     PORTS\nexample  example/app:1.2  Up 5 hours 127.0.0.1:8080->8080/tcp"
+        }
+      ],
+      "warnings": [
+        {
+          "name": "kubectl",
+          "message": "Command not available: kubectl"
+        }
+      ],
+      "errors": []
+    },
+    "log": {
+      "status": "ok",
+      "commands": [
+        {
+          "name": "journal_errors",
+          "command": "journalctl -p 3 -n 50 --no-pager",
+          "exit_code": 0,
+          "output": "-- No entries --"
+        },
+        {
+          "name": "journal_disk_usage",
+          "command": "journalctl --disk-usage",
+          "exit_code": 0,
+          "output": "Archived and active journals take up 96.0M in the file system."
+        },
+        {
+          "name": "kernel_warnings",
+          "command": "dmesg -T --level=err,warn",
+          "exit_code": 0,
+          "output": ""
+        },
+        {
+          "name": "var_log_usage",
+          "command": "du -sh /var/log 2>/dev/null || true",
+          "exit_code": 0,
+          "output": "180M\t/var/log"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "summary": {
+    "status": "warning",
+    "warnings_count": 1,
+    "errors_count": 0
+  },
+  "errors": []
+}

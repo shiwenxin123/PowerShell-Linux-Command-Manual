@@ -2,6 +2,8 @@
 
 银河麒麟和统信 UOS 常见于政企办公、国产化替代和信创环境。实际命令会因版本、CPU 架构和软件源策略不同而变化，执行前建议先确认系统版本。
 
+不同发行版/商业版本可能差异较大。桌面版、服务器版和 SP 小版本的包管理器、安全中心服务名、更新工具都可能不同。下文厂商命令只在对应组件已安装时可用。先按 [版本差异与排查要点](VERSION-DIFFERENCES.md) 识别现场，再用 `command -v` 或 `systemctl list-unit-files` 确认命令和服务存在。命令不存在，只说明当前镜像没有这个组件。
+
 ## 系统版本识别
 
 ```bash
@@ -279,6 +281,19 @@ uos-file-protection status
 uos-file-protection enable
 uos-file-protection add /path/to/protect
 ```
+
+## 版本边界
+
+常用命令页不能代替版本核对。现场至少先分清下面几类差异，再回来执行具体命令。
+
+| 差异 | 先做什么 | 详细说明 |
+| --- | --- | --- |
+| 版本识别 | 读 `os-release`，再按存在与否查看 `kylin-release`、`os-version`、`nkvers`、`uosvers` | [版本识别](VERSION-DIFFERENCES.md#先识别再选命令) |
+| 包管理 | `command -v apt dnf yum`，只使用本机存在的那一组查询命令 | [包管理命令差异](VERSION-DIFFERENCES.md#包管理命令差异) |
+| 安全中心 | 列出本机防火墙、SELinux/AppArmor 和厂商服务，不默认存在某个 CLI | [安全中心与访问控制差异](VERSION-DIFFERENCES.md#安全中心与访问控制差异) |
+| 系统管理 | 用 `systemctl` 查实际单元名，更新和备份先看状态 | [系统管理命令差异](VERSION-DIFFERENCES.md#系统管理命令差异) |
+
+启用、关闭安全中心，以及备份恢复、升级、修改安全级别，都会改变系统行为。排查时停在 `status`、`policy`、`repolist` 这类只读输出。
 
 ## 信创环境建议
 

@@ -113,6 +113,14 @@ curl -s http://127.0.0.1:9200/_cat/shards?v
 - JVM heap 使用过高。
 - 索引过多或分片过多。
 
+磁盘水位需要把 flood stage、`read_only_allow_delete` 和分片分配分开看。默认 85% / 90% / 95% 可以被集群设置覆盖，清理磁盘之前不要删索引。完整步骤见 [Elasticsearch 磁盘水位排查](../../cases/ELASTICSEARCH-DISK-WATERMARK.md)。
+
+```bash
+# 只读查看节点磁盘和水位相关设置。8.x 需要认证时再加 -u
+curl -sS 'http://127.0.0.1:9200/_cat/allocation?v&h=node,disk.percent,disk.avail'
+curl -sS 'http://127.0.0.1:9200/_cluster/settings?include_defaults=true&flat_settings=true' | grep watermark
+```
+
 ## 通用排查顺序
 
 1. 服务是否运行。
