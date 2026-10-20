@@ -286,6 +286,140 @@ collect_package_json() {
   set_module_json package "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
 }
 
+# Read-only inventory of Kylin/UOS security-center tooling.
+# Missing packages, units, commands, and paths are reported in the output and do not fail the probe.
+# Only a status subcommand is executed. enable, disable, set, allow, start, and kysec_set are never run.
+domestic_report_package() {
+  local name=$1
+  local status
+  if command -v dpkg-query >/dev/null 2>&1; then
+    if status=$(dpkg-query -W -f '${Status}' "$name" 2>/dev/null); then
+      printf '%s: dpkg %s\n' "$name" "$status"
+      return 0
+    fi
+  fi
+  if command -v rpm >/dev/null 2>&1; then
+    if status=$(rpm -q "$name" 2>/dev/null); then
+      printf '%s: rpm %s\n' "$name" "$status"
+      return 0
+    fi
+  fi
+  if ! command -v dpkg-query >/dev/null 2>&1 && ! command -v rpm >/dev/null 2>&1; then
+    printf '%s: package-manager-unavailable\n' "$name"
+    return 0
+  fi
+  printf '%s: not-installed\n' "$name"
+}
+
+domestic_report_unit() {
+  local unit=$1
+  local load active file
+  if ! command -v systemctl >/dev/null 2>&1 || [ ! -d /run/systemd/system ]; then
+    printf '%s: systemctl-unavailable\n' "$unit"
+    return 0
+  fi
+  if command -v timeout >/dev/null 2>&1; then
+    load=$(timeout 5 systemctl show -p LoadState --value "$unit" 2>/dev/null || true)
+    active=$(timeout 5 systemctl show -p ActiveState --value "$unit" 2>/dev/null || true)
+    file=$(timeout 5 systemctl show -p UnitFileState --value "$unit" 2>/dev/null || true)
+  else
+    load=$(systemctl show -p LoadState --value "$unit" 2>/dev/null || true)
+    active=$(systemctl show -p ActiveState --value "$unit" 2>/dev/null || true)
+    file=$(systemctl show -p UnitFileState --value "$unit" 2>/dev/null || true)
+  fi
+  printf '%s: load=%s active=%s unit_file=%s\n' "$unit" "${load:-unknown}" "${active:-unknown}" "${file:-unknown}"
+}
+
+domestic_report_path() {
+  local path=$1
+  if [ -e "$path" ]; then
+    if [ -r "$path" ]; then
+      printf '%s: present\n' "$path"
+    else
+      printf '%s: present-unreadable\n' "$path"
+    fi
+  else
+    printf '%s: absent\n' "$path"
+  fi
+}
+
+domestic_report_command_presence() {
+  local bin=$1
+  if command -v "$bin" >/dev/null 2>&1; then
+    printf '%s: present (not executed)\n' "$bin"
+  else
+    printf '%s: not-found\n' "$bin"
+  fi
+}
+
+domestic_run_status_if_present() {
+  local bin=$1
+  shift
+  local arg output rc
+  for arg in "$@"; do
+    case "$arg" in
+      enable|disable|set|allow|start|scan|add|stop|restart|delete|remove)
+        printf '%s: refused non-read-only argument\n' "$bin"
+        DOMESTIC_SECURITY_PROBE_RC=1
+        return 0
+        ;;
+    esac
+  done
+  if ! command -v "$bin" >/dev/null 2>&1; then
+    printf '%s: not-found\n' "$bin"
+    return 0
+  fi
+  printf '%s: present\n' "$bin"
+  printf '== %s ==\n' "$*"
+  rc=0
+  if command -v timeout >/dev/null 2>&1; then
+    output=$(timeout 5 "$@" 2>&1) || rc=$?
+  else
+    output=$("$@" 2>&1) || rc=$?
+  fi
+  printf '%s\n' "$output" | tr -d '\000-\010\013\014\016-\037' | head -n 40
+  printf 'exit_code=%s\n' "$rc"
+  if [ "$rc" -ne 0 ]; then
+    DOMESTIC_SECURITY_PROBE_RC=1
+  fi
+}
+
+domestic_security_center_probe() {
+  DOMESTIC_SECURITY_PROBE_RC=0
+  printf '%s\n' 'domestic_security_center: read-only probe'
+  printf '%s\n' 'note: not-found, not-installed, and absent are expected when the tool is not on this host'
+  printf '%s\n' 'note: enable, disable, set, allow, start, and kysec_set are never executed'
+
+  printf '\n%s\n' '== packages =='
+  domestic_report_package ksc-defender
+  domestic_report_package kylin-security-center
+  domestic_report_package kylin-security-tool
+  domestic_report_package uos-security-center
+  domestic_report_package deepin-defender
+
+  printf '\n%s\n' '== units =='
+  domestic_report_unit ksc-defender.service
+  domestic_report_unit ksc-defender-daemon.service
+  domestic_report_unit kylin-security-center.service
+  domestic_report_unit deepin-defender.service
+
+  printf '\n%s\n' '== commands =='
+  domestic_run_status_if_present kylin-security-cli kylin-security-cli status
+  domestic_run_status_if_present uos-firewall uos-firewall status
+  domestic_run_status_if_present deepin-defender deepin-defender status
+  domestic_report_command_presence kylin-security-level
+  domestic_report_command_presence uos-security-level
+  domestic_report_command_presence kysec_set
+  domestic_report_command_presence kysec_stat
+
+  printf '\n%s\n' '== paths =='
+  domestic_report_path /etc/kylin-security-center.conf
+  domestic_report_path /var/log/kylin-security.log
+  domestic_report_path /var/log/uos/security.log
+
+  return "$DOMESTIC_SECURITY_PROBE_RC"
+}
+
 collect_security_json() {
   MODULE_WARNINGS=0
   MODULE_ERRORS=0
@@ -323,6 +457,9 @@ collect_security_json() {
     run_json_command apparmor aa-status
     if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
   fi
+
+  run_json_command domestic_security_center domestic_security_center_probe
+  if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
 
   set_module_json security "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
 }
@@ -527,6 +664,8 @@ text_or_markdown_report() {
     if command -v sudo >/dev/null 2>&1; then run_block sudo -V; fi
     if command -v firewall-cmd >/dev/null 2>&1; then run_block firewall-cmd --state; elif command -v ufw >/dev/null 2>&1; then run_block ufw status; fi
     if command -v getenforce >/dev/null 2>&1; then run_block getenforce; elif command -v aa-status >/dev/null 2>&1; then run_block aa-status; fi
+    echo "-- domestic security center --"
+    domestic_security_center_probe 2>&1 || true
     if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
   fi
 

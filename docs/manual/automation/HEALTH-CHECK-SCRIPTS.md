@@ -21,7 +21,7 @@ Linux 和 Windows 巡检脚本支持文本、Markdown 和 JSON 输出。JSON 输
 | `service` | 异常服务或未运行服务 |
 | `process` | CPU 和内存占用较高的进程 |
 | `package` | 包管理器、软件源、已安装包或仓库状态 |
-| `security` | SSH、防火墙、SELinux/AppArmor、Defender 等基础安全状态 |
+| `security` | SSH、防火墙、SELinux/AppArmor、麒麟/UOS 安全中心、Defender 等基础安全状态 |
 | `container` | Docker、containerd、Kubernetes 客户端或节点基础状态 |
 | `log` | 系统错误日志、journal 占用、Windows 事件日志摘要 |
 
@@ -178,8 +178,15 @@ Linux 按存在与否收集，不是每项都有:
 | sudo | `sudo_version` | 本机有 `sudo` 才执行 `sudo -V` |
 | 防火墙 | `firewall_state` | 优先 `firewall-cmd --state`，否则 `ufw status`。两个都不存在时告警 `firewall-cmd` |
 | SELinux 或 AppArmor | `selinux` 或 `apparmor` | 优先 `getenforce`，否则 `aa-status`。两个都没有时不额外告警 |
+| 麒麟 / UOS 安全中心 | `domestic_security_center` | 只读探测常见安全中心包、systemd 单元、已知路径。命令存在时只执行 `status`。工具不存在时写入 `not-found` / `not-installed` / `absent`，不因此告警 |
 
-Ubuntu 样例因此是 ufw + AppArmor。Rocky 和 CentOS 7 样例是 firewalld + SELinux。麒麟桌面样例没有这两种防火墙命令，所以 `security.status` 为 `warning`，同时仍可能有 `apparmor`。UOS 样例里 `ufw status` 输出 `inactive`，命令成功，模块状态仍是 `ok`。要确认厂商安全中心，需要另查服务名，巡检脚本目前不调用 `kylin-security-cli` 或 `deepin-defender`。
+Ubuntu 样例因此是 ufw + AppArmor。Rocky 和 CentOS 7 样例是 firewalld + SELinux。麒麟桌面样例没有这两种防火墙命令，所以 `security.status` 为 `warning`，同时仍可能有 `apparmor`。UOS 样例里 `ufw status` 输出 `inactive`，命令成功，模块状态仍是 `ok`。
+
+`domestic_security_center` 每次都会出现在文本和 JSON 里。它查询 `ksc-defender`、`kylin-security-center`、`kylin-security-tool`、`uos-security-center`、`deepin-defender` 是否安装，查看 `ksc-defender.service`、`ksc-defender-daemon.service`、`kylin-security-center.service`、`deepin-defender.service` 的 `LoadState` / `ActiveState` / `UnitFileState`，并只检查这些路径在不在: `/etc/kylin-security-center.conf`、`/var/log/kylin-security.log`、`/var/log/uos/security.log`。路径只看是否存在，不读取内容。
+
+命令存在时只执行 `kylin-security-cli status`、`uos-firewall status`、`deepin-defender status`，并且最多等 5 秒。`kylin-security-level`、`uos-security-level`、`kysec_set`、`kysec_stat` 只报告是否在 `PATH` 中，不执行。`enable`、`disable`、`set`、`allow`、`start` 不会被调用。某个已存在命令的 `status` 返回非 0 时，这条命令记为告警；工具本身不存在不是告警。通用 Ubuntu 或 CentOS 上通常整段都是 `not-found` / `not-installed` / `absent`，脚本继续完成。
+
+样例 JSON 仍符合 schema。它们生成于这次探测加入之前，所以里面还没有 `domestic_security_center`。以实机 `--format json` 的输出为准。
 
 Windows 的 `security` 模块执行 `Get-NetFirewallProfile`。有 `Get-MpComputerStatus` 时记录 Defender 状态，没有则告警。Server Core 或精简镜像上 Defender cmdlet 缺失是告警，不是脚本失败。
 

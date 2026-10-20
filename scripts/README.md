@@ -29,6 +29,10 @@ bash scripts/linux-health-check.sh --format markdown --output reports/linux-heal
 
 # 生成 JSON 报告
 bash scripts/linux-health-check.sh --format json --output reports/linux-health-check.json
+
+# 安全模块，包含麒麟/UOS 安全中心只读探测
+bash scripts/linux-health-check.sh --module security
+bash scripts/linux-health-check.sh --module security --format json
 ```
 
 Windows PowerShell:
@@ -60,6 +64,9 @@ Windows PowerShell:
 | `network` | 监听端口和网络路由 |
 | `service` | 异常服务或未运行服务 |
 | `process` | CPU 和内存占用较高的进程 |
+| `security` | SSH、防火墙、SELinux/AppArmor，以及麒麟/UOS 安全中心只读探测 |
+
+`security` 模块在防火墙和 SELinux/AppArmor 之外，会探测本机是否存在麒麟或统信安全中心。只查询软件包、systemd 单元和已知路径；命令存在时只执行 `status`。这些工具不存在时输出 `not-found`、`not-installed` 或 `absent`，不因此让脚本失败，也不执行 `enable`、`disable`、`set`、`allow`。
 
 ## 退出码
 
