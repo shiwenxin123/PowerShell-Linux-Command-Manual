@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Linux 巡检脚本 `security` 模块增加麒麟/UOS 安全中心只读探测，覆盖常见软件包、systemd 单元、`status` 子命令和已知路径。工具不存在时记录 `not-found` / `not-installed` / `absent`，不执行会改访问控制的命令。
+
 ## 2.16.0
 
 - 补充银河麒麟与统信 UOS 的版本识别、包管理、安全中心和系统管理命令差异，并标明商业版本不能当成同一套命令。

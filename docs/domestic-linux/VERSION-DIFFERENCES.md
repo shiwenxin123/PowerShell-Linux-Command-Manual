@@ -167,7 +167,10 @@ command -v firewall-cmd && firewall-cmd --state
 command -v ufw && ufw status
 command -v getenforce && getenforce
 command -v aa-status && aa-status
+bash scripts/linux-health-check.sh --module security
 ```
+
+`security` 模块里的 `domestic_security_center` 会做只读探测: 安全中心软件包、相关 systemd 单元、已知路径，以及存在时的 `status`。没有这些工具时输出 `not-found`、`not-installed` 或 `absent`，不会把通用系统判失败。
 
 | 组件 | 更常见的环境 | 查看方式 | 限制 |
 | --- | --- | --- | --- |
