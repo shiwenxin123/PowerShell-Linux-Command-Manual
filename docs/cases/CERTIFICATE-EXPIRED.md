@@ -14,6 +14,16 @@
 echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/null | openssl x509 -noout -dates
 ```
 
+本机证书文件可以用巡检脚本做只读扫描。过期或在阈值内到期时脚本退出码为 1。没有 `openssl` 时只记录 `not-found`，不因此失败。私钥不会被读取或打印。
+
+```bash
+bash scripts/linux-health-check.sh --module security --cert-warn-days 30 --cert-path /path/to/certs
+```
+
+```text
+tls_cert path=/path/to/certs/app.crt subject_cn=app.example issuer=CN=app.example not_after=2026-11-04T00:00:00Z days_remaining=14 status=expiring
+```
+
 ## 排查命令
 
 ```bash

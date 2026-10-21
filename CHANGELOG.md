@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Linux 巡检脚本 `security` 模块增加只读本地 TLS 证书到期检查，扫描常见证书目录并报告使用者 CN、颁发者、`notAfter` 和剩余天数。`openssl` 不存在时记录 `not-found`，不读取私钥。
 - Linux 巡检脚本 `security` 模块增加麒麟/UOS 安全中心只读探测，覆盖常见软件包、systemd 单元、`status` 子命令和已知路径。工具不存在时记录 `not-found` / `not-installed` / `absent`，不执行会改访问控制的命令。
 
 ## 2.16.0

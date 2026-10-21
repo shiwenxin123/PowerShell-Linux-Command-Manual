@@ -61,6 +61,9 @@ jobs:
             python -m json.tool "linux-$module.json" > /dev/null
           done
 
+      - name: Test TLS certificate expiry probe
+        run: bash scripts/tests/test-tls-cert-expiry.sh
+
       - name: Validate output file
         run: |
           bash scripts/linux-health-check.sh --module disk --format json --output reports/linux-health-check.json > /dev/null

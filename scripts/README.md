@@ -30,9 +30,10 @@ bash scripts/linux-health-check.sh --format markdown --output reports/linux-heal
 # 生成 JSON 报告
 bash scripts/linux-health-check.sh --format json --output reports/linux-health-check.json
 
-# 安全模块，包含麒麟/UOS 安全中心只读探测
+# 安全模块，包含麒麟/UOS 安全中心只读探测和本地 TLS 证书到期检查
 bash scripts/linux-health-check.sh --module security
 bash scripts/linux-health-check.sh --module security --format json
+bash scripts/linux-health-check.sh --module security --cert-warn-days 14 --cert-path /path/to/certs
 ```
 
 Windows PowerShell:
@@ -64,9 +65,11 @@ Windows PowerShell:
 | `network` | 监听端口和网络路由 |
 | `service` | 异常服务或未运行服务 |
 | `process` | CPU 和内存占用较高的进程 |
-| `security` | SSH、防火墙、SELinux/AppArmor，以及麒麟/UOS 安全中心只读探测 |
+| `security` | SSH、防火墙、SELinux/AppArmor、麒麟/UOS 安全中心只读探测；Linux 另含本地 TLS 证书到期检查 |
 
 `security` 模块在防火墙和 SELinux/AppArmor 之外，会探测本机是否存在麒麟或统信安全中心。只查询软件包、systemd 单元和已知路径；命令存在时只执行 `status`。这些工具不存在时输出 `not-found`、`not-installed` 或 `absent`，不因此让脚本失败，也不执行 `enable`、`disable`、`set`、`allow`。
+
+同一模块还会只读检查本地 TLS 证书是否过期。默认扫描 `/etc/nginx`、`/etc/httpd`、`/etc/pki/tls/certs`、`/etc/ssl/certs` 和 `/etc/letsencrypt/live`，并用 `--cert-path` 追加文件或目录。`--cert-warn-days` 默认 30。有 `openssl` 时报告使用者 CN、颁发者、`notAfter` 和剩余天数；没有 `openssl` 时输出 `openssl: not-found`，不因此失败。私钥文件会跳过，不打印内容，也不修改证书。
 
 ## 退出码
 

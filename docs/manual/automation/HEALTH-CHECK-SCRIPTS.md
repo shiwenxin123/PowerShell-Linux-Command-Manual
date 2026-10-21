@@ -21,7 +21,7 @@ Linux 和 Windows 巡检脚本支持文本、Markdown 和 JSON 输出。JSON 输
 | `service` | 异常服务或未运行服务 |
 | `process` | CPU 和内存占用较高的进程 |
 | `package` | 包管理器、软件源、已安装包或仓库状态 |
-| `security` | SSH、防火墙、SELinux/AppArmor、麒麟/UOS 安全中心、Defender 等基础安全状态 |
+| `security` | SSH、防火墙、SELinux/AppArmor、麒麟/UOS 安全中心、Defender；Linux 另含本地 TLS 证书到期 |
 | `container` | Docker、containerd、Kubernetes 客户端或节点基础状态 |
 | `log` | 系统错误日志、journal 占用、Windows 事件日志摘要 |
 
@@ -39,6 +39,9 @@ bash scripts/linux-health-check.sh --module package
 
 # 只检查系统日志
 bash scripts/linux-health-check.sh --module log
+
+# 安全模块里的本地证书到期检查，额外扫描一个目录，14 天内到期就标记
+bash scripts/linux-health-check.sh --module security --cert-warn-days 14 --cert-path /path/to/certs
 
 # Markdown 报告
 bash scripts/linux-health-check.sh --format markdown --output reports/linux-health-check.md
@@ -179,6 +182,7 @@ Linux 按存在与否收集，不是每项都有:
 | 防火墙 | `firewall_state` | 优先 `firewall-cmd --state`，否则 `ufw status`。两个都不存在时告警 `firewall-cmd` |
 | SELinux 或 AppArmor | `selinux` 或 `apparmor` | 优先 `getenforce`，否则 `aa-status`。两个都没有时不额外告警 |
 | 麒麟 / UOS 安全中心 | `domestic_security_center` | 只读探测常见安全中心包、systemd 单元、已知路径。命令存在时只执行 `status`。工具不存在时写入 `not-found` / `not-installed` / `absent`，不因此告警 |
+| 本地 TLS 证书到期 | `tls_cert_expiry` | 只读扫描常见证书目录和 `--cert-path`。有 `openssl` 时报告使用者 CN、颁发者、`notAfter` 和剩余天数。过期或在阈值内到期时该命令退出码为 1。没有 `openssl` 时输出 `not-found`，不因此失败 |
 
 Ubuntu 样例因此是 ufw + AppArmor。Rocky 和 CentOS 7 样例是 firewalld + SELinux。麒麟桌面样例没有这两种防火墙命令，所以 `security.status` 为 `warning`，同时仍可能有 `apparmor`。UOS 样例里 `ufw status` 输出 `inactive`，命令成功，模块状态仍是 `ok`。
 
@@ -186,7 +190,23 @@ Ubuntu 样例因此是 ufw + AppArmor。Rocky 和 CentOS 7 样例是 firewalld +
 
 命令存在时只执行 `kylin-security-cli status`、`uos-firewall status`、`deepin-defender status`，并且最多等 5 秒。`kylin-security-level`、`uos-security-level`、`kysec_set`、`kysec_stat` 只报告是否在 `PATH` 中，不执行。`enable`、`disable`、`set`、`allow`、`start` 不会被调用。某个已存在命令的 `status` 返回非 0 时，这条命令记为告警；工具本身不存在不是告警。通用 Ubuntu 或 CentOS 上通常整段都是 `not-found` / `not-installed` / `absent`，脚本继续完成。
 
-样例 JSON 仍符合 schema。它们生成于这次探测加入之前，所以里面还没有 `domestic_security_center`。以实机 `--format json` 的输出为准。
+样例 JSON 仍符合 schema。它们生成于这些探测加入之前，所以里面还没有 `domestic_security_center` 和 `tls_cert_expiry`。以实机 `--format json` 的输出为准。
+
+`tls_cert_expiry` 每次都会出现在文本和 JSON 里。它按顺序扫描 `--cert-path`（可重复），然后是 `/etc/nginx`、`/etc/httpd`、`/etc/pki/tls/certs`、`/etc/ssl/certs`、`/etc/letsencrypt/live`。目录不存在时写入 `state=absent`，不因此告警。只打开扩展名为 `.crt`、`.cer`、`.pem`、`.cert` 的文件，目录深度最多 6 层，最多解析 200 个候选文件，跳过大于 128 KiB 的文件。达到 200 个文件上限时输出 `tls_cert_limit`，该命令退出码为 1。
+
+有 `openssl` 时，每个证书报告一行，例如:
+
+```text
+tls_cert path=/path/to/certs/app.crt subject_cn=app.example issuer=CN=app.example not_after=2026-11-04T00:00:00Z days_remaining=14 status=expiring
+```
+
+`notAfter` 已到或已过时 `status=expired`。剩余整天数小于或等于 `--cert-warn-days`（默认 30）时 `status=expiring`。这两种结果让该命令退出码为 1，脚本退出码为 1。仍在阈值之外的证书是 `status=ok`。PEM 文件只解析第一张证书。同一指纹只报告一次。
+
+`/etc/ssl/certs` 里指向 `/usr/share/ca-certificates` 的发行版 CA 符号链接，以及该目录中 `CA:TRUE` 的证书，不作为叶子证书报告。`ca-certificates.crt`、`ca-bundle.crt` 这类证书包按文件名跳过。其它目录里的自签服务器证书即使带 `CA:TRUE` 也会报告。
+
+`*.key`、`*.p12`、`*.pfx` 不在扫描后缀里，不会被打开。扩展名像证书、但文件名含 `privkey` 或 PEM 第一行是私钥头的文件会跳过；识别私钥时只读第一行，不打印内容，也不交给会导出密钥的命令。检查过程不修改文件。
+
+没有 `openssl` 时输出 `openssl: not-found`，命令退出码为 0，不把缺少 `openssl` 当成故障。
 
 Windows 的 `security` 模块执行 `Get-NetFirewallProfile`。有 `Get-MpComputerStatus` 时记录 Defender 状态，没有则告警。Server Core 或精简镜像上 Defender cmdlet 缺失是告警，不是脚本失败。
 

@@ -6,14 +6,33 @@ FORMAT="text"
 OUTPUT_FILE=""
 WARNINGS_COUNT=0
 ERRORS_COUNT=0
+CERT_WARN_DAYS=30
+CERT_MAX_FILES=200
+CERT_MAX_BYTES=131072
+CERT_MAX_DEPTH=6
+CERT_EXTRA_PATHS=()
 
 usage() {
   cat <<'EOF'
-Usage: bash scripts/linux-health-check.sh [--module all|system|disk|network|service|process|package|security|container|log] [--format text|markdown|json] [--output reports/linux.md]
+Usage: bash scripts/linux-health-check.sh [--module all|system|disk|network|service|process|package|security|container|log] [--format text|markdown|json] [--output reports/linux.md] [--cert-warn-days DAYS] [--cert-path PATH]
+
+Options:
+  --module NAME          Check one module, or all. Default: all
+  --format FORMAT        text, markdown, or json. Default: text
+  --output FILE          Also write the report to FILE
+  --cert-warn-days DAYS  Flag certificates expiring within DAYS. Default: 30
+  --cert-path PATH       Extra certificate file or directory. May be repeated
+  -h, --help             Show this help
+
+The security module includes a read-only TLS certificate expiry probe.
+It scans /etc/nginx, /etc/httpd, /etc/pki/tls/certs, /etc/ssl/certs,
+and /etc/letsencrypt/live, plus any --cert-path values. Private keys are
+skipped. If openssl is missing, the probe records not-found and does not fail.
 
 Examples:
   bash scripts/linux-health-check.sh
   bash scripts/linux-health-check.sh --module disk
+  bash scripts/linux-health-check.sh --module security --cert-warn-days 14 --cert-path /path/to/certs
   bash scripts/linux-health-check.sh --format markdown --output reports/linux-health-check.md
   bash scripts/linux-health-check.sh --format json --output reports/linux-health-check.json
 EOF
@@ -40,6 +59,31 @@ while [ "$#" -gt 0 ]; do
     --output)
       [ "$#" -ge 2 ] || fail_param "Missing value for --output"
       OUTPUT_FILE="$2"
+      shift 2
+      ;;
+    --cert-warn-days)
+      [ "$#" -ge 2 ] || fail_param "Missing value for --cert-warn-days"
+      case "$2" in
+        ''|*[!0-9]*) fail_param "Invalid --cert-warn-days: $2" ;;
+      esac
+      if [ "${#2}" -gt 5 ]; then
+        fail_param "Invalid --cert-warn-days: $2"
+      fi
+      CERT_WARN_DAYS=$((10#$2))
+      if [ "$CERT_WARN_DAYS" -gt 36500 ]; then
+        fail_param "Invalid --cert-warn-days: $2"
+      fi
+      shift 2
+      ;;
+    --cert-path)
+      [ "$#" -ge 2 ] || fail_param "Missing value for --cert-path"
+      case "$2" in
+        ''|-) fail_param "Invalid --cert-path" ;;
+        -*) fail_param "Certificate path must not start with '-'" ;;
+        /) fail_param "Certificate path must not be /" ;;
+        *$'\n'*|*$'\r'*) fail_param "Certificate path must not contain newlines" ;;
+      esac
+      CERT_EXTRA_PATHS+=("$2")
       shift 2
       ;;
     -h|--help)
@@ -420,6 +464,382 @@ domestic_security_center_probe() {
   return "$DOMESTIC_SECURITY_PROBE_RC"
 }
 
+# Read-only local TLS certificate expiry probe.
+# Scans common certificate directories and optional --cert-path values.
+# Private key files are skipped and their contents are never printed.
+# Nothing is modified. Missing openssl is recorded as not-found and is not a failure.
+tls_cert_sanitize() {
+  local value=$1
+  value=${value//$'\n'/}
+  value=${value//$'\r'/}
+  value=${value//$'\t'/ }
+  printf '%s' "$value" | tr -d '\000-\010\013\014\016-\037'
+}
+
+tls_cert_lower_base() {
+  basename -- "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+tls_cert_name_is_private() {
+  local base
+  base=$(tls_cert_lower_base "$1")
+  case "$base" in
+    *.key|*.key.*|*privkey*|*privatekey*|*private-key*|*id_rsa*|*id_ecdsa*|*id_ed25519*|*.p12|*.pfx)
+      return 0
+      ;;
+  esac
+  return 1
+}
+
+tls_cert_name_is_bundle() {
+  local base
+  base=$(tls_cert_lower_base "$1")
+  case "$base" in
+    ca-certificates.crt|ca-certificates.pem|ca-bundle.crt|ca-bundle.pem|ca-bundle.trust.crt|ca-bundle.trust.pem|tls-ca-bundle.pem)
+      return 0
+      ;;
+  esac
+  return 1
+}
+
+tls_cert_path_in_ssl_certs() {
+  case "$1" in
+    /etc/ssl/certs|/etc/ssl/certs/*) return 0 ;;
+  esac
+  return 1
+}
+
+# Distro trust anchors in /etc/ssl/certs are symlinks into the CA bundle.
+# Skip them before openssl so a large trust store stays cheap.
+tls_cert_is_distro_ca_link() {
+  local file=$1
+  local target
+  tls_cert_path_in_ssl_certs "$file" || return 1
+  [ -L "$file" ] || return 1
+  target=$(readlink -f -- "$file" 2>/dev/null || true)
+  case "$target" in
+    /usr/share/ca-certificates|/usr/share/ca-certificates/*) return 0 ;;
+  esac
+  return 1
+}
+
+# Classify a PEM header without reading past the first line.
+# Key material lives on the following lines and is never stored or printed.
+tls_cert_pem_kind() {
+  local file=$1
+  local hdr
+  hdr=""
+  IFS= read -r -n 64 hdr < "$file" || true
+  hdr=${hdr%$'\r'}
+  case "$hdr" in
+    "-----BEGIN CERTIFICATE-----"|"-----BEGIN TRUSTED CERTIFICATE-----"|"-----BEGIN X509 CERTIFICATE-----")
+      printf '%s\n' cert
+      ;;
+    -----BEGIN*PRIVATE\ KEY-----)
+      printf '%s\n' key
+      ;;
+    -----BEGIN*)
+      printf '%s\n' other
+      ;;
+    *)
+      printf '%s\n' maybe-der
+      ;;
+  esac
+}
+
+tls_cert_meta_value() {
+  local meta=$1
+  local key=$2
+  local line prefix
+  prefix="$key="
+  while IFS= read -r line; do
+    case "$line" in
+      "$prefix"*)
+        printf '%s' "${line#"$prefix"}"
+        return 0
+        ;;
+    esac
+  done <<< "$meta"
+  return 1
+}
+
+tls_cert_extract_cn() {
+  local dn=$1
+  local part cn
+  local -a parts=()
+  IFS=',' read -r -a parts <<< "$dn"
+  for part in "${parts[@]}"; do
+    part=${part#" "}
+    case "$part" in
+      CN=*)
+        cn=${part#CN=}
+        cn=$(tls_cert_sanitize "$cn")
+        if [ -n "$cn" ]; then
+          printf '%s' "$cn"
+          return 0
+        fi
+        ;;
+    esac
+  done
+  printf '%s' "-"
+}
+
+tls_cert_note_examined() {
+  TLS_CERT_EXAMINED=$((TLS_CERT_EXAMINED + 1))
+}
+
+tls_cert_report_file() {
+  local file=$1
+  local inform=$2
+  local meta bc subject_dn issuer_dn not_after_raw fp
+  local end_epoch now_epoch days status iso subject_cn path_out overdue
+  meta=$(LC_ALL=C openssl x509 -inform "$inform" -nameopt RFC2253 -noout \
+    -subject -issuer -enddate -fingerprint -sha256 -in "$file" 2>/dev/null) || return 1
+
+  bc=$(LC_ALL=C openssl x509 -inform "$inform" -noout -ext basicConstraints -in "$file" 2>/dev/null || true)
+  if tls_cert_path_in_ssl_certs "$file"; then
+    case "$bc" in
+      *CA:TRUE*)
+        TLS_CERT_SKIPPED_CA=$((TLS_CERT_SKIPPED_CA + 1))
+        return 0
+        ;;
+    esac
+  fi
+
+  subject_dn=$(tls_cert_meta_value "$meta" subject) || return 1
+  issuer_dn=$(tls_cert_meta_value "$meta" issuer) || return 1
+  not_after_raw=$(tls_cert_meta_value "$meta" notAfter) || return 1
+  fp=$(tls_cert_meta_value "$meta" "sha256 Fingerprint" || true)
+  if [ -n "$fp" ] && [ -n "${TLS_CERT_SEEN_FP[$fp]+x}" ]; then
+    TLS_CERT_DEDUPED=$((TLS_CERT_DEDUPED + 1))
+    return 0
+  fi
+  if [ -n "$fp" ]; then
+    TLS_CERT_SEEN_FP[$fp]=1
+  fi
+
+  end_epoch=$(LC_ALL=C date -u -d "$not_after_raw" +%s 2>/dev/null) || return 1
+  now_epoch=$(date -u +%s)
+  iso=$(LC_ALL=C date -u -d "@$end_epoch" +%Y-%m-%dT%H:%M:%SZ)
+  if [ "$end_epoch" -le "$now_epoch" ]; then
+    overdue=$(( (now_epoch - end_epoch + 86399) / 86400 ))
+    days=$((0 - overdue))
+    status=expired
+    TLS_CERT_EXPIRED=$((TLS_CERT_EXPIRED + 1))
+  else
+    days=$(( (end_epoch - now_epoch) / 86400 ))
+    if [ "$days" -le "$CERT_WARN_DAYS" ]; then
+      status=expiring
+      TLS_CERT_EXPIRING=$((TLS_CERT_EXPIRING + 1))
+    else
+      status=ok
+      TLS_CERT_OK=$((TLS_CERT_OK + 1))
+    fi
+  fi
+
+  subject_cn=$(tls_cert_extract_cn "$subject_dn")
+  subject_cn=$(tls_cert_sanitize "$subject_cn")
+  issuer_dn=$(tls_cert_sanitize "$issuer_dn")
+  path_out=$(tls_cert_sanitize "$file")
+  printf 'tls_cert path=%s subject_cn=%s issuer=%s not_after=%s days_remaining=%s status=%s\n' \
+    "$path_out" "$subject_cn" "$issuer_dn" "$iso" "$days" "$status"
+  TLS_CERT_REPORTED=$((TLS_CERT_REPORTED + 1))
+  return 0
+}
+
+tls_cert_consider_file() {
+  local file=$1
+  local real kind size
+  if [ "$TLS_CERT_EXAMINED" -ge "$CERT_MAX_FILES" ]; then
+    TLS_CERT_LIMIT_HIT=1
+    return 0
+  fi
+
+  case "$file" in
+    *$'\n'*|*$'\r'*)
+      tls_cert_note_examined
+      TLS_CERT_SKIPPED_UNSUPPORTED=$((TLS_CERT_SKIPPED_UNSUPPORTED + 1))
+      return 0
+      ;;
+  esac
+
+  if tls_cert_name_is_private "$file"; then
+    tls_cert_note_examined
+    TLS_CERT_SKIPPED_KEY=$((TLS_CERT_SKIPPED_KEY + 1))
+    printf 'tls_cert_skip kind=private-key path=%s\n' "$file"
+    return 0
+  fi
+
+  if tls_cert_name_is_bundle "$file"; then
+    tls_cert_note_examined
+    TLS_CERT_SKIPPED_BUNDLE=$((TLS_CERT_SKIPPED_BUNDLE + 1))
+    return 0
+  fi
+
+  if tls_cert_is_distro_ca_link "$file"; then
+    TLS_CERT_SKIPPED_CA=$((TLS_CERT_SKIPPED_CA + 1))
+    return 0
+  fi
+
+  real=$(readlink -f -- "$file" 2>/dev/null || true)
+  if [ -z "$real" ]; then
+    real=$file
+  fi
+  if [ -n "${TLS_CERT_SEEN_PATH[$real]+x}" ]; then
+    TLS_CERT_DEDUPED=$((TLS_CERT_DEDUPED + 1))
+    return 0
+  fi
+  TLS_CERT_SEEN_PATH[$real]=1
+
+  if [ ! -r "$file" ]; then
+    tls_cert_note_examined
+    TLS_CERT_SKIPPED_UNREADABLE=$((TLS_CERT_SKIPPED_UNREADABLE + 1))
+    return 0
+  fi
+
+  size=$(stat -L -c '%s' "$file" 2>/dev/null || true)
+  if [ -z "$size" ]; then
+    tls_cert_note_examined
+    TLS_CERT_SKIPPED_UNREADABLE=$((TLS_CERT_SKIPPED_UNREADABLE + 1))
+    return 0
+  fi
+  if [ "$size" -gt "$CERT_MAX_BYTES" ]; then
+    tls_cert_note_examined
+    TLS_CERT_SKIPPED_LARGE=$((TLS_CERT_SKIPPED_LARGE + 1))
+    return 0
+  fi
+
+  kind=$(tls_cert_pem_kind "$file")
+  tls_cert_note_examined
+  case "$kind" in
+    key)
+      TLS_CERT_SKIPPED_KEY=$((TLS_CERT_SKIPPED_KEY + 1))
+      printf 'tls_cert_skip kind=private-key path=%s\n' "$file"
+      ;;
+    other)
+      TLS_CERT_SKIPPED_UNSUPPORTED=$((TLS_CERT_SKIPPED_UNSUPPORTED + 1))
+      ;;
+    cert)
+      tls_cert_report_file "$file" PEM || TLS_CERT_SKIPPED_UNSUPPORTED=$((TLS_CERT_SKIPPED_UNSUPPORTED + 1))
+      ;;
+    maybe-der)
+      if ! tls_cert_report_file "$file" PEM; then
+        tls_cert_report_file "$file" DER || TLS_CERT_SKIPPED_UNSUPPORTED=$((TLS_CERT_SKIPPED_UNSUPPORTED + 1))
+      fi
+      ;;
+    *)
+      TLS_CERT_SKIPPED_UNSUPPORTED=$((TLS_CERT_SKIPPED_UNSUPPORTED + 1))
+      ;;
+  esac
+}
+
+tls_cert_scan_root() {
+  local root=$1
+  local path
+  if [ "$TLS_CERT_LIMIT_HIT" -eq 1 ]; then
+    printf 'tls_cert_root path=%s state=skipped-limit\n' "$root"
+    return 0
+  fi
+  if [ -L "$root" ] && [ ! -e "$root" ]; then
+    printf 'tls_cert_root path=%s state=present-unreadable\n' "$root"
+    return 0
+  fi
+  if [ ! -e "$root" ]; then
+    printf 'tls_cert_root path=%s state=absent\n' "$root"
+    return 0
+  fi
+  if [ -d "$root" ]; then
+    if [ ! -r "$root" ] || [ ! -x "$root" ]; then
+      printf 'tls_cert_root path=%s state=present-unreadable\n' "$root"
+      return 0
+    fi
+    printf 'tls_cert_root path=%s state=present\n' "$root"
+    while IFS= read -r -d '' path; do
+      tls_cert_consider_file "$path"
+      if [ "$TLS_CERT_LIMIT_HIT" -eq 1 ]; then
+        break
+      fi
+    # Only certificate suffixes are visited. *.key, *.p12, and *.pfx are never opened.
+    done < <(find "$root" -maxdepth "$CERT_MAX_DEPTH" \( -type f -o -type l \) \
+      \( -iname '*.crt' -o -iname '*.cer' -o -iname '*.pem' -o -iname '*.cert' \) \
+      -print0 2>/dev/null)
+    return 0
+  fi
+  if [ -f "$root" ]; then
+    printf 'tls_cert_root path=%s state=file\n' "$root"
+    tls_cert_consider_file "$root"
+    return 0
+  fi
+  printf 'tls_cert_root path=%s state=skipped\n' "$root"
+}
+
+tls_cert_expiry_probe() {
+  local -a roots=()
+  local extra root
+  TLS_CERT_EXAMINED=0
+  TLS_CERT_REPORTED=0
+  TLS_CERT_EXPIRED=0
+  TLS_CERT_EXPIRING=0
+  TLS_CERT_OK=0
+  TLS_CERT_SKIPPED_KEY=0
+  TLS_CERT_SKIPPED_LARGE=0
+  TLS_CERT_SKIPPED_CA=0
+  TLS_CERT_SKIPPED_BUNDLE=0
+  TLS_CERT_SKIPPED_UNREADABLE=0
+  TLS_CERT_SKIPPED_UNSUPPORTED=0
+  TLS_CERT_DEDUPED=0
+  TLS_CERT_LIMIT_HIT=0
+  unset TLS_CERT_SEEN_PATH
+  unset TLS_CERT_SEEN_FP
+  declare -gA TLS_CERT_SEEN_PATH
+  declare -gA TLS_CERT_SEEN_FP
+
+  printf '%s\n' 'tls_cert_expiry: read-only probe'
+  printf 'warn_days=%s\n' "$CERT_WARN_DAYS"
+  printf 'max_files=%s\n' "$CERT_MAX_FILES"
+  printf 'max_bytes=%s\n' "$CERT_MAX_BYTES"
+  printf 'max_depth=%s\n' "$CERT_MAX_DEPTH"
+  printf '%s\n' 'note: private keys are skipped and never printed; certificate files are not modified'
+
+  if ! command -v openssl >/dev/null 2>&1; then
+    printf '%s\n' 'openssl: not-found'
+    printf '%s\n' 'note: openssl is not installed; certificate expiry was not evaluated'
+    printf '%s\n' 'tls_cert_summary scanned=0 reported=0 expired=0 expiring=0 ok=0 skipped_key=0 skipped_large=0 skipped_ca=0 skipped_bundle=0 skipped_unreadable=0 skipped_unsupported=0 deduped=0'
+    return 0
+  fi
+  printf '%s\n' 'openssl: present'
+
+  if [ "${#CERT_EXTRA_PATHS[@]}" -gt 0 ]; then
+    for extra in "${CERT_EXTRA_PATHS[@]}"; do
+      roots+=("$extra")
+    done
+  fi
+  roots+=(
+    /etc/nginx
+    /etc/httpd
+    /etc/pki/tls/certs
+    /etc/ssl/certs
+    /etc/letsencrypt/live
+  )
+
+  for root in "${roots[@]}"; do
+    tls_cert_scan_root "$root"
+  done
+
+  if [ "$TLS_CERT_LIMIT_HIT" -eq 1 ]; then
+    printf 'tls_cert_limit max_files=%s\n' "$CERT_MAX_FILES"
+  fi
+  printf 'tls_cert_summary scanned=%s reported=%s expired=%s expiring=%s ok=%s skipped_key=%s skipped_large=%s skipped_ca=%s skipped_bundle=%s skipped_unreadable=%s skipped_unsupported=%s deduped=%s\n' \
+    "$TLS_CERT_EXAMINED" "$TLS_CERT_REPORTED" "$TLS_CERT_EXPIRED" "$TLS_CERT_EXPIRING" "$TLS_CERT_OK" \
+    "$TLS_CERT_SKIPPED_KEY" "$TLS_CERT_SKIPPED_LARGE" "$TLS_CERT_SKIPPED_CA" "$TLS_CERT_SKIPPED_BUNDLE" \
+    "$TLS_CERT_SKIPPED_UNREADABLE" "$TLS_CERT_SKIPPED_UNSUPPORTED" "$TLS_CERT_DEDUPED"
+
+  if [ "$TLS_CERT_EXPIRED" -gt 0 ] || [ "$TLS_CERT_EXPIRING" -gt 0 ] || [ "$TLS_CERT_LIMIT_HIT" -eq 1 ]; then
+    return 1
+  fi
+  return 0
+}
+
 collect_security_json() {
   MODULE_WARNINGS=0
   MODULE_ERRORS=0
@@ -459,6 +879,9 @@ collect_security_json() {
   fi
 
   run_json_command domestic_security_center domestic_security_center_probe
+  if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
+
+  run_json_command tls_cert_expiry tls_cert_expiry_probe
   if [ -n "$commands" ]; then commands="$commands,$COMMAND_JSON"; else commands="$COMMAND_JSON"; fi
 
   set_module_json security "$commands" "$warnings" "" "$MODULE_WARNINGS" "$MODULE_ERRORS"
@@ -666,6 +1089,8 @@ text_or_markdown_report() {
     if command -v getenforce >/dev/null 2>&1; then run_block getenforce; elif command -v aa-status >/dev/null 2>&1; then run_block aa-status; fi
     echo "-- domestic security center --"
     domestic_security_center_probe 2>&1 || true
+    echo "-- tls certificate expiry --"
+    tls_cert_expiry_probe 2>&1 || true
     if [ "$FORMAT" = "markdown" ]; then echo '```'; fi
   fi
 
@@ -705,6 +1130,9 @@ if [ "$FORMAT" = "json" ]; then
   json_report || exit 3
 else
   REPORT=$(text_or_markdown_report) || exit 3
+  if printf '%s\n' "$REPORT" | grep -Eq '^tls_cert path=.* status=(expired|expiring)$|^tls_cert_limit '; then
+    WARNINGS_COUNT=$((WARNINGS_COUNT + 1))
+  fi
 fi
 
 if [ -n "$OUTPUT_FILE" ]; then
